@@ -59,6 +59,32 @@
 
 ![](/assets/006.png)
 
+####64位AT&T汇编 – 栈帧
+![](/assets/007.png)
+![](/assets/008.png)
+![](/assets/009.png)
+***
+![](/assets/010.png)
+![](/assets/011.png)
+![](/assets/012.png)
+***
+![](/assets/013.png)
+![](/assets/014.png)
+![](/assets/015.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
