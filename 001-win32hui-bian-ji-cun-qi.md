@@ -75,13 +75,41 @@
 
 ##常见代码反汇编
 
-- sizeof
-- a++ + a++ + a++
-- if-else
-- for
+- sizeof
+- a++ + a++ + a++
+- if-else
+- for
 - switch和if效率
 
 ##编译器的优化
+![](/assets/016.png)
+![](/assets/017.png)
+
+##外联汇编
+
+- global _sum
+```
+ _sum:  
+  movq %rdi, %rax   
+  addq %rsi, %rax  
+  retq
+  ```
+  
+ ##内联汇编
+ ```
+ int num1 = 10;
+ int num2 = 20;
+ int result;
+ 
+ __asm__(   
+  "addl %%ebx,%%eax"  
+  :"=a"(result)    
+  :"b"(num1), "a"(num2)
+  );
+ ```
+ 
+ ##lldb常用指令
+ ![](/assets/018.png)
 
 
 
