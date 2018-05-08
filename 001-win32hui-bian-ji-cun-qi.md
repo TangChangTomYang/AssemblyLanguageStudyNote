@@ -25,17 +25,24 @@
 
     
 ##AT&T汇编 vs Intel汇编
+
 - 基于x86架构的处理器所使用的汇编指令一般有2种格式
 - Intel汇编
     - DOS（8086处理器）、Windows
-    - Windows派系 -> VC编译器
+    - Windows派系 => VC编译器
 - AT&T汇编
     - Linux、Unix、Mac OS、iOS（模拟器）
-    - Unix派系 -> GCC编译器
-- AT&T 读作 “AT and T”（American Telephone & Telegraph的缩写）
-- 作为iOS开发工程师，最主要的汇编语言是:
-    - AT&T汇编 -> iOS模拟器
-    - ARM汇编 -> iOS真机设备
+    - Unix派系 => GCC编译器
+- AT&T 读作 “AT and T”（American Telephone & Telegraph的缩写）
+- 作为iOS开发工程师，最主要的汇编语言是:
+    - AT&T汇编 => iOS模拟器
+    - ARM汇编 => iOS真机设备
+
+
+
+
+
+
 
 
 
