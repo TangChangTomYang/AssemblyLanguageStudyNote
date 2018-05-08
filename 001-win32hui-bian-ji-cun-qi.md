@@ -73,6 +73,16 @@
 ![](/assets/015.png)
 
 
+##常见代码反汇编
+
+- sizeof
+- a++ + a++ + a++
+- if-else
+- for
+- switch和if效率
+
+##编译器的优化
+
 
 
 
