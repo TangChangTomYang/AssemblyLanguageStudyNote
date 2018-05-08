@@ -42,6 +42,9 @@
 
 ![AT&T汇编 vs Intel汇编](/assets/004.png)
 
+####AT&T汇编 vs Intel汇编 寻址方式
+![](/assets/005.png)
+
 
 
 
