@@ -37,6 +37,10 @@
 - 作为iOS开发工程师，最主要的汇编语言是:
     - AT&T汇编 => iOS模拟器
     - ARM汇编 => iOS真机设备
+    
+####AT&T汇编 vs Intel汇编
+
+![AT&T汇编 vs Intel汇编](/assets/004.png)
 
 
 
