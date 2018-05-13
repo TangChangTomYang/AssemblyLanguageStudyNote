@@ -70,6 +70,11 @@
 ![](/assets/添加Cydia软件源.png)
 - **从已经添加的Cydia 软件源中选择对应的软件安装即可**
 
+####SpringBoard
+- **有时通过Cydia安装完插件后，可能会出现以下界面**
+![](/assets/屏幕快照 2018-05-13 上午10.47.21.png)
+    - SpringBoard 其实就相当于iOS的桌面。
+
   
     
     
