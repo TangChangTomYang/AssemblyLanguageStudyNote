@@ -128,6 +128,21 @@
     
     - **让后直接将下载的 deb 文件安装包 直接放到文件路径： /var/root/Media/Cydia/AutoInstall **
     - 重启手机，Cydia 就会自动安装 deb 
+    
+####十二、 代码判断手机是否越狱
+
+- **通过代码判断手机是否有安装Cydia **
+    ```
+    if ([[NSFileManager defaultManager] fileExistsAtPath:@"/Applications/Cydia.app"]
+        ) {
+        NSLog(@"手机已经 越狱");
+    }
+    else{
+        NSLog(@"手机未 越狱");
+    }
+    ```
+
+- **判断手机是否已经越狱， 在网上一搜有很多**
 
         
         
