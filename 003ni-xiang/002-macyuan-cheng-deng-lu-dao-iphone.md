@@ -63,10 +63,13 @@
         -  $ 表示的是当前用户是普通权限（比如使用 mobile 账户登录）
         
         ![](/assets/Snip20180513_9.png)
+    - **4、最好修改一下root 和 mobile y用户的登录密码**
+        - 使用root 登录后分别使用 passwd 和 passwd mobile 修改root 账户的密码和 mobile 账户的权限。
 
-
-        
-        
+        ![](/assets/Snip20180513_14.png)  
+        ![](/assets/Snip20180513_16.png)
+        如图，直接输入新密码即可修改完成，但是注意，修改了要记住，忘了就找不回来了
+              
         
         
         
