@@ -97,6 +97,12 @@
     - **软件源**
         - http://apt.thebigboss.org/repofiles/sydia
         
+- **PP助手**
+    - **可以利用pp助手安装海量App**
+    - **软件源**
+        - http://apt.25pp.com
+        
+        
         
         
 
