@@ -70,10 +70,35 @@
 ![](/assets/添加Cydia软件源.png)
 - **从已经添加的Cydia 软件源中选择对应的软件安装即可**
 
-####SpringBoard
+####七、SpringBoard
 - **有时通过Cydia安装完插件后，可能会出现以下界面**
 ![](/assets/屏幕快照 2018-05-13 上午10.47.21.png)
     - SpringBoard 其实就相当于iOS的桌面。
+    
+    
+####八、逆向必备软件安装
+- **Apple file conduit "2"（conduit是管道的意思）**
+    - **Apple file conduit "2" 补丁的作用**
+        - 可以访问整个iOS设备的文件系统，类似的补丁还有： **afc2、afc2add**
+    - **安装Apple file conduit 的软件源**
+        - http://apt.saurik.com
+        - http://apt.25pp.com
+
+- **AppSync Unified**
+    - **AppSync unified 补丁的作用**
+        - 可以绕过系统的验证，随意安装、运行破解的ipa安装包。
+    - **软件源**
+        - http://apt.a5pp.com
+
+- **iFile**
+    - **iFile 的作用**
+        - 可以在iPhone上自由访问iOS文件系统
+        - 类似的还有Filza file manager、 File Browser
+    - **软件源**
+        - http://apt.thebigboss.org/repofiles/sydia
+        
+        
+        
 
   
     
