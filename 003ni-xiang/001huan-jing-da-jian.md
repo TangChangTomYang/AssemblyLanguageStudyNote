@@ -67,7 +67,10 @@
 - **第一步、给Cydia 添加软件源**
 
 
+![](/assets/添加Cydia软件源.png)
 - **从已经添加的Cydia 软件源中选择对应的软件安装即可**
+
+![](/assets/添加Cydia软件源.png)
 
     
     
