@@ -53,8 +53,9 @@
         - 提示要输用户名密码：Cydia 其实在使用步骤中已经明确说明，默认的root账户的密码是 “alpine”
         - 输入密码如果，终端中提示 root# 就表示已经远程登录成功
     - **2、在iOS系统中通常有2个常用的账户： root 和 mobile**
-        - root 最高权限的账户，$HOME 是 /var/root, 而 mac 上的$HOME 是 /Users/用户名， 可以直接使用命令 **pwd**查看， 我们也可以通过命令 **echo $HOME** 来查看。
+        - **root** 最高权限的账户，$HOME 是 /var/root, 而 mac 上的$HOME 是 /Users/用户名， 可以直接使用命令 **pwd**查看， 我们也可以通过命令 **echo $HOME** 来查看。
             - 说明： **pwd** 命令是查看当前所在路径， 而 **echo $HOME** 是查看当前用户根目录的意思， **echo** 是回显的意思， **$HOME** 代表用户根路劲。
+        - **mobile** 普通权限账户，只能操作一些普通文件，不能操作系统级别的文件， $HOME 是/var/mobile
         
         
         
