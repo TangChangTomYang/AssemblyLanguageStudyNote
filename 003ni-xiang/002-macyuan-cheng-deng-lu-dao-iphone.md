@@ -109,6 +109,12 @@
         cat known_hosts
         ```
         ![](/assets/屏幕快照 2018-05-13 下午10.04.37.png)
+        - 查看SSH服务端的RSA公钥
+        ```
+        cd /etc/ssh
+        ls -l
+        cat ssh_host_rsa_key.pub
+        ```
             
     - **客户端认证** 
         - 账号、密码是否正确等
