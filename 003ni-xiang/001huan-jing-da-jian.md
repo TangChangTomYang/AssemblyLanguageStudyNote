@@ -53,11 +53,16 @@
 ####五、Cydia？
 - **Cydia 你可以理解成 越狱后的 “App store”**
     - **可以在Cydia中安装各种第三方的软件（插件、补丁、app）**
+    
     ![](/assets/屏幕快照 2018-05-13 上午8.52.56.png)
 
 
 - **Cydia 的作者**
     - **jay freeman，网名sauirk**
+    
+    ![](/assets/屏幕快照 2018-05-13 上午9.01.39.png)
+    
+    
     
 
 
