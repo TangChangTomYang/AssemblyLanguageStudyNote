@@ -76,7 +76,7 @@
     - SpringBoard 其实就相当于iOS的桌面。
     
     
-####八、逆向必备软件安装
+####八、iPhone 上逆向必备软件安装
 - **Apple file conduit "2"（conduit是管道的意思）**
     - **Apple file conduit "2" 补丁的作用**
         - 可以访问整个iOS设备的文件系统，类似的补丁还有： **afc2、afc2add**
@@ -101,6 +101,20 @@
     - **可以利用pp助手安装海量App**
     - **软件源**
         - http://apt.25pp.com
+        
+####九、Mac 端逆向必备软件安装
+- **PP助手**
+
+####关于必备软件安装顺序
+- **iphone端**
+    - **Cydia**
+    - **Apple file conduit**
+    - **AppSync unified**
+    - **iFile**
+    - **pp助手**
+- **Mac端**
+    - **iFunBox**
+    - **pp 助手**
         
         
         
