@@ -22,3 +22,9 @@
 ####三、使用OpenSSH远程登录iPhone**
 - **首先，我们的Mac默认是支持OpenSSH的，但是我们的iPhone默认是不支持OpenSSH的，为了让我们的iPhone支持OpenSSH，我们需要通过Cydia 在iphone上安装OpenSSH**
 
+- **在iPhone 上通过Cydia安装OpenSSH**
+    - **添加软件源： http://apt.saurik.com**
+    - **搜索OpenSSH并安装**
+- **iphone 端OpenSSH的具体使用步骤，参考Cydia 中的OpenSSH的Description**
+![](/assets/屏幕快照 2018-05-13 下午4.09.38.png)
+
