@@ -127,7 +127,7 @@
     ![](/assets/Snip20180513_5.png)![](/assets/Snip20180513_7.png)
     
     - **让后直接将下载的 deb 文件安装包 直接放到文件路径： /var/root/Media/Cydia/AutoInstall **
-    - 重启手机，Cydia 就会自动安装 deb 
+    - **重启手机，Cydia 就会自动安装 deb **
     
 ####十二、 代码判断手机是否越狱
 
