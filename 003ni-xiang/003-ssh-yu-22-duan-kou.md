@@ -5,3 +5,5 @@
     - 80端口提供HTTP服务
     - 22端口提供给SSH服务(可以查看 /etc/ssh/sshd_config 的port字段)
     - [更多保留端口号参考](https://baike.baidu.com/item/端口号/10883658#4%203)
+- **iPhone 默认采用22端口进行SSH通信,采用的是TCP协议**
+![](/assets/屏幕快照 2018-05-14 下午10.39.31.png)
