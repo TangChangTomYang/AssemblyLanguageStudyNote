@@ -133,14 +133,21 @@
     - 免密码认证
     - 最安全的一张认证方式
     - SSH 默认会优先采用这种认证方式
+    
+- **免密码认证, 过程详解**
     ![](/assets/屏幕快照 2018-05-14 上午6.40.35.png)
-    - 密钥认证需要在客户端生成一对 rsa 公私钥，并将 rsa 公钥追加到SSH服务端的 authorized——keys——
+    - **密钥认证需要在客户端生成一对 rsa 公私钥，并将 rsa 公钥追加到SSH服务端的 authorized_keys文件中**
         - **在客户端生成rsa 公私钥对**，客户端公私钥，存储地址： **~/.ssh**
                 
         ```
         ssh-keygen -t rsa    //指定算法并生成一对rsa公私钥
          // openssh 默认采用的是 rsa 可以不指定，直接使用 
          ssh-keygen
+        ```
+        - **将客户端 RSA 公钥追加到服务端authorized_keys文件中** 只要在服务器端的authorized_keys文件中存储了RAS公钥，服务器就知道将来会有个客户端要连过来。
+        
+        ```
+         df
         ```
         - **.ssh 文件夹**中有很多文件，现在对**id_rsa、id_rsa.pub、known_hosts **这3个文件进行说明：
         - **id_rsa**   存储的是当前用户生成的 rsa 私钥
