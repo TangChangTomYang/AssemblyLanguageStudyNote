@@ -29,7 +29,11 @@
     
 ####三、usbmuxd 的使用一
 - **下载usbmuxd 工具包（下载 v1.0.8版本，主要用到里面的python 脚本： tcprelay.py）**
-    - **[下载地址](https://cgit/sukimashita.com/usbmuxd.git/snapshot/usbmuxd-1.0.8.tar.gz)**
+    - **[下载地址](https://cgit.sukimashita.com/usbmuxd.git)**
+    - **我们只需要下载文件中的python client中的2个文件**![](/assets/屏幕快照 2018-05-15 上午6.46.59.png)
+    
+    
+    
 
 
 
