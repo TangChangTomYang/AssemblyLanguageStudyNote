@@ -26,6 +26,10 @@
 - **Mac 通过 USB 与 iPhone建立 SSH 主要步骤如下：**
     - **1. Mac 通过SSH的方式和自己的10010 建立SSH通信**
     - **2. Mac 直接把消息发送到自己的10010 端口，这样 usbmuxd 自己会把消息传递给 iPhone的 22端口通信**
+    
+####三、usbmuxd 的使用一
+- **下载usbmuxd 工具包（下载 v1.0.8版本，主要用到里面的python 脚本： tcprelay.py）**
+    - **[下载地址](https://cgit/sukimashita.com/usbmuxd.git/snapshot/usbmuxd-1.0.8.tar.gz)**
 
 
 
