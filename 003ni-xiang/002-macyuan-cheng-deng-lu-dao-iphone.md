@@ -190,7 +190,12 @@
     cat id_rsa.pub >> authorized_keys
     // 注意如果 authorized_keys 文件不存在会自动创建这个文件
     ```
-    - **注意:** 如果在服务器端中如果有存储客户的 RSA 公钥,还是需要输入 账号和密码要求连接,那么
+    - **注意:** 如果在服务器端中如果有存储客户的 RSA 公钥,还是需要输入 账号和密码要求连接,那么可能是服务器端的 authorized_keys 文件权限不够.
+    ```
+    chmod 755 ~ 
+    chmod 755 ~/.ssh
+    chmod 644 ~/.ssh/authorized_keys
+    ```
 
 
 
