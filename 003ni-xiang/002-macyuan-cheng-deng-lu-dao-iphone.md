@@ -1,3 +1,5 @@
+##一、SSH 远程登录了解
+
 ####一、Mac 远程登录到iphone 
 - **我们经常在Mac的终端上，通过敲一些命令来执行一些操作。**
 - **iOS 和Mac OSX 都是基于Darwin（苹果的一种基于Unix的开源系统内核），所以iOS中同样支持终端的命令行操作。**
@@ -5,7 +7,10 @@
 - **为了能够让Mac终端中的命令行能作用在iPhone上，我们的让Mac和iPhone建立连接**
     - **通过Mac远程登录到iPhone的方式建立连接**
     ![](/assets/屏幕快照 2018-05-13 下午3.49.44.png)
-    
+  
+            
+                      
+                                          
 
 ####二、SSH、 OpenSSH
 - **什么是SSH？ **
@@ -73,7 +78,10 @@
     ```
     exit
     ```
+   
     
+     
+       
     
 ####五、SSH的版本
 - **SSH 协议一共有2个版本**
@@ -91,8 +99,13 @@
     cd  /etc/ssh
     cat sshd_config
     ```  
+<br>
 
-####六、SSH的通信过程      
+
+
+
+##二、基于网络的SSH连接
+####一、SSH的通信过程      
 - **SSH 通信主要分为3个大的阶段**
     - **建立安全连接**  
     - **客户端认证，主要有2中方式** 
@@ -100,7 +113,7 @@
         - 方式2，基于秘钥的认证方式
     - **数据传输**   
 
-####七、SSH 通信之 &emsp;建立安全连接过程详解
+####二、SSH 通信之 &emsp;建立安全连接过程详解
 
 - 在建立安全连接的过程中，服务器会提供自己的身份证明(如： RSA公钥)。
     ![](/assets/屏幕快照 2018-05-13 下午9.55.14.png)
@@ -123,7 +136,7 @@
     cat ssh_host_rsa_key.pub
     ```
 
-####八、SSH 通信之 &emsp;客户端认证
+####三、SSH 通信之 &emsp;客户端认证
 - **方式1**，基于密码的客户端认证
     - 使用账号和密码即可认证
         - 基于账号和密码的认证的弊端
@@ -138,28 +151,119 @@
     ![](/assets/屏幕快照 2018-05-14 上午6.40.35.png)
     - **密钥认证需要在客户端生成一对 rsa 公私钥，并将 rsa 公钥追加到SSH服务端的 authorized_keys文件中**
         - **在客户端生成rsa 公私钥对**，客户端公私钥，存储地址： **~/.ssh**
-                
         ```
-        ssh-keygen -t rsa    //指定算法并生成一对rsa公私钥
-         // openssh 默认采用的是 rsa 可以不指定，直接使用 
-         ssh-keygen
+ssh-keygen -t rsa //指定算法并生成一对rsa公私钥
+// openssh 默认采用的是 rsa 可以不指定，直接使用 
+ssh-keygen
+```
+        - **.ssh 文件夹中有很多文件，现在对id_rsa、id_rsa.pub、known_hosts 这3个文件进行说明：**
+                - **id_rsa** 存储的是当前用户生成的 rsa 私钥
+                - **id_rsa.pub** 存储的是当前用户生成的 rsa 公钥，和id_rsa 是一对钥匙，在进行ssh 通信时会把 id_rsa.pub 发送给ssh 服务端 用作身份验证。
+                - **known_hosts** 存储的是 SSH 服务端的rsa 公钥，公钥用来验证要建立连接的服务端是否是合法的（服务端合法验证至少包含2部分： IP 地址正确、rsa 公钥正确）
+    - **将客户端 RSA 公钥追加到服务端authorized_keys文件中，只要在服务器端的authorized_keys文件中存储了RAS公钥，服务器就知道将来会有个客户端要连过来。** 
+        - **追加方式1：**使用 ssh-copy-id 将客户端的公钥内容自动的追加到服务器的授权文件的尾部
+
         ```
-        - **将客户端 RSA 公钥追加到服务端authorized_keys文件中** 只要在服务器端的authorized_keys文件中存储了RAS公钥，服务器就知道将来会有个客户端要连过来。
-        ```
-        追加方式1：
          ssh-copy-id root@10.1.1.193
          // 这个指令会自动的将 客户端的RSA 公钥复制并追加到服务器端的authorized_keys文件中
         ```
-        - **.ssh 文件夹**中有很多文件，现在对**id_rsa、id_rsa.pub、known_hosts **这3个文件进行说明：
-        - **id_rsa**   存储的是当前用户生成的 rsa 私钥
-        - **id_rsa.pub**  存储的是当前用户生成的 rsa 公钥，和id_rsa 是一对钥匙，在进行ssh 通信时会把 id_rsa.pub 发送给ssh 服务端 用作身份验证。
-        - **known_hosts** 存储的是 SSH 服务端的rsa 公钥，公钥用来验证要建立连接的服务端是否是合法的（服务端合法验证至少包含2部分： IP 地址正确、rsa 公钥正确）
-        - 
+        - **追加方式2：**手动操作。复制客户端的公钥到服务器某路径
+            - 复制客户端的公钥到服务器某路径
+            ```
+            scp ~/.ssh/id_rsa.pub root@10.1.1.193:~/.ssh
+            // 从 a 主机拷贝到b 主机的 ~/.ssh 目录
+            // scp 是secure的缩写,是基于SSH登录进行安全的远程文件拷贝命令,把一个文件拷贝到远程的另外一台主机上.
+
+            ``` 
+            - 将一个文件中的内容追加到另一个文件
+            ```
+            cd .ssh
+            cat id_rsa.pub >> authorized_keys
+            // 注意如果 authorized_keys 文件不存在会自动创建这个文件
+            ```
+    - **注意:** 如果在服务器端中如果有存储客户的 RSA 公钥,还是需要输入 账号和密码要求连接,那么可能是服务器端的 authorized_keys 文件权限不够.
+    ```
+    chmod 755 ~
+    chmod 755 ~/.ssh
+    chmod 644 ~/.ssh/authorized_keys
+    ```
+<br>
 
 
+
+
+
+##三、基于USB端口的SSH连接
+####一、22端口
+- **端口就是设备对外提供服务的窗口,每个端口都有个端口号(0~65535,g共计 6^16 个)**
+- **有些端口是保留的,已经规定了用途,如如:**
+    - 21端口提供FTP服务
+    - 80端口提供HTTP服务
+    - 22端口提供给SSH服务(可以查看 /etc/ssh/sshd_config 的port字段)
+    - [更多保留端口号参考](https://baike.baidu.com/item/端口号/10883658#4%203)
+- **iPhone 默认采用22端口进行SSH通信,采用的是TCP协议**
+![](/assets/屏幕快照 2018-05-14 下午10.39.31.png)
+
+
+
+####二、SSH 通过 USB连接
+- **默认情况下，由于SSH走的是TCP协议，mac 是通过网络连接的方式 SSH登录到iPhone，要求iphone 和 mac 连接同一个WiFi**
+![](/assets/屏幕快照 2018-05-14 下午10.39.31.png)
+- **为了加快传输速度，也可以通过USB连接的方式进行SSH登录**
+    - **Mac 上有个服务程序 usbmuxd （开机会自动启动），可以将Mac的数据通过USB传输到iPhone**
+    ```
+    /System/Library/PrivateFrameworks/MobileDevice.framework/Resources/usbmuxd
+    // 也可以这样查看
+    cd  /System/Library/PrivateFrameworks/MobileDevice.framework/Resources
+    ls -l 
+    ```
+    ![](/assets/屏幕快照 2018-05-14 下午10.52.40.png)
+    
+- **Mac 通过 USB 与 iPhone建立 SSH 主要步骤如下：**
+    - **1. Mac 通过SSH的方式和自己的10010 建立SSH通信**
+    - **2. Mac 直接把消息发送到自己的10010 端口，这样 usbmuxd 自己会把消息传递给 iPhone的 22端口通信**
+    
+####三、usbmuxd 的使用
+- **step1、下载usbmuxd 工具包（下载 v1.0.8版本，主要用到里面的python 脚本： tcprelay.py）**
+    - **[下载地址](https://cgit.sukimashita.com/usbmuxd.git)**
+    - **我们只需要下载文件中的python client中的2个文件**![](/assets/屏幕快照 2018-05-15 上午6.46.59.png)
+- **step2、将iPhone 的22端口（SSH端口）映射到Mac本地的10010 端口**（其实不一定是10010 端口，只要不是被保留的端口都可以）
+    ```
+    1. 切换到tcprelay.py 文件目录
+    2. 运行 tcprelay.py 脚本 将服务器的 端口 与 客户端的端口映射
    
+     即, 
+    phtopy tcprelay.py -t 22:10010
+    ```
+  ![](/assets/屏幕快照 2018-05-15 上午6.58.42.png)
+      
+      - **说明：** python xxx.py 是执行python脚本的意思， 22：10010 是指映射服务端的22 端口 到客户端的10010 端口， -t 参数表示可以建立多条SSH连接的意思，如若只需要一条，可以不要。
+      - **注意：** 在执行映射脚本后，终端会出现卡死状态，是对的，只需要开启新的终端工作即可
  
- ####九、服务器身份信息变更
+- **step3、 在客户端本机 建立SSH连接**
+  ```
+  ssh root@localhost -p 10010
+  或者
+  ssh root@127.0.0.1 -p 10010
+  ```
+          - **注意1：** 千万不要在使用 ssh root@服务器地址 这种方式连接了，因为如果你使用这种方式连接的话，还是走 wifi 网络的方式连接，不会走usb
+          - **注意2：** 如果你是没有运行 python 脚本映射服务器的端口与客户端的22端口， 是不能ssh 连接到本地的![](/assets/屏幕快照 2018-05-15 上午7.13.01.png)
+  - **只要本机的 SSH 建立后，以后就可以往本机的 对应端口写数据，自动就通过usb传到了服务器**
+
+  
+   
+    
+     
+      
+       
+        
+         
+          
+                                    
+                                      
+ 
+ ##四、服务器身份信息变更
+ 
  - **在建立安全连接的过程中，可能会遇到以下错误信息： 提示服务器的身份信息发生了变更**  
  ![](/assets/屏幕快照 2018-05-13 下午10.12.12.png)
      - **什么情况下，会出现这种错误**
@@ -176,26 +280,6 @@
     ssh-kengen -R 10.1.1.193
     ```     
     
-####十、 公钥 >> 授权文件
-- 可以使用 ssh-copy-id 将客户端的公钥内容自动的追加到服务器的授权文件的尾部，也可以手动操作。
-    - 复制客户端的公钥到服务器某路径
-    ```
-    scp ~/.ssh/id_rsa.pub root@10.1.1.193:~/.ssh
-    // 从 a 主机拷贝到b 主机的  ~/.ssh 目录
-    ```
-        - scp 是secure的缩写,是基于SSH登录进行安全的远程文件拷贝命令,把一个文件拷贝到远程的另外一台主机上.
-    - 将一个文件内容追加到另一个文件
-    ```
-    cd .ssh
-    cat id_rsa.pub >> authorized_keys
-    // 注意如果 authorized_keys 文件不存在会自动创建这个文件
-    ```
-    - **注意:** 如果在服务器端中如果有存储客户的 RSA 公钥,还是需要输入 账号和密码要求连接,那么可能是服务器端的 authorized_keys 文件权限不够.
-    ```
-    chmod 755 ~ 
-    chmod 755 ~/.ssh
-    chmod 644 ~/.ssh/authorized_keys
-    ```
 
 
 
