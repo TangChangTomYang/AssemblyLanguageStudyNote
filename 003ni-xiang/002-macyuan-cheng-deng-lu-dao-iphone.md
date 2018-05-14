@@ -147,7 +147,8 @@
         - **将客户端 RSA 公钥追加到服务端authorized_keys文件中** 只要在服务器端的authorized_keys文件中存储了RAS公钥，服务器就知道将来会有个客户端要连过来。
         
         ```
-         df
+         ssh-copy-id root@10.1.1.193
+         // 这个指令会自动的将 客户端的RSA 公钥复制并追加到服务器端的authorized_keys文件中
         ```
         - **.ssh 文件夹**中有很多文件，现在对**id_rsa、id_rsa.pub、known_hosts **这3个文件进行说明：
         - **id_rsa**   存储的是当前用户生成的 rsa 私钥
