@@ -268,6 +268,8 @@ scp -P 10010 ~/.ssh/id_rsa.pub root@localhost:~/.shh
     - **客户端验证服务器身份文件 ~/.ssh/known_hosts**
     - **服务器端秘钥对地址：/etc/ssh/ssh_host_rsa_key.pub  和 /etc/ssh/ssh_host_rsa_key**
     - **服务器授权文件地址： ~/.ssh/authorized_keys**
+    
+- **手动复制客户端公钥到**
 
 
 
