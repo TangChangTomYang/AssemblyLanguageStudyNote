@@ -273,6 +273,9 @@ scp -P 10010 ~/.ssh/id_rsa.pub root@localhost:~/.shh
 
 - **追加公钥内容到授权文件尾部： cat ~/id_rsa.pub >> ~/.ssh/authorized.keys**
 
+- **创建.ss隐藏文件夹， mkdir .ssh**
+- **删除文件， rm ~/.ssh/id_rsa.pub**
+
 
 
 
