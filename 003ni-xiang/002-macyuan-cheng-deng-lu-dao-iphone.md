@@ -269,7 +269,9 @@ scp -P 10010 ~/.ssh/id_rsa.pub root@localhost:~/.shh
     - **服务器端秘钥对地址：/etc/ssh/ssh_host_rsa_key.pub  和 /etc/ssh/ssh_host_rsa_key**
     - **服务器授权文件地址： ~/.ssh/authorized_keys**
     
-- **手动复制客户端公钥到**
+- **手动复制客户端公钥到服务器某文件路径：scp ~/.ssh/id_rsa.pub root@192.168.1.105:~/.ssh, scp 是 secure copy 的缩写，是基于ssh 登录进行安全远程文件拷贝命令，把一个文件拷贝到远程另一台电脑上，上面 “~/.ssh/id_rsa.pub” 是要拷贝的文件路劲，“192.168.1.105”指的是远程主机，“:~/.ssh” 指的是远程主机的具体目标文件路劲 **
+
+- **追加公钥内容到授权文件尾部： cat ~/id_rsa.pub >> ~/.ssh/authorized.keys**
 
 
 
