@@ -63,11 +63,11 @@
         - **mobile** 普通权限账户，只能操作一些普通文件**（比如：不能在根路径 /  下创建文件，等等）**，不能操作系统级别的文件， $HOME 是/var/mobile
     
     - **3、细节：**
-        -  \# 表示的是当前用户是超级权限（比如使用 root 账户登录）![](/assets/Snip20180513_10.png)
+        -  \# 表示的是当前用户是超级权限（比如使用 root 账户登录）![](/assets/Snip20180513_9.png)
 
         -  $ 表示的是当前用户是普通权限（比如使用 mobile 账户登录）
         
-        ![](/assets/Snip20180513_9.png)
+        ![](/assets/Snip20180513_10.png)
     - **4、最好修改一下root 和 mobile y用户的登录密码**
         - 使用root 登录后分别使用 passwd 和 passwd mobile 修改root 账户的密码和 mobile 账户的权限。
 
