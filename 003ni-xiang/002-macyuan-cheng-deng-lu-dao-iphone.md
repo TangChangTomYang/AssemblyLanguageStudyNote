@@ -262,6 +262,13 @@ scp ~/.ssh/id_rsa.pub root@10.0.0.193:~/.ssh
 scp -P 10010 ~/.ssh/id_rsa.pub root@localhost:~/.shh 
 ```
 
+##五、公钥 >> 授权文件
+- **可以使用 ssh-copy-id root@主机地址，将客户端的公钥内容自动追加到服务器的授权文件的为尾部，也可以手动复制**
+    - **客户端秘钥对 ~/.ssh/id_rsa.pub 和 ~/.ssh/id_rsa**
+    - **客户端验证服务器身份文件 ~/.ssh/known_hosts**
+    - **服务器端秘钥对地址：/etc/ssh/ssh_host_rsa_key.pub  和 /etc/ssh/ssh_host_rsa_key**
+    - **服务器授权文件地址： ~/.ssh/authorized_keys**
+
 
 
 
