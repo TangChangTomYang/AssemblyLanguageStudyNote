@@ -55,6 +55,58 @@
     - **choose(UiViewController)**
     - **choose(UITableViewCell)**
     
+    
+    
+##三、封装Cycript 文件 （cy 文件）
+
+
+####1、编写一个 test.cy  文件
+```
+(function(exports){
+    exports.sum = funtion(a,b){
+        return a + b;
+    }
+    
+    exports.minus = function(a,b){
+        return a - b;
+    }
+    
+    exports.age = 18;
+    
+})(exports);
+```
+![](/assets/屏幕快照 2018-05-17 下午11.36.43.png)
+
+
+
+
+####2、调用test.cy 中的方法
+```
+cy# test.sum(20,10);  // 通过test.cy的名称调用里面的方法，调用时会通过test 传给文件中的exports
+
+```
+![](/assets/屏幕快照 2018-05-17 下午11.43.21.png)
+
+
+
+
+####2、在手机终端引用cycript 文件的使用步骤：
+- **1、拷贝cy 文件到手机端的库文件,手机库cycript 库文件目录： /usr/lib/cycript0.9**
+
+```
+yang$   scp -P 10010 ~/Desktop/test.cy root@localhost:/usr/lib/cycript0.9
+
+```
+- **2、通过 打开的app 进程名（或者进程号）进入对应cycript 编辑页面**
+```
+root#  cycript -p ting
+```
+- **3、直接应用导入cycript0.9 目录中的cycript 库文件即可**
+```
+cy# @import test.cy
+```
+- **4、 直接调用 test.cy 中的方法即可**
+    
 
 
 
