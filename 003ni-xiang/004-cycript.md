@@ -21,9 +21,41 @@
     - **搜索关键字：ps-A|grep 关键字**
 
 ##4、Cycript 的开启与关闭
-- **开启Cycript，直接在手机终端 输入 cycript 命令即可**
-    ![](/assets/屏幕快照 2018-05-17 上午7.34.24.png)
-- **退出Cycript， 在手机终端 按 ctr + d， 即可**
+- **开启Cycript，直接在手机终端 输入 `cycript` 命令即可，也可以使用其它命令，比如：**
+    - cycript -p 进程ID
+    - cycript -p 进程名
+    ![](/assets/屏幕快照 2018-05-17 上午7.34.24.png) ![](/assets/屏幕快照 2018-05-17 下午9.06.35.png)
+- **退出Cycript， 在手机终端 按 `ctr + d`， 即可**
+
+##二、Cycript 常用语法
+####1、常用语法1
+- **获取当前运行的app对象，有2种方式：**
+    - **UIApp**
+    - **[UIApplication sharedApplication]**
+    
+- **定义变量**
+    - **var 变量名 = 变量值**
+    
+- **用内存地址获取对象**
+    - **#内存地址**
+
+![](/assets/屏幕快照 2018-05-17 下午9.33.35.png)
+
+- **查看当前App 用到的所有的类**
+    - **ObjectiveC.class**
+    
+    
+- **查看对象的所有成员变量**
+    - **\*对象**
+    
+- **对象查看View的所有子控件（跟 LLDB 一样的函数）**
+    - **UIApp.keyWindow.recursiveDescription().toString()**
+    
+- **筛选出某种类型的对象**
+    - **choose(UiViewController)**
+    - **choose(UITableViewCell)**
+    
+
 
 
 
