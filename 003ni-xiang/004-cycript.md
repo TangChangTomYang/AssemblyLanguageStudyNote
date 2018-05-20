@@ -60,7 +60,11 @@
 ##三、封装Cycript 文件 （cy 文件）
 
 
-####1、编写一个 test.cy  文件
+####1、编写一个 test.cy  文件 （内部使用js的语法）
+    - 我们可以将常用的Cycript 代码封装在一个 .cy 文件中
+    - exports 参数是固定的，用于向外提供接口
+    - 外部通过 .cy 文件的文件名调用， 比如： test.sum(10,20),就是调用test.cy 文件中的 exports.sum = function(10,20) 函数。
+    
 ```
 (function(exports){
     exports.sum = funtion(a,b){
@@ -75,6 +79,7 @@
     
 })(exports);
 ```
+    
 ![](/assets/屏幕快照 2018-05-17 下午11.36.43.png)
 
 
@@ -90,7 +95,7 @@ cy# test.sum(20,10);  // 通过test.cy的名称调用里面的方法，调用时
 
 
 
-####2、在手机终端引用cycript 文件的使用步骤：
+####3、在手机终端引用cycript 文件的使用步骤：
 - **1、拷贝cy 文件到手机端的库文件,手机库cycript 库文件目录： /usr/lib/cycript0.9**
 
 ```
