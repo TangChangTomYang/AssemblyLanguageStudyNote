@@ -9,6 +9,7 @@
   * [002-Mac远程登录到iPhone](003ni-xiang/002-macyuan-cheng-deng-lu-dao-iphone.md)
   * [003- sh 脚本](003ni-xiang/003-sh-jiao-ben.md)
   * [004-Cycript ](003ni-xiang/004-cycript.md)
+  * [005- Reveal](003ni-xiang/005-reveal.md)
 * 004-Linux 常用操作
   * [001-vim 操作](001-vim-cao-zuo.md)
 
