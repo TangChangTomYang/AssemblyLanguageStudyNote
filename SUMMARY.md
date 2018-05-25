@@ -12,6 +12,7 @@
   * [005- Reveal](003ni-xiang/005-reveal.md)
   * [006-Mach-o文件](003ni-xiang/006-mach-owen-jian.md)
   * [007-逆向App 的思路](003ni-xiang/007ni-xiang-app-de-si-lu.md)
+  * [008-class-dump](003ni-xiang/008-class-dump.md)
 * 004-Linux 常用操作
   * [001-vim 操作](001-vim-cao-zuo.md)
 
