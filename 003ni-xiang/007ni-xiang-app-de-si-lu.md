@@ -1,7 +1,8 @@
 ####逆向App 的分析思路
 
 - 界面分析    
-    - Cycript 、reveal
+    - Cycript（查看和修改对象）
+    - reveal
     
 - 代码分析
     - 对Mach-o文件静态分析
