@@ -15,6 +15,7 @@
   * [007-逆向App 的思路](003ni-xiang/007ni-xiang-app-de-si-lu.md)
   * [008-class-dump](003ni-xiang/008-class-dump.md)
   * [009-Hopper 简单使用](003ni-xiang/009-hopper.md)
+  * [010- 动态库共享缓存\(dyld shared cache\)](003ni-xiang/010-dong-tai-ku-gong-xiang-huan-5b5828-dyld-shared-cache.md)
 * 004-Linux 常用操作
   * [001-vim 操作](001-vim-cao-zuo.md)
 
