@@ -16,4 +16,4 @@
 **分析的主要步骤：**
 - 找到要分析的框架的 Mach-o文件，主要有几种方式：
     - 1、直接在ipa 包中查找
-    - 2、通过 Cycript 在手机上动态安装对应的库 ： YRLoadFramework('UIKit')
+    - 2、通过 Cycript 在手机上动态安装对应的库 ： YRLoadFramework('UIKit')， 安装成功后会显示对应的库文件，在手机上就可以找到了。
