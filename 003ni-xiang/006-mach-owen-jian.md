@@ -58,6 +58,11 @@ EXTERNAL_HEADERS/MACH-O/loader.h
 ![](/assets/Snip20180527_3.png)
 
 
+**我们其实通过Xcode 也是可以查看文件的类型的**，比如一般的app 项目生成的是  MH_EXECUTE 可执行程序，静态库项目生成的是  MH_DYLIB 静态库文件，但都是mach-o 格式文件
+![](/assets/Snip20180527_4.png)
+
+
+
 
 
 
