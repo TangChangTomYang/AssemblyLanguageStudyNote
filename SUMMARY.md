@@ -20,4 +20,6 @@
   * [012- 通用二进制文件\(Universal Binary\)](003ni-xiang/012-tong-yong-er-jin-zhiwen-4ef628-universal-binary.md)
 * 004-Linux 常用操作
   * [001-vim 操作](001-vim-cao-zuo.md)
+* [005-ios knowledge](005-ios-knowledge.md)
+  * [001-OC 对象的本质](001-oc-dui-xiang-de-ben-zhi.md)
 
