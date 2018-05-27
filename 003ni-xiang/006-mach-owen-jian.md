@@ -62,30 +62,15 @@ EXTERNAL_HEADERS/MACH-O/loader.h
 ![](/assets/Snip20180527_4.png)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br><br>**补充知识**：<br> 什么是 .o 文件？<br>.o 文件是源文件和可执行文件的中间产物。
 ![](/assets/屏幕快照 2018-05-27 上午11.24.40.png)
 
+**了解：**<br>FreeBSD、Unix、Linux、XNU、Darwin 
 
-FreeBSD、Unix、Linux、XNU、Darwin、
+
+####四、Mach-o 文件的基本结构
+
+
 
 
 
