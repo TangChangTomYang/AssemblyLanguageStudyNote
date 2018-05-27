@@ -17,7 +17,7 @@ clang -rewrite-objc main.m -o main.cpp
 因为我们是iOS 开发，所以最好能转换成iOS 指定的平台的C++ 代码。
 
 ```
-正确的做法如下：
+**正确的做法如下：**
 ```
 模拟器（i386）、32位（armv7）、64位（arm64）
 
@@ -26,5 +26,11 @@ xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
 // xcrun -sdk iphoneos 表示借助Xcode 工具运行 iphoneos sdk 
 // -arch arm64 表示指定架构是 arm64位的架构
 ```
-可以看出，转换出来的 iphone 代码 要小很多。
+可以看出，转换出来的指定架构（arm64）的代码 要小很多。<br><br><br>**我们发现如下信息：**
+```
+struct NSObject_IMPL {
+	Class isa;
+};
+```
+**可以看出，Objective-C 的本质是 C/C++ 的结构体实现**
 
