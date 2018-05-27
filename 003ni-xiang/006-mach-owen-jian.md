@@ -76,6 +76,36 @@ EXTERNAL_HEADERS/MACH-O/loader.h
     - Header（文件类型、目标架构类型等）
     - Load commands （描述文件在虚拟内存中的逻辑结构、布局）
     - Raw segment data（在load commands 中定义的Segment的原始数据）
+    
+    
+####五、窥探Mach-o文件的结构
+- 命令行工具， file ：查看 Mach-o 的文件结构
+```
+file 文件路劲 
+```
+
+- otool，查看Mach-o 特定部分和段的内容
+
+- lipo 常用于多架构Mach-o 文件的处理
+    - 查看架构信息：lipo -info 文件路劲
+    - 导出某种特定的架构：lipo 文件路径 -thin 架构类型 -output 输出文件路劲
+    - 合并多种架构： lipo 文件路劲1 文件路劲2 -output 输出文件路劲
+
+- GUI工具
+    - MachOView (https://github.com/gdbinit/MachOView)
+    
+    
+####六、dyld 和 Mach-o
+- dyld 用于加载以下类型的mach-o 文件
+    - MH_EXECUTE 可执行文件
+    - MH_DYLIB   动态库
+    - MH_BUNDLE  
+- app 的可执行文件、动态库都是由dyld负责加载的。
+
+![](/assets/Snip20180527_9.png)
+
+
+
 
 
 
