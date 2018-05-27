@@ -35,7 +35,8 @@ struct NSObject_IMPL {
 **可以看出，Objective-C 的本质是 C/C++ 的结构体的实现**
 
 ![](/assets/Snip20180527_3dfd.png)
-**也就是说，一个 NSObjec 对象在内存中其实就是一个结构体**
+**也就是说，一个 NSObjec 对象在内存中其实就是一个结构体**<br>
+![](/assets/Snip20180527_5.png)
 
 
 
