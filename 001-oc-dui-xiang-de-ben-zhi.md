@@ -38,7 +38,7 @@ struct NSObject_IMPL {
 **也就是说，一个 NSObjec 对象在内存中其实就是一个结构体**<br>
 ![](/assets/Snip20180527_5.png)
 <br><br>**结论：**
-**既然，Class 是一个指针，在64位中一个指针占8个字节，既然 NSObject 是一个结构体，且 结构体内就一个 class 指针， 那就是说，一个NSObjec 在内存中占用1个字节的大小**
+**既然，Class 是一个指针，在64位中一个指针占8个字节，既然 NSObject 是一个结构体，且 结构体内就一个 class 指针， 那就是说，一个NSObjec 在内存中占用1个字节的大小， 也就是说NSObject 在内存中的地址就是结构体的地址，也就是 isa 指针的地址**
 
 
 
