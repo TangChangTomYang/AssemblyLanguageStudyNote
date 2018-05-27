@@ -70,6 +70,15 @@ EXTERNAL_HEADERS/MACH-O/loader.h
 
 ####四、Mach-o 文件的基本结构
 
+- **官方描述**https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/MachOTopics/0-Introduction/introduction.html
+
+- 一个Mach-o 文件包含3个主要区域：
+    - Header（文件类型、目标架构类型等）
+    - Load commands （描述文件在虚拟内存中的逻辑结构、布局）
+    - Raw segment data（在load commands 中定义的Segment的原始数据）
+
+
+
 
 
 
