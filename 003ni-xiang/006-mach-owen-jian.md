@@ -53,7 +53,19 @@ EXTERNAL_HEADERS/MACH-O/loader.h
 
 - **MH_DYLINKER**类型文件，动态链接编辑器 <br> /usr/lib/dyld
 
-- **MH_DSYM**类型文件，存储着二进制文件符号 <br>.dSYM/Contents/Resources/DWARF/xx(常用于分析app的崩溃)
+- **MH_DSYM**类型文件，存储着二进制文件符号 <br>.dSYM/Contents/Resources/DWARF/xx(常用于分析app的崩溃)（release 版本打包时和 xxx.app 放在一起的 ）
+![](/assets/Snip20180527_2.png)<br>
+![](/assets/Snip20180527_3.png)
+
+
+
+
+
+
+
+
+
+
 
 
 
