@@ -5,6 +5,7 @@
 * [001-Win32汇编 - 寄存器](001-win32hui-bian-ji-cun-qi.md)
 * [002-C语言汇编混编](002-cyu-yan-hui-bian-hun-bian.md)
 * [003-逆向](003ni-xiang.md)
+  * [000-逆向常用命令](003ni-xiang/000ni-xiang-chang-yong-ming-ling.md)
   * [001-环境搭建](003ni-xiang/001huan-jing-da-jian.md)
   * [002-Mac远程登录到iPhone](003ni-xiang/002-macyuan-cheng-deng-lu-dao-iphone.md)
     * [001- ssh 参考文章](003ni-xiang/002-macyuan-cheng-deng-lu-dao-iphone/001-ssh-can-kao-wen-zhang.md)

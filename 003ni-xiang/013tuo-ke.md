@@ -1,3 +1,10 @@
+```
+ps -A //查看当前的进程
+ps -A | grep 关键字  // 查看带关键字的进程
+/var/mobile/Containers/Bundle/Application/      iphone 上应用程序安装路劲   
+```
+
+
 ##一、Mach-o 可执行文件分析
 
 - 使用class-dump 工具将 mach-o 文件的所有头文件导出，以便分析
@@ -33,6 +40,24 @@ class-dump -H sourceFile -o Headers
 - 4、**什么是动态脱壳？**<br> 因为 加壳后的Mach-o没办法直接在运行在内存中，需要连带可程序一起运行，因为可程序一旦运行后会对加密后的mach-o进行解密，这时我们可以直接将解密后的在内存中运行的mach-o 直接导出到硬盘上，称之为动态脱壳，动态脱壳不需要些解密算法，因为可程序运行时已经做了解密操作。![](/assets/Snip20180528_4.png)
 
 - 5、**在iOS上 我们采用的是硬脱壳**<br> **iOS中的脱壳工**具：<br> **[Clutch](https://github.com/KJCracks/Clutch)** 、**[dumpdecrypted](https://github.com/stefanesser/dumpdecrypted)** 、AppCrackr、Crackulous
+
+
+
+
+
+
+
+
+##四、鉴定Mach-o 文件是否被加壳（加密）
+**主要方法有：**<br> 方式一：通过 class-dump 和 Hopper Disassembler 只能根据有没有解析出需要的信息来查看Mach-o文件是否被加密。<br>方式二：使用MachOView 工具查看load Commands的cryptid 字段，如果大于0 说明加密了。<br>通过otool 命令终端查看
+```
+otool // 直接在终端输入，打印出 otool 的用法
+otool -l mach-o文件  // 列出当前mach-o文件的 所有load commands 信息
+otool -l mach-o文件 | grep 关键字 //将所得结果 过滤关键字
+```
+
+
+
 
 
 
