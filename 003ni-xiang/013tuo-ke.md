@@ -32,6 +32,9 @@ class-dump -H sourceFile -o Headers
 
 - 4、**什么是动态脱壳？**<br> 因为 加壳后的Mach-o没办法直接在运行在内存中，需要连带可程序一起运行，因为可程序一旦运行后会对加密后的mach-o进行解密，这时我们可以直接将解密后的在内存中运行的mach-o 直接导出到硬盘上，称之为动态脱壳，动态脱壳不需要些解密算法，因为可程序运行时已经做了解密操作。![](/assets/Snip20180528_4.png)
 
+- 5、**在iOS上 我们采用的是硬脱壳**<br> **iOS中的脱壳工**具：<br> **[Clutch](https://github.com/KJCracks/Clutch)** 、**[dumpdecrypted](https://github.com/stefanesser/dumpdecrypted)** 、AppCrackr、Crackulous
+
+
 
 
 
