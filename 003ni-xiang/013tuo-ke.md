@@ -20,6 +20,7 @@ class-dump -H sourceFile -o Headers
 ![](/assets/Snip20180528_1.png)
 **加壳（加密）后：**因为加壳后的mach-o 文件不能再被 dyld 直接链接了，在加壳后的mach-o 外面会有一个**壳程序** dyld 直接将可程序链接运行到内存中。
 ![](/assets/Snip20180528_2.png)
+**注意：不管是什么平台，像window、android 等 加壳都是这样一个原理**
 
 
 
