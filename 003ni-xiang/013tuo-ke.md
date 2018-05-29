@@ -71,13 +71,18 @@ otool -l testfile | grep crypt
 ```
 root# chmod +x /usr/bin/Clutdh  // 增加可执行权限
 ```
-4、Clutch -i  列出手机上已经安装的需要脱壳的app 信息![](/assets/Snip20180529_5.png)5、输入App 的序号或者bundleId 来脱壳
+4、Clutch -i  列出手机上已经安装的需要脱壳的app 信息![](/assets/Snip20180529_5.png)<br>5、输入App 的序号或者bundleId 来脱壳
 ```
 Clutch -d 9 // 根据序号脱壳
 或者
 Clutch -d com.tencent.QQMusic // 根据bundleID 脱壳
 ```
 ![](/assets/Snip20180529_6.png)
+6、将手机上使用 api 头文件导出到Mac 并 找到其中的Mach-o executable 可执行程序
+7、在mac 端使用class-dump 将mach-o 文件中的所有头文件全部导出
+```
+class-dump -H  QQMusic -o Headers
+``` 
 
 **Clutch 常用操作说明**
     
