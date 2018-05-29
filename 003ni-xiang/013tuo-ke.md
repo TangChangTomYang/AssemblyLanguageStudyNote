@@ -81,7 +81,8 @@ Clutch -d com.tencent.QQMusic // 根据bundleID 脱壳
 6、将手机上使用 api 头文件导出到Mac 并 找到其中的Mach-o executable 可执行程序
 7、在mac 端使用class-dump 将mach-o 文件中的所有头文件全部导出
 ```
-class-dump -H  QQMusic -o Headers
+class-dump -H  QQMusic -o Headers 
+// -H  QQMusic 指定要dump 的mach-o 文件，-o Headers 指定dump 出的头文件存放在Headers 中
 ``` 
 
 **Clutch 常用操作说明**
