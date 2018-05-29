@@ -29,7 +29,13 @@ class-dump -H sourceFile -o Headers
 ![](/assets/Snip20180528_2.png)
 **注意：不管是什么平台，像window、android 等 加壳都是这样一个原理**
 
-##三、脱壳
+
+
+
+
+
+
+##三、脱壳 (介绍)
 - 1、**什么是脱壳？**<br> 摘掉壳程序，将未加密的Mach-o executable 文件还原出来（有人也称为“砸壳”）。
 
 - 2、**脱壳主要有2种方式：**<br>硬脱壳、动态脱壳。
@@ -39,7 +45,7 @@ class-dump -H sourceFile -o Headers
 
 - 4、**什么是动态脱壳？**<br> 因为 加壳后的Mach-o没办法直接在运行在内存中，需要连带可程序一起运行，因为可程序一旦运行后会对加密后的mach-o进行解密，这时我们可以直接将解密后的在内存中运行的mach-o 直接导出到硬盘上，称之为动态脱壳，动态脱壳不需要些解密算法，因为可程序运行时已经做了解密操作。![](/assets/Snip20180528_4.png)
 
-- 5、**在iOS上 我们采用的是硬脱壳**<br> **iOS中的脱壳工**具：<br> **[Clutch](https://github.com/KJCracks/Clutch)** 、**[dumpdecrypted](https://github.com/stefanesser/dumpdecrypted)** 、AppCrackr、Crackulous
+- 5、**在iOS上 我们采用的是硬脱壳**<br> **iOS中的脱壳工**具：<br> **[Clutch](https://github.com/KJCracks/Clutch)** 、**[dumpdecrypted](https://github.com/stefanesser/dumpdecrypted)** 、AppCrackr、Crackulous (AppCrackr、Crackulous 已经过时了)
 
 
 
@@ -49,12 +55,48 @@ class-dump -H sourceFile -o Headers
 
 
 ##四、鉴定Mach-o 文件是否被加壳（加密）
-**主要方法有：**<br> 方式一：通过 class-dump 和 Hopper Disassembler 只能根据有没有解析出需要的信息来查看Mach-o文件是否被加密。<br>方式二：使用MachOView 工具查看load Commands的cryptid 字段，如果大于0 说明加密了。<br>通过otool 命令终端查看
+**主要方法有：**<br> **方式一：**通过 class-dump 和 Hopper Disassembler 只能根据有没有解析出需要的信息来查看Mach-o文件是否被加密。<br>**方式二：**使用MachOView 工具查看load Commands的cryptid 字段，如果大于0 说明加密了。<br>**方式三：**通过otool 命令终端查看
 ```
 otool // 直接在终端输入，打印出 otool 的用法
 otool -l mach-o文件  // 列出当前mach-o文件的 所有load commands 信息
 otool -l mach-o文件 | grep 关键字 //将所得结果 过滤关键字
+otool -l testfile | grep crypt
 ```
+![](/assets/Snip20180529_2.png)
+
+
+##五、脱壳实践
+
+- 1、**使用Clutch工具脱壳**（clutch 是离合器的意思）<br><br>**主要步骤如下：<br>** 1、下载**[Clutch可执行程序](https://github.com/KJCracks/Clutch/releases)**,并修改文件名为Clutch<br>![](/assets/Snip20180529_4.png)<br>2、将 Clutch 可执行程序copy 到手机的 `/usr/bin`目录，以便在手机上通过命令操作Clutch 工具<br>3、修改手机端Clutch文件权限保证，保证可执行
+```
+root# chmod +x /usr/bin/Clutdh  // 增加可执行权限
+```
+4、Clutch -i  列出手机上已经安装的需要脱壳的app 信息![](/assets/Snip20180529_5.png)5、输入App 的序号或者bundleId 来脱壳
+```
+Clutch -d 9 // 根据序号脱壳
+或者
+Clutch -d com.tencent.QQMusic // 根据bundleID 脱壳
+```
+![](/assets/Snip20180529_6.png)
+
+**Clutch 常用操作说明**
+    
+```
+-b --binary-dump     Only dump binary files from specified bundleID
+-d --dump            Dump specified bundleID into .ipa file
+-i --print-installed Print installed application
+--clean              Clean /var/tmp/clutch directory
+--version            Display version and exit
+-? --help            Display this help and exit
+
+```
+
+
+
+
+
+
+
 
 
 
