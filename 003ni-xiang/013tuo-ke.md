@@ -67,7 +67,7 @@ otool -l testfile | grep crypt
 
 ##五、脱壳实践
 
-- 1、**使用Clutch工具脱壳**（clutch 是离合器的意思）<br><br>**主要步骤如下：<br>** 1、下载**[Clutch可执行程序](https://github.com/KJCracks/Clutch/releases)**,并修改文件名为Clutch<br>![](/assets/Snip20180529_4.png)<br>2、将 Clutch 可执行程序copy 到手机的 `/usr/bin`目录，以便在手机上通过命令操作Clutch 工具<br>3、修改手机端Clutch文件权限保证，保证可执行
+- 五、一、**使用Clutch工具脱壳**（clutch 是离合器的意思）<br><br>**主要步骤如下：<br>** 1、下载**[Clutch可执行程序](https://github.com/KJCracks/Clutch/releases)**,并修改文件名为Clutch<br>![](/assets/Snip20180529_4.png)<br>2、将 Clutch 可执行程序copy 到手机的 `/usr/bin`目录，以便在手机上通过命令操作Clutch 工具<br>3、修改手机端Clutch文件权限保证，保证可执行
 ```
 root# chmod +x /usr/bin/Clutdh  // 增加可执行权限
 ```
@@ -96,6 +96,9 @@ class-dump -H  QQMusic -o Headers
 -? --help            Display this help and exit
 
 ```
+
+<br>
+- 五、二、**使用dumpdecryped工具脱壳**<br>**使用步骤如下：**<br>1、[下载dumpdecrypted源码](https://github.com/stefanesser/dumpdecrypted)![](/assets/Snip20180529_7.png) <br>2、将下载下来的源码编译成静态库
 
 
 
