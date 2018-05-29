@@ -12,17 +12,39 @@
      
  //保存文件，在终端敲 make 执行， 当执行make时会自动的去当前目录查找Makefile 文件
  ```
+ 一般，Makefile的语法由3部分构成：<br> **目标：依赖** <br>&emsp;&emsp;**命令**<br><br>写全的化就是这样：
+ ```
+ all: add.c  sub.c main.c 
+     gcc add.c sub.c main.c -o app
+ ```
+** 可以这样来理解：**<br><br>我的目标是  `all:` <br>目标的依赖是 `add.c  sub.c main.c ` <br>如何达成我的目标呢， 执行命令 `gcc add.c sub.c main.c -o app` 来达成目标。
 
 
-<br><br>
+ 
+
+
+
+
+
+
+
+
+<br><br><br><br>
+
+
 
 - **2、什么是Makefile ？**<br>Makefile 就相当于我们项目的管理文件（用Makefile文件来管理我们的文件），在我们在终端 执行命令 `make`时，会在当前的文件目录去查找Makefile 这个文件。<br> **最简单的Makefile**
 ```
 all:
     gcc add.c  sub.c main.c -o app
 ```
+一般，Makefile的语法由3部分构成：<br> **目标：依赖** <br>&emsp;&emsp;**命令**
 
-- **1、Makefile的语法：**<br>
+
+
+
+
+- **1、Makefile的语法：**<br> 
 
 
 
