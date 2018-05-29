@@ -18,7 +18,23 @@
      gcc add.c sub.c main.c -o app
  ```
 ** 可以这样来理解：**<br><br>我的目标是  `all` <br>目标的依赖（条件）是 `add.c  sub.c main.c ` <br>如何达成我的目标呢， 执行命令 `gcc add.c sub.c main.c -o app` 来达成目标。<br><br> 当我执行 `make`命令时，make 就会来加载我的目标 `all`, 达成我的目标的条件是`add.c  sub.c main.c `，如何执行目标，就是执行`gcc add.c sub.c main.c -o app` 这个命令来达成。<br>
-**注意：**<br> 目标必须顶格写后边加 `:` 再跟依赖（条件），命令必须 必须换行且在命令前面要有一个tap 空格键，在Makefile 中 `#` 表示的是注释。
+**注意：**<br> 目标必须顶格写后边加 `:` 再跟依赖（条件），命令必须 必须换行且在命令前面要有一个tap 空格键，在Makefile 中 `#` 表示的是注释。<br><br> **改进写法：(阶段二)**
+
+    ```
+    app: add.o sub.o main.o
+        gcc add.o sub.o main.o -o app
+
+    add.o:add.c
+        gcc -c add.c   // -c add.c 表示的是只编译成 .o 不链接
+    
+    sub.o:sub.c
+        gcc -c sub.c
+    
+    main.o:main.c
+        gcc -c main.c
+    ```
+**GCC 工作分2个阶段**<br> 阶段1，从上往下建立关系树，阶段2， 从下往上执行命令。
+
 
 
  
@@ -31,39 +47,6 @@
 
 
 <br><br><br><br>
-
-
-
-- **2、什么是Makefile ？**<br>Makefile 就相当于我们项目的管理文件（用Makefile文件来管理我们的文件），在我们在终端 执行命令 `make`时，会在当前的文件目录去查找Makefile 这个文件。<br> **最简单的Makefile**
-```
-all:
-    gcc add.c  sub.c main.c -o app
-```
-一般，Makefile的语法由3部分构成：<br> **目标：依赖** <br>&emsp;&emsp;**命令**
-
-
-
-
-
-- **1、Makefile的语法：**<br> 
-
-
-
-- 1、我们在命名Makefile 文件时有个规范，通常第一个M为大写，其它的为小写。（即Makefile）
-
-
-
-- 2、Makefile 文件编写的语法：
-
-```
-#目标：依赖（条件）
-#    命令
-
-all：add.c sub.c  dive.c  mul.c  main.c
-    gcc add.c sub.c dive.c mul.c main.c -o app
-```
-// all 就是目标， add.c sub.c  dive.c  mul.c  main.c 这几个文件就是依赖（条件）
-// gcc add.c sub.c dive.c mul.c main.c -o app 就是要执行的命令
-
+- **2、基本规则**
 
 
