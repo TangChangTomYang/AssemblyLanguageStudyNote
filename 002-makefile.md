@@ -17,7 +17,8 @@
  all: add.c  sub.c main.c 
      gcc add.c sub.c main.c -o app
  ```
-** 可以这样来理解：**<br><br>我的目标是  `all:` <br>目标的依赖是 `add.c  sub.c main.c ` <br>如何达成我的目标呢， 执行命令 `gcc add.c sub.c main.c -o app` 来达成目标。
+** 可以这样来理解：**<br><br>我的目标是  `all` <br>目标的依赖（条件）是 `add.c  sub.c main.c ` <br>如何达成我的目标呢， 执行命令 `gcc add.c sub.c main.c -o app` 来达成目标。<br><br> 当我执行 `make`命令时，make 就会来加载我的目标 `all`, 达成我的目标的条件是`add.c  sub.c main.c `，如何执行目标，就是执行`gcc add.c sub.c main.c -o app` 这个命令来达成。<br>
+**注意：**<br> 目标必须顶格写后边加 `:` 再跟依赖（条件），命令必须 必须换行且在命令前面要有一个tap 空格键，在Makefile 中 `#` 表示的是注释。
 
 
  
