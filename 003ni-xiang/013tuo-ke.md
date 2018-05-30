@@ -67,7 +67,7 @@ otool -l testfile | grep crypt
 
 ##五、脱壳实践
 
-- 五、一、**使用Clutch工具脱壳**（clutch 是离合器的意思）<br><br>**主要步骤如下：<br>** 1、下载**[Clutch可执行程序](https://github.com/KJCracks/Clutch/releases)**,并修改文件名为Clutch<br>![](/assets/Snip20180529_4.png)<br>2、将 Clutch 可执行程序copy 到手机的 `/usr/bin`目录，以便在手机上通过命令操作Clutch 工具<br>3、修改手机端Clutch文件权限保证，保证可执行
+- 5.1、**使用Clutch工具脱壳**（clutch 是离合器的意思）<br><br>**主要步骤如下：<br>** 1、下载**[Clutch可执行程序](https://github.com/KJCracks/Clutch/releases)**,并修改文件名为Clutch<br>![](/assets/Snip20180529_4.png)<br>2、将 Clutch 可执行程序copy 到手机的 `/usr/bin`目录，以便在手机上通过命令操作Clutch 工具<br>3、修改手机端Clutch文件权限保证，保证可执行
 ```
 root# chmod +x /usr/bin/Clutdh  // 增加可执行权限
 ```
@@ -98,7 +98,29 @@ class-dump -H  QQMusic -o Headers
 ```
 
 <br>
-- 五、二、**使用dumpdecryped工具脱壳**<br>**使用步骤如下：**<br>1、[下载dumpdecrypted源码](https://github.com/stefanesser/dumpdecrypted)![](/assets/Snip20180529_7.png) <br>2、将下载下来的源码编译成静态库
+- 5.2、**使用dumpdecryped工具脱壳**<br>**使用步骤如下：**<br>1、[下载dumpdecrypted源码](https://github.com/stefanesser/dumpdecrypted)![](/assets/Snip20180529_7.png) <br>2、将下载下来的源码编译成动态库（直接在终端执行 make 命令）<br>3、将dylib 文件拷贝到iphone 上（如果是 root 用户，建议方 /var/root 目录）
+![](/assets/Snip20180530_1.png)<br> 4、终端进入手机的/var/root 目录。 <br>5、使用环境变量**DYLD_INSSERT_LIBRARIES** 将dylib 注入需要脱壳的可执行文件（可执行文件可路径可通过： ps -A 查看获取）
+
+    ```
+    root# cd /usr/root // 切换到 dumpdecrypted.dylib 动态库所在文件目录
+    root# DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib /var/mobile/Containers/Bundle/Application/6CEF92A9-AC6D-4F56-8D62-58F5D33B04E9/To-Do.app/To-Do
+    // 指定环境变量 DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib ，和应用程序的路径
+
+    ```
+    6、使用otool 查看 Mach-o executable 文件的加密状态
+
+    ```
+    otool -l To-Do.decrypted | grep crypt
+    ```
+输出
+
+    ```
+    To-Do.decrypted:
+    cryptoff 16384
+    cryptsize 1081344
+    cryptid 0
+```  
+说明 脱壳成功    
 
 
 
