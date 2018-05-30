@@ -33,7 +33,7 @@
     main.o:main.c
         gcc -c main.c
     ```
-**GCC 工作分2个阶段**<br> 阶段1，从上往下建立关系树，阶段2， 从下往上执行命令。
+**GCC 工作分2个阶段**<br> 阶段1，从上往下建立关系树。<br>阶段2， 从下往上执行命令。
 
 
 
@@ -47,6 +47,57 @@
 
 
 <br><br><br><br>
-- **2、基本规则**
+- **2、基本规则** <br>**三要素：** <br>.目标<br>.条件<br>.命令
+
+<br><br><br><br>
+
+- **3、Makefile 工作原理**<br>.分析各个目标和依赖之间的关系<br>.根据依赖关系自底向上执行命令<br>.**根据修改时间比目标新，确定更新** <br>.如果目标不依赖任何条件，则执行对应命令，以示更新
+
+<br><br><br><br>
+
+- **4、clean** <br> **用途：** 清除编译生成测中件的 .o 文件和最终目标文件。<br> make clean 如果当前目录下有同名clean 文件，则不执行clean 对应的命令。<br> 伪目标声明： 。PHONY：clean <br> `-` 此条命令出错，make也会继续执行后续的命令，如：
+```
+-rm main.o
+```
+`@` 不显示命令本省，只显示结果，如：
+```
+@echo 
+```
+
+
+
+<br><br><br><br>
+
+- **5、Makefile 编写阶段3**
+```
+obj=add.o sub.o main.o  // 定义一个变量
+app:$(obj)
+    gcc $(obj) -o app
+    
+.PHONY:clean
+clean:
+    - rm -f *.o
+    - rm -f app
+```
+Makefile 中的3个符号， $@表示目标， $^ 表示所有依赖， $< 表示依赖中的第一个
+
+```
+obj=add.o sub.o main.o  // 定义一个变量
+app:$(obj)
+    gcc $(obj) -o app
+    
+%.o:%.c
+    gcc -c $<  -o %@ 
+    
+.PHONY:clean
+clean:
+    - rm -f *.o
+    - rm -f app
+```
+
+- 还有很多。。。  。。。
+
+
+
 
 
