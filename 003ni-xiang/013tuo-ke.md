@@ -98,7 +98,7 @@ class-dump -H  QQMusic -o Headers
 ```
 
 <br>
-- 5.2、**使用dumpdecryped工具脱壳**<br>**使用步骤如下：**<br>1、[下载dumpdecrypted源码](https://github.com/stefanesser/dumpdecrypted)![](/assets/Snip20180529_7.png) <br>2、将下载下来的源码编译成动态库（直接在终端执行 make 命令）<br>3、将dylib 文件拷贝到iphone 上（如果是 root 用户，建议方 /var/root 目录）
+- 5.2、**使用dumpdecrypted工具脱壳**<br>**使用步骤如下：**<br>1、[下载dumpdecrypted源码](https://github.com/stefanesser/dumpdecrypted)![](/assets/Snip20180529_7.png) <br>2、将下载下来的源码编译成动态库（直接在终端执行 make 命令）<br>3、将dylib 文件拷贝到iphone 上（如果是 root 用户，建议方 /var/root 目录）
 ![](/assets/Snip20180530_1.png)<br> 4、终端进入手机的/var/root 目录。 <br>5、使用环境变量**DYLD_INSSERT_LIBRARIES** 将dylib 注入需要脱壳的可执行文件（可执行文件可路径可通过： ps -A 查看获取）
 
     ```
@@ -122,7 +122,11 @@ class-dump -H  QQMusic -o Headers
     cryptsize 1081344
     cryptid 0
 ```  
-说明 脱壳成功    
+说明 脱壳成功 <br><br><br> **补充： 使用dumpdecrypted注意细节**   <br> 在使用过程中，可能会遇到以下错误：
+```
+dyld:could not load inserted library 'dumpdecrypted.dylib` because no suitable image found. Did  find : dumpdecrypted.dylib:open() failed with error=1
+```
+**原因：** 对dylib 所在的文件夹权限不够.<br>**解决方案：** 将dylib 放在用户所在文件件，比如：<br>如果是root用户，请将dylib 放在 /var/root 目录 <br> 如果是 mobile用户，请将dylib放在/var/mobile 目录
 
 
 
