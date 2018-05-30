@@ -105,8 +105,10 @@ class-dump -H  QQMusic -o Headers
     root# cd /usr/root // 切换到 dumpdecrypted.dylib 动态库所在文件目录
     root# DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib /var/mobile/Containers/Bundle/Application/6CEF92A9-AC6D-4F56-8D62-58F5D33B04E9/To-Do.app/To-Do
     // 指定环境变量 DYLD_INSERT_LIBRARIES=dumpdecrypted.dylib ，和应用程序的路径
-
+   
     ```
+    ![](/assets/Snip20180530_3.png)
+    
     6、使用otool 查看 Mach-o executable 文件的加密状态
 
     ```
