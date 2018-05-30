@@ -126,7 +126,7 @@ class-dump -H  QQMusic -o Headers
 ```
 dyld:could not load inserted library 'dumpdecrypted.dylib` because no suitable image found. Did  find : dumpdecrypted.dylib:open() failed with error=1
 ```
-**原因：** 对dylib 所在的文件夹权限不够.<br>**解决方案：** 将dylib 放在用户所在文件件，比如：<br>如果是root用户，请将dylib 放在 /var/root 目录 <br> 如果是 mobile用户，请将dylib放在/var/mobile 目录
+**原因：** <br>对dylib 所在的文件夹权限不够.<br>**解决方案：**<br> 将dylib 放在用户所在文件件，比如：<br>如果是root用户，请将dylib 放在 /var/root 目录 <br> 如果是 mobile用户，请将dylib放在/var/mobile 目录
 
 
 
