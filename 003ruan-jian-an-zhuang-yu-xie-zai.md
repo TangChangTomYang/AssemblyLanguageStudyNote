@@ -22,7 +22,55 @@ http://site.example.com/debian // 表示软件仓库地址
 - **主要有3种2方式：** <br> **1、apt-get 方式的安装与卸载。**<br> **2、deb 包方式的安装** <br> **3、源码安装**
 
 ##一、 apt-get 软件安装与卸载
-**apt-get 是ubuntu 提供的一种软件安装卸载机制，是一种服务器客户端模型，他把常用的软件（比如： tree命令、vsftpd 命令等等）放在服务器上，服务器有官方的和非官方的服务器，官方的服务器在欧洲，非官方的服务器(网易、搜狐等)在国内，一般最新的软件在官方服务器上，会被非官的服务器down到非官方的服务器上，本地的速度要快些。**
+**apt-get 是ubuntu 提供的一种软件安装卸载机制，是一种服务器客户端模型，他把常用的软件（比如： tree命令、vsftpd 命令等等）放在服务器上，服务器有官方的和非官方的服务器，官方的服务器在欧洲，非官方的服务器(网易、搜狐、cn99等)在国内，一般最新的软件在官方服务器上，会被非官的服务器down到非官方的服务器上，本地的速度要快些。**<br><br> **在客户端首先我们要选择服务器，然后通过 apt-get 命令抓取到本地， apt-get 安装软件的步骤： **<br><br> **step1:**<br> 更新源服务器列表（即选择服务器） 
+```
+sudo vi /etc/apt/sources.list   // 更新服务器
+```
+**step2:**<br>更新下载源（即将服务器端的软件列表（软件信息）下载到本地）
+```
+sudo apt-get update  // 更新软件源（把可以下载的软件信息下载到客户端），更新完成就可以查看那些软件可以下载了
+```
+**step3：**<br>查找某个软件
+```
+sudo apt-cache search xxx软件
+```
+**step4:**<br> 下载具体的软件
+```
+sudo apt-get install xxxx软件
+```
+**step5:**<br> 删除某个软件
+```
+sudo apt-get remove  xxxt软件
+```
+**step6:**<br>获取显示安装的软件的信息，说明、大小、版本等信息
+```
+sudo apt-cache show xxx软件
+```
+**step7:**<br>重新安装软件
+```
+sudo apt-get intall xxx软件  --reinstall
+```
+**step8：**<br>修复安装
+```
+sudo apt-get -f install
+```
+**step9:**<br> 删除软件，包含配置文件
+```
+sudo apt-get remove xxx软件 --purge
+```
+**step10:**<br> 更新已经安装的软件
+```
+sudo apt-get upgrate
+```
+**step11:**<br> 下载该包的源码
+```
+sudo apt-get source xxx软件
+```
+
+
+
+
+
 
 
 
