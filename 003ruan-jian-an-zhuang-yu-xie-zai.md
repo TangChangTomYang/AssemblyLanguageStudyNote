@@ -1,8 +1,5 @@
-##一、 apt-get
 
-
-
-**/etc/apt/sources.list 详解**
+####/etc/apt/sources.list 详解（了解）
 - 1、**/etc/apt/source.list** 是包管理工具 **apt** 所用的记录软件包仓库位置的配置文件。
 - 2、**source.list** 文件中的**条目**一般都是形如：
 ```
@@ -16,7 +13,7 @@ http://site.example.com/debian // 表示软件仓库地址
 条目中的**第三个词** 跟在仓库地址后的是发行版。<br>发行版有两种分类方法:<br>一类是发行版的具体代号，如 xenial,trusty, precise 等；<br>还有一类则是发行版的发行类型，如oldstable, stable, testing 和 unstable。<br>另外，在发行版后还可能有进一步的指定，如 xenial-updates, trusty-security, stable-backports 等。<br><br>跟在发行版之后的就是软件包的具体分类了，可以有一个或多个。
 
 
-
+<br><br><br><br>
 
 ##软件的安装于卸载
 - **主要有3种2方式：** <br> **1、apt-get 方式的安装与卸载。**<br> **2、deb 包方式的安装** <br> **3、源码安装**
@@ -195,17 +192,3 @@ sudo dpkg-reconfigure xxx
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-- 2、**更新服务器列表后需要更新下源**
