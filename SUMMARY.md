@@ -24,6 +24,7 @@
 * [004-Linux 常用操作](004-linux-chang-yong-cao-zuo.md)
   * [001-vim 操作](001-vim-cao-zuo.md)
   * [002-makefile](002-makefile.md)
+  * [003-软件安装与卸载](003ruan-jian-an-zhuang-yu-xie-zai.md)
 * [005-ios knowledge](005-ios-knowledge.md)
   * [001-OC 对象的本质](001-oc-dui-xiang-de-ben-zhi.md)
   * 002-常用LLDB 指令
