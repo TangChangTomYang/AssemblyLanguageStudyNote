@@ -22,7 +22,7 @@ http://site.example.com/debian // 表示软件仓库地址
 - **主要有3种2方式：** <br> **1、apt-get 方式的安装与卸载。**<br> **2、deb 包方式的安装** <br> **3、源码安装**
 
 ##一、 apt-get 软件安装与卸载
-**apt-get 是ubuntu 提供的一种软件安装卸载机制，是一种服务器客户端模型，他把常用的软件（比如： tree命令、vsftpd 命令等等）放在服务器上，服务器有官方的和非官方的服务器，官方的服务器在欧洲，非官方的服务器(网易、搜狐、cn99等)在国内，一般最新的软件在官方服务器上，会被非官的服务器down到非官方的服务器上，本地的速度要快些。**<br><br> **在客户端首先我们要选择服务器，然后通过 apt-get 命令抓取到本地， apt-get 安装软件的步骤： **<br><br> **step1:**<br> 更新源服务器列表（即选择服务器） 
+**apt-get 是ubuntu 提供的一种软件安装卸载机制，是一种服务器客户端模型，他把常用的软件（比如： tree命令、vsftpd 命令等等）放在服务器上，服务器有官方的和非官方的服务器，官方的服务器在欧洲，非官方的服务器(网易、搜狐、cn99等)在国内，一般最新的软件在官方服务器上，会被非官的服务器down到非官方的服务器上，本地的速度要快些。这种方式安装要求必须联网。**<br><br> **在客户端首先我们要选择服务器，然后通过 apt-get 命令抓取到本地， apt-get 安装软件的步骤： **<br><br> **step1:**<br> 更新源服务器列表（即选择服务器） 
 ```
 sudo vi /etc/apt/sources.list   // 更新服务器
 ```
@@ -66,6 +66,7 @@ sudo apt-get upgrate
 ```
 sudo apt-get source xxx软件
 ```
+![](/assets/Snip20180601_2.png)
 
 
 
@@ -75,16 +76,16 @@ sudo apt-get source xxx软件
 
 
 ##二、deb 包安装
-
+deb 安装就相当于把一个软件打好包，把这个包拷贝过来
 
 
 - 1、**安装deb 软件包命令**(即安装软件)
 ```
-sudo dpkg -i xxx.deb
+sudo dpkg -i xxx.deb  // -i 表示的是install 的意思
 ```
 - 2、**删除软件包命令**(即 卸载软件)
 ```
-sudo dpkg -r xxx.deb
+sudo dpkg -r xxx.deb  // -r 是remove 的意思
 ```
 - 3、**连同配置文件一起删除**(即 连同配置文件一起卸载)
 ```
@@ -111,12 +112,12 @@ sudo dpkg-reconfigure xxx
 
 
 ##三、源码安装
-源码安装，即给你的是.c 源文件，你同过源码文件来安装软件
+源码安装，即给你的是.c 、.h源文件，你通过源码文件来安装软件
 
 ```
 1、 解压缩源代码（比如有 xxx.tar.gz文件，tar zxvf xxx.tar.gz）
 2、 cd dir
-3、 .configure  //检测文件是否缺失，创建makefile，检测编译环境
+3、 .configure  //检测文件是否缺失、编译环境等，创建makefile，检测编译环境
 4、 make  // 编译源码，生成库和可执行程序
 5、 sudo make install // 把库和可执行程序，安装到系统路劲下
 
