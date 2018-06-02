@@ -2,7 +2,7 @@
 
 ##一、相关概念了解
 
-- 1、**什么是theos？**<br>theos 是一个越狱开发工具包，Theos 是越狱开发工具的首先。越狱开发中另一个常用工具是iOSOpenDev。
+- 1、**什么是theos？**<br>theos 是一个越狱开发工具包，Theos 是越狱开发工具的首先(通过theos 我们可以做一些hook操作)。越狱开发中另一个常用工具是iOSOpenDev。
 
 - 2、**在安装配置过程中，要保证本地已经安装了Homebrew，可以使用brew 命令来安装一些依赖包。**<br> brew 其实类似于Linux中的yum 或者 apt-get ，就是一个包管理工具。
 
@@ -19,15 +19,11 @@
 ##一、 theos 的使用
 
 - 1、**使用[Homebrew](https://brew.sh/index_zh-cn.html) 安装 idid 签名工具**
-
 ```
 brew install ldid  
-
-// ldid 是一个签名工具，theos 中使用ldid 签名
-//在 Xcode 里面有个codesign 签名工具
 ```
-补充：因为很多工具被开发者上传到了brew，所以我们可以通过brew 来安装很多好用的工具。
-
+**说明：**<br>1、因为很多工具被开发者上传到了brew，所以我们可以通过brew 来安装很多好用的工具。<br>2、ldid 是一个签名工具，theos 中使用ldid 签名，我们平时在 Xcode 用的是codesign 签名工具。<br>3、我们一般最好将ldid 安装在 ~/ 目录下<br>4、ldid 安装完成后后命令（可执行程序）都是放在安装目录下的 theos/bin 目录里面，即：`~/theos/bin` 下
+<br>
 
 - 2、**[修改(配置)环境变量](/004huan-jing-bian-liang.md)**
 ```
@@ -38,11 +34,12 @@ export PATH=$THEOS/bin:$PATH
 
 
 
+
 - 3、**[下载theos](https://github.com/theos/theos/wiki)**,参考 wiki 详细操作，里面有说明。
 ```
 git clone --recursive https://github.com/theos/theos.git $THEOS
-// $THEOS 表示是取出 环境变量的值，是一个路劲
 ```
+**$THEOS** 表示是取出 环境变量的值，是一个路劲<BR>
 **说明：** 这里虽然可以在github 中通过down 下载安装包，但是这里使用clone 可以把代码下的更全。**如果有下面这个文件就要注意了，只能用 git clone --recursive**，--recursive 是递归下载的意思，会把项目中的所有依赖全部递归下载完。 
 ![](/assets/Snip20180602_1.png)<br>
 ![](/assets/Snip20180602_2.png)
