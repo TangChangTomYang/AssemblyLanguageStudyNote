@@ -53,6 +53,37 @@ nic.pl
 ![](/assets/Snip20180602_4.png)
 
 
+- 4、**tweak项目创建完成后直接拖拽到 subline text 中编写项目代码即可**
+![](/assets/Snip20180602_5.png)
+
+- 5、**配置 Makefile文件中的 IP 与 端口**<br><br>**方式1：WiFi ssh 连接**
+    ```
+    export THEOS_DEVICE_IP=SSH服务器ip
+    export THEOS_DEVICE_PORT=22    // SSH 使用的是22端口
+    ```
+**方式二：usb ssh 本地连接**
+
+    ```
+    export THEOS_DEVICE_IP=127.0.0.1  // 或者 localhost
+    export THEOS_DEVICE_PORT=10010    // 本地使用10010和22端口绑定的，所以是10010， 填写绑定22端口的对应端口即可
+
+    ```
+    ![](/assets/Snip20180602_7.png)
+    
+- 6、**编写hook代码**
+![](/assets/Snip20180602_12.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 - 4、**安装过程中遇到的问题**
