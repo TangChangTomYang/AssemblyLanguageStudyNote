@@ -1,8 +1,5 @@
 有篇文章关于 Theos，可以[参考下](https://www.jianshu.com/p/307243ea40e4)
 
-[yenei](#bottom)
-[fs](#jump)
-<a href=#jump>dsfasd</a>
 ##一、相关概念了解
 
 - 1、**什么是theos？**<br>theos 是一个越狱开发工具包，Theos 是越狱开发工具的首先。越狱开发中另一个常用工具是iOSOpenDev。
@@ -32,13 +29,13 @@ brew install ldid
 补充：因为很多工具被开发者上传到了brew，所以我们可以通过brew 来安装很多好用的工具。
 
 
-- 2、**修改环境变量**
+- 2、**[修改(配置)环境变量](/004huan-jing-bian-liang.md)**
 ```
 vim ~/.bash_profile     //  .bash_profile 是环境变量的配置文件
-export THEOS=~/theos    // 即theos 文件所在路劲
+export THEOS=~/theos    // 添加一个THEOS环境变量，变量的值是`~/theos` 这个路劲
 export PATH=$THEOS/bin:$PATH
 ```
-**说明：** `export` 是导出的意思，`export THEOS=~/theos` 可以这样理解，导出一个环境变量 为  `THEOS`， 环境变量的值是 `~/theos`.
+
 
 
 - 3、**[下载theos](https://github.com/theos/theos/wiki)**,参考 wiki 详细操作，里面有说明。
