@@ -2,6 +2,7 @@
 
 [yenei](#bottom)
 [fs](#jump)
+<a href=#jump>dsfasd</a>
 ##一、相关概念了解
 
 - 1、**什么是theos？**<br>theos 是一个越狱开发工具包，Theos 是越狱开发工具的首先。越狱开发中另一个常用工具是iOSOpenDev。
@@ -66,7 +67,7 @@ vim $THEOS/makefiles/package/deb.mk
 ?= gzip
 ```
 
-<span id="jump">wp ssf </span>
+<span id=jump>wp ssf </span>
 <p id="bottom">wo shi dib </p>
 
 
