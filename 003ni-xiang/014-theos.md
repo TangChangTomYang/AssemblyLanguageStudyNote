@@ -73,6 +73,41 @@ nic.pl
 - 6、**编写hook代码**
 ![](/assets/Snip20180602_12.png)
 
+- 7、**切换到项目 目录 编译  安装项目**
+```
+cd /Desktop/tingweak
+make  //编译
+make package //打包
+make install
+```
+编译打包结果：
+![](/assets/Snip20180602_15.png)<br>
+**说明：**打包过程中可能会报错，如下：<br>
+![](/assets/Snip20180602_14.png)
+**报错原因：<br>**是使用的theos工具，压缩的方式有问题，改成gzip 就可以了。注意我们修改了theos 工具中的压缩方式，makefile 中的压缩方式也要改成对应的才行。<br> <br> **(1)修改dm.pl文件，用 # 号注释掉下面2句**
+
+    ```
+    $vim $THEOS/vendor/dm.pl/dm.pl
+
+    #use IO::Compress::Lzma;
+    #use IO::Compress::Xz;
+    ```
+**(2)修改dem.mk 文件第6行的压缩方式为：gzip**
+```
+$ vim $THEOS/makefiles/package/deb.mk
+_THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= gzip  //修改 压缩方式为：gzip
+```
+<br><br><br>
+
+- 8、**删除插件**
+![](/assets/Snip20180602_16.png)
+
+
+
+
+        
+
+
 
 
 
