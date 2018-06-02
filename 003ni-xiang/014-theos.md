@@ -1,5 +1,6 @@
 有篇文章关于 Theos，可以[参考下](https://www.jianshu.com/p/307243ea40e4)
 
+[yenei](#bottom)
 ##一、相关概念了解
 
 - 1、**什么是theos？**<br>theos 是一个越狱开发工具包，Theos 是越狱开发工具的首先。越狱开发中另一个常用工具是iOSOpenDev。
@@ -31,16 +32,19 @@ brew install ldid
 
 - 2、**修改环境变量**
 ```
-vim ~/.bash_profile
+vim ~/.bash_profile     //  .bash_profile 是环境变量的配置文件
 export THEOS=~/theos    // 即theos 文件所在路劲
 export PATH=$THEOS/bin:$PATH
 ```
+**说明：** `export` 是导出的意思，`export THEOS=~/theos` 可以这样理解，导出一个环境变量 为  `THEOS`， 环境变量的值是 `~/theos`.
+
 
 - 3、**[下载theos](https://github.com/theos/theos/wiki)**,参考 wiki 详细操作，里面有说明。
 ```
 git clone --recursive https://github.com/theos/theos.git $THEOS
+// $THEOS 表示是取出 环境变量的值，是一个路劲
 ```
-**说明：** 这里虽然可以在github 中通过down 下载安装包，但是这里使用clone 可以把代码下的更全
+**说明：** 这里虽然可以在github 中通过down 下载安装包，但是这里使用clone 可以把代码下的更全。**如果有下面这个文件就要注意了，只能用 git clone --recursive**，--recursive 是递归下载的意思，会把项目中的所有依赖全部递归下载完。 
 ![](/assets/Snip20180602_1.png)<br>
 ![](/assets/Snip20180602_2.png)
 
@@ -60,5 +64,7 @@ vim $THEOS/vendor/dm.pl/dm.pl
 vim $THEOS/makefiles/package/deb.mk
 ?= gzip
 ```
+<p id="bottom">wo shi dib </p>
+
 
 
