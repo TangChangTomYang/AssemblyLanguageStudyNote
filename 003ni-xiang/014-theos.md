@@ -44,7 +44,7 @@ git clone --recursive https://github.com/theos/theos.git $THEOS
 ![](/assets/Snip20180602_1.png)<br>
 ![](/assets/Snip20180602_2.png)
 
-- 3、**新建项目**
+- 3、**新建项目（tweak项目（相当于hook项目））**
 ```
 nic.pl
 ```
@@ -52,6 +52,7 @@ nic.pl
 
 
 - 4、**安装过程中遇到的问题**
+
 ```
 vim $THEOS/vendor/dm.pl/dm.pl
 # use ...:Lzma
@@ -60,9 +61,10 @@ vim $THEOS/vendor/dm.pl/dm.pl
 vim $THEOS/makefiles/package/deb.mk
 ?= gzip
 ```
+安装完成后，就可以完成了app 修改了
 
-<span id="jump">wp ssf </span>
-<p id="bottom">wo shi dib </p>
+- 5、卸载
+
 
 
 
