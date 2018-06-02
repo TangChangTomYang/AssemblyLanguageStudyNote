@@ -48,6 +48,10 @@ git clone --recursive https://github.com/theos/theos.git $THEOS
 ```
 nic.pl
 ```
+![](/assets/Snip20180602_3.png)
+<br>
+![](/assets/Snip20180602_4.png)
+
 
 
 
