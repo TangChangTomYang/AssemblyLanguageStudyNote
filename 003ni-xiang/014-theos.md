@@ -67,7 +67,7 @@ vim $THEOS/makefiles/package/deb.mk
 ?= gzip
 ```
 
-<span id=jump>wp ssf </span>
+<span id="jump">wp ssf </span>
 <p id="bottom">wo shi dib </p>
 
 
