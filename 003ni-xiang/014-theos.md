@@ -86,6 +86,18 @@ export THEOS_DEVICE_PORT=10010
 
 - 6.1、**给hook 代码添加自己的资源文件图片）**<br>资源文件的添加有固定的写法，必须创建一个文件夹名为layout，这个layout 相当于是手机的根路径。![](/assets/Snip20180603_4.png)
 
+- 6.2、**路径宏定义**
+
+    ```
+    #define YRFilePath(path) @"abc/abc" #path
+
+    #path 在编译时会在动在 path 前后添加 "
+    ```
+    调用时
+    ```
+    直接： YRFilePath(具体path)  // 不用加@  和 ” 号
+    ```
+
 
 
 
