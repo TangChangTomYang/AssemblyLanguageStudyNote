@@ -108,9 +108,11 @@ export THEOS_DEVICE_PORT=10010
 cd /Desktop/tingweak
 make clean  // 清一下
 make  //编译
-make package //打包
+make package //打包 debug 版本
 make install
 ```
+make package debug=0 //打包正式版本
+
 **方式二：**<br>**其实几个命令可以一起写：**
 ```
 make clean && make &&  make package && make install 
