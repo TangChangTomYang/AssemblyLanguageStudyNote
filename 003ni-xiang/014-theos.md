@@ -16,7 +16,7 @@
 
 
 
-##一、 theos 的使用
+##二、 theos 的使用
 
 - 1、**使用[Homebrew](https://brew.sh/index_zh-cn.html) 安装 idid 签名工具**
 ```
@@ -85,13 +85,14 @@ export THEOS_DEVICE_PORT=10010
 **方式一：**
 ```
 cd /Desktop/tingweak
+make clean  // 清一下
 make  //编译
 make package //打包
 make install
 ```
 **方式二：**<br>**其实几个命令可以一起写：**
 ```
-make &&  make package && make install 
+make clean && make &&  make package && make install 
 ```
 编译打包结果：
 ![](/assets/Snip20180602_15.png)<br>
@@ -119,34 +120,7 @@ _THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= gzip  //修改 压缩方式为：gzip
 
 
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- 4、**安装过程中遇到的问题**
-
-```
-vim $THEOS/vendor/dm.pl/dm.pl
-# use ...:Lzma
-# use ...:Xz
-
-vim $THEOS/makefiles/package/deb.mk
-?= gzip
-```
-安装完成后，就可以完成了app 修改了
-
-- 5、卸载
+##三、 tweak项目在原有方法的基础上hook 数据
 
 
 
