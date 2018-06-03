@@ -56,7 +56,7 @@ nic.pl
 - 4、**tweak项目创建完成后直接拖拽到 subline text 中编写项目代码即可**
 ![](/assets/Snip20180602_5.png)
 
-- 5、**配置 Makefile文件中的 IP 与 端口**<br><br>**方式1：WiFi ssh 连接**
+- 5、**配置 Makefile文件中的 IP 与 端口 环境变量**<br><br>**方式1：WiFi ssh 连接**
     ```
     export THEOS_DEVICE_IP=SSH服务器ip
     export THEOS_DEVICE_PORT=22    // SSH 使用的是22端口
@@ -68,17 +68,30 @@ nic.pl
     export THEOS_DEVICE_PORT=10010    // 本地使用10010和22端口绑定的，所以是10010， 填写绑定22端口的对应端口即可
 
     ```
-    ![](/assets/Snip20180602_7.png)
+    **方式三： 直接在本地mac 的.bash_profile 文件中配置环境变量，这样以后就不用每次都在 makefile中手动配置环境变量了**
+```
+$ vim ~/.bash_profile 
+export THEOS_DEVICE_IP=127.0.0.1
+export THEOS_DEVICE_PORT=10010
+```
+这样就不需要每次都到makefile中配置一次。
+![](/assets/Snip20180602_7.png)
+    
     
 - 6、**编写hook代码**
 ![](/assets/Snip20180602_12.png)
 
 - 7、**切换到项目 目录 编译  安装项目**
+**方式一：**
 ```
 cd /Desktop/tingweak
 make  //编译
 make package //打包
 make install
+```
+**方式二：**<br>**其实几个命令可以一起写：**
+```
+make &&  make package && make install 
 ```
 编译打包结果：
 ![](/assets/Snip20180602_15.png)<br>
