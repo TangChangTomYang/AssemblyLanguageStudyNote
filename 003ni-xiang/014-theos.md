@@ -132,7 +132,7 @@ make clean && make &&  make package && make install
 $ vim $THEOS/makefiles/package/deb.mk
 _THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= gzip  //修改 压缩方式为：gzip
 ```
-<br><br><br>
+<br>
 
 - 8、**删除插件**
 ![](/assets/Snip20180602_16.png)
@@ -141,7 +141,8 @@ _THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= gzip  //修改 压缩方式为：gzip
 
 
         
-##三、 tweak项目在原有方法的基础上hook 数据
+##三、 theos 安装过程原理
+
 
 
 
