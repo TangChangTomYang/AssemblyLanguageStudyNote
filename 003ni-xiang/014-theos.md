@@ -170,6 +170,15 @@ _THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= gzip  //修改 压缩方式为：gzip
 
 
 
+##五、Theos 资料查询相关
+- 1、[目录结构](https://github.com/theos/theos/wiki/Structure)
+- 2、[环境变量](http://iphonedevwiki.net/index.php/Thoes)
+- 3、[logos语法](http://iphonedevwiki.net/index.php/Logos)<br>1、**%hook   %end** hook 一个类的开始和结束。<br> 2、**%log** 打印方法调用详情。<br>&emsp; 可以通过Xcode --> Window--> Devices and Simulators 查看日志<br>**3、HBDebulLog**跟NSLog类似 <br>
+
+
+
+
+
 
 
 
