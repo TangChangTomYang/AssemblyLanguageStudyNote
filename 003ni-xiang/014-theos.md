@@ -159,5 +159,19 @@ _THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= gzip  //修改 压缩方式为：gzip
 
 
 
+##四、tweak 多文件开发步骤
+
+**主要有以下2个步骤：**<br>**1、在Makefile 中设置需要编译的文件**(全路径，要保证通过这个路径能找到他)
+![](/assets/Snip20180603_7.png)
+
+![](/assets/Snip20180603_8.png)
+<br>**2、导入文件**（导入的文件要使用全路径）
+![](/assets/Snip20180603_10.png)
+
+
+
+
+
+
 
 
