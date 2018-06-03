@@ -152,6 +152,8 @@ _THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= gzip  //修改 压缩方式为：gzip
 - 7、所以，theos 的tweak并不会对App 原来的可执行文件进行修改，仅仅是修改了内存中的代码逻辑而已。
 - 8、疑问：<br> 1、未脱壳的App 是否支持tweak？<br>&emsp; 支持。因为tweak是在内存中实现的，并没有修改 .app 包中的可执行文件。<br><br>2、 tweak 效果是否永久有效？<br>&emsp; 取决于tweak 中用到的app代码是否被修改过。<br><br>3、 如过一旦更行app，tweak 会不会失效？<br> &emsp;取决于tweak 中用到的app代码是否被修改过。<br><br>4、未越狱的手机是否支持tweak？<br>&emsp: 不支持。<br><br>5、能不能对Swift、C 函数进行tweak <br>&emsp; 可以，方式和OC 不一样 <br><br> 6、能不能对游戏项目进行tweak？<br>&emsp: 可以，不过游戏大多是通过C++、C#编写的，而且类名、函数名会进行混淆操作。
 
+![](/assets/Snip20180603_5.png)
+
 
 
 
