@@ -21,6 +21,7 @@
   * [012- 通用二进制文件\(Universal Binary\)](003ni-xiang/012-tong-yong-er-jin-zhiwen-4ef628-universal-binary.md)
   * [013-脱壳](003ni-xiang/013tuo-ke.md)
   * [014-theos--创建tweak项目](003ni-xiang/014-theos.md)
+  * [015-logos语法](003ni-xiang/015-logosyu-fa.md)
 * [004-Linux 常用操作](004-linux-chang-yong-cao-zuo.md)
   * [001-vim 操作](001-vim-cao-zuo.md)
   * [002-makefile](002-makefile.md)
