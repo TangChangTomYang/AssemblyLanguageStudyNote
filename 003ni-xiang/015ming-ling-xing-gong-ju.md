@@ -73,7 +73,40 @@ int main(int argc, char * argv[]) {
 ![](/assets/Snip20180606_2.png)
 
 
-####二、命令行工具的权限问题
+####二、命令行工具的权限问题。（entitlement）
+
+- 每一个可执行文件的都有一定的权限，默认情况下iOS的app是没有获取其他app信息 的权限的（iOS 的沙盒机制）
+
+- **签名（签权限、签MD5、签加密等等）：**<br> 给可执行文件签上一定的权限(**entitlements**)，让它可以访问其他App的可执行文件。<br><br> **(一)、给可执行文件签名有2中方式：**<br>方式1：ldid <br>方式2： codesign Xcode 使用这种方式签名，相对来说麻烦一些 <br><br> **(二)、ldid工具 签权限（entitlements）**<br> mach-o可执行文件的权限其实就是一个xml文件（xml数据）<br><br>(1)、查看ldid 的用法
+```
+$ ldid
+usage: ldid -S[entitlements.xml] <binary>
+   ldid -e MobileSafari   // ldid -e 导出权限
+   ldid -S cat
+   ldid -Stfp.xml gdb
+```
+<br>(2)、ldid 查看mach-o 可执行文件的权限信息(导出的新文件中)
+``` 
+// 1个  “>” 号 是覆盖的意思，下面这句命令表示，导出testCL可执行文件的权限，
+// 并使用导出来的权限数据覆盖testCL.entitlements 文件的内容。
+ldid -e testCL > testCL.entitlements  
+```
+![](/assets/Snip20180606_4.png)
+<br>(3)、将mach-o 可执行文件的权限追加到另一个文件尾部
+
+    ``` 
+    // 2个  “>” 号 是追加的意思，下面这句命令表示，导出testCL可执行文件的权限，
+    // 并使用导出来的权限数据追加到 testCL.entitlements 文件原有数据的尾部。
+    ldid -e testCL >> testCL.entitlements    
+
+    ```
+
+
+
+
+
+
+
 
 
 ####三、Mach-o 识别
