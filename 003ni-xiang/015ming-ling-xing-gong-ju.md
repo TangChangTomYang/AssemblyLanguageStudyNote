@@ -85,19 +85,31 @@ usage: ldid -S[entitlements.xml] <binary>
    ldid -S cat
    ldid -Stfp.xml gdb
 ```
-<br>(2)、ldid 查看mach-o 可执行文件的权限信息(导出的新文件中)
+<br>(2)、ldid 查看mach-o 可执行文件的权限信息，并覆盖到另一文件中
 ``` 
 // 1个  “>” 号 表示覆盖
 ldid -e testCL > testCL.entitlements  
 ```
 ![](/assets/Snip20180606_4.png)
-<br>(3)、将mach-o 可执行文件的权限追加到另一个文件尾部
+<br>(3)、查看mach-o 可执行文件的权限 并追加到另一个文件尾部
 
     ``` 
     // 2个  “>” 表示追加
     ldid -e testCL >> testCL.entitlements    
 
     ```
+    (4)、将某个某个权限文件（xml）内容签给mach-o 可执行文件**（强制将原来的权限替换掉）**
+    
+    ```
+    // testCL2.entitlements 是权限文件
+    // testCL 是mach-o 可执行文件
+    idid -StestCL2.entitlements testCL
+    ```
+    **注意：**权限文件要紧跟在-S之后不要空格
+    
+    **问题：**<br> 我怎么只要要给 xxx mach-o 可执行文件签什么样的权限呢？
+    
+
 
 
 
