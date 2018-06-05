@@ -87,16 +87,14 @@ usage: ldid -S[entitlements.xml] <binary>
 ```
 <br>(2)、ldid 查看mach-o 可执行文件的权限信息(导出的新文件中)
 ``` 
-// 1个  “>” 号 是覆盖的意思，下面这句命令表示，导出testCL可执行文件的权限，
-// 并使用导出来的权限数据覆盖testCL.entitlements 文件的内容。
+// 1个  “>” 号 表示覆盖
 ldid -e testCL > testCL.entitlements  
 ```
 ![](/assets/Snip20180606_4.png)
 <br>(3)、将mach-o 可执行文件的权限追加到另一个文件尾部
 
     ``` 
-    // 2个  “>” 号 是追加的意思，下面这句命令表示，导出testCL可执行文件的权限，
-    // 并使用导出来的权限数据追加到 testCL.entitlements 文件原有数据的尾部。
+    // 2个  “>” 表示追加
     ldid -e testCL >> testCL.entitlements    
 
     ```
