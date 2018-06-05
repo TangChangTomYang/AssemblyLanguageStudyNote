@@ -12,6 +12,12 @@
 - 4、Xcode 调试的局限性<br>一般情况下，只能调试通过Xcode安装的App<br><br>![](/assets/Snip20180605_4.png)
 
 ####三、动态调试任意App
+- 1、iPhone上的debugserver 在哪里呢？
+```
+/Developer/usr/bin
+```
+**注意：**<br>1、/Developer 这个文件夹的权限是只读的。<br>2、默认情况下，/Developer/usr/bin 目录下的debugserver 权限是不够的（因为这个debugserver 是Xcode 帮着安装的，默认情况下只能调试Xcode安装的App，只有这个权限）。
+
 
 
 ####四、常用的LLDB
