@@ -116,7 +116,7 @@ ldid -e testCL > testCL.entitlements
 
 
 
-####四、 给Xcode 添加执行脚本
+####四、 给Xcode 添加运行脚本
 
 ![](/assets/Snip20180606_3.png)
 
