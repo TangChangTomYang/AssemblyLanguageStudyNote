@@ -182,6 +182,26 @@ logify.pl xxx.h > xxx,xm
 (9)、**如果有额外的资源文件（比如：图片、MP3），请放在项目的layout文件中，对应着手机的 根路径 /**
 
 
+##六 、makefile 通配符
+
+```
+// 配置信息
+export THEOS_DEVICE_IP=192.168.1.103 
+export THEOS_DEVICE_PORT=22 
+
+include $(THEOS)/makefiles/common.mk
+
+TWEAK_NAME = tingweak
+//tingweak_FILES = Tweak.xm   原来的写法
+tingweak_FILES = $(wildcard src/*.xm)  // 现在创建了一个 src文件夹，全部的 .xm 文件都在里面，使用通配符。
+
+include $(THEOS_MAKE_PATH)/tweak.mk
+
+after-install::
+	install.exec "killall -9 SpringBoard"
+
+```
+
 
 
 
