@@ -202,6 +202,23 @@ after-install::
 
 ```
 
+##七、使用logify.pl 命令注意事项
+
+**logify.pl 生成的 .xm 文件很多时候是编译不过的，需要进一步做处理：**
+- 删除掉所有的 `__weak`
+- 删掉所有的 `inout`
+- 删掉协议，比如 `xxxxDelegate`
+- 删掉 `-(void).cxx_destruct{%log; %orig;}
+- 删掉 HBLogDebug(@"=0x%x",(unsigned int) r)
+- 替换类名为 `void` ，比如： `XXPerson*` 替换为 `void *`
+- 或者声明一下类信息：
+
+```
+@interface XXPerson:NSObject
+
+@end
+```
+
 
 
 
