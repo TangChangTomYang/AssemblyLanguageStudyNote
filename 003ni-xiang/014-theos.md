@@ -175,11 +175,11 @@ _THEOS_PLATFORM_DPKG_DEB_COMPRESSION ?= gzip  //修改 压缩方式为：gzip
 ##五、Theos 资料查询相关
 - 1、[目录结构](https://github.com/theos/theos/wiki/Structure)
 - 2、[环境变量](http://iphonedevwiki.net/index.php/Thoes)
-- 3、[logos语法](http://iphonedevwiki.net/index.php/Logos)<br>1、**%hook   %end** hook 一个类的开始和结束。<br> 2、**%log** 打印方法调用详情。<br>&emsp; 可以通过Xcode --> Window--> Devices and Simulators 查看日志<br>**3、HBDebulLog**跟NSLog类似 <br>4、**%new** 添加一个新的方法<br>5、**%c(className)**生成一个Class 对象，比如 %c(NSObject),类似于NSStringFromClass()、objc_getClass()<br>5、**%orig** 调用函数原来的代码逻辑 <br>6、**%ctor** 在加载动态库时调用。<br>7、**%dtor**在程序退出时调用 <br>8、**logify。pl** 可有将一个头文件快速转换成已经包含打印信息的xm文件
+- 3、[logos语法](http://iphonedevwiki.net/index.php/Logos)<br>(1)、**%hook   %end** hook 一个类的开始和结束。<br> (2)、**%log** 打印方法调用详情。<br>&emsp; 可以通过Xcode --> Window--> Devices and Simulators 查看日志<br>**(3)、HBDebulLog**跟NSLog类似 <br>(4)、**%new** 添加一个新的方法<br>(5)、**%c(className)**生成一个Class 对象，比如 %c(NSObject),类似于NSStringFromClass()、objc_getClass()<br>5、**%orig** 调用函数原来的代码逻辑 <br>(6)、**%ctor** 在加载动态库时调用。<br>(7)、**%dtor**在程序退出时调用 <br>(8)、**logify.pl** 可有将一个头文件快速转换成已经包含打印信息的xm文件
 ```
 logify.pl xxx.h > xxx,xm
 ```
-9、**如果有额外的资源文件（比如：图片、MP3），请放在项目的layout文件中，对应着手机的 根路径 /**
+(9)、**如果有额外的资源文件（比如：图片、MP3），请放在项目的layout文件中，对应着手机的 根路径 /**
 
 
 
