@@ -73,15 +73,15 @@ int main(int argc, char * argv[]) {
 ![](/assets/Snip20180606_2.png)
 
 
-####二、命令行工具的权限问题。（entitlement）
+####二、命令行工具的权限问题。（entitlements）
 
-- 每一个可执行文件的都有一定的权限，默认情况下iOS的app是没有获取其他app信息 的权限的（iOS 的沙盒机制）
+- 每一个可执行文件都有一定的权限，默认情况下iOS的app是没有获取其他app信息 的权限的（iOS 的沙盒机制）
 
-- **签名（签权限、签MD5、签加密等等）：**<br> 给可执行文件签上一定的权限(**entitlements**)，让它可以访问其他App的可执行文件。<br><br> **(一)、给可执行文件签名有2中方式：**<br>方式1：ldid <br>方式2： codesign Xcode 使用这种方式签名，相对来说麻烦一些 <br><br> **(二)、ldid工具 签权限（entitlements）**<br> mach-o可执行文件的权限其实就是一个xml文件（xml数据）<br><br>(1)、查看ldid 的用法
+- **签名（签权限、签MD5、签加密等等）：**<br> 给可执行文件签上一定的权限(**entitlements**)，让它可以访问其他App的可执行文件。<br><br> **(一)、给可执行文件签名有2中方式：**<br>方式1：[ldid](http://iphonedevwiki.net/index.php/Ldid) <br>方式2：codesign Xcode 使用这种方式签名，相对来说麻烦一些 <br><br> **(二)、ldid工具 签权限（entitlements）**<br>mach-o可执行文件的权限其实就是一个xml文件（xml数据）<br><br>(1)、查看ldid 的用法
 ```
 $ ldid
 usage: ldid -S[entitlements.xml] <binary>
-   ldid -e MobileSafari   // ldid -e 导出权限
+   ldid -e MobileSafari   // ldid -e 导出权限(查看)
    ldid -S cat
    ldid -Stfp.xml gdb
 ```
@@ -98,20 +98,27 @@ ldid -e testCL > testCL.entitlements
     ldid -e testCL >> testCL.entitlements    
 
     ```
-    (4)、将某个某个权限文件（xml）内容签给mach-o 可执行文件**（强制将原来的权限替换掉）**
+    (4)、将某个权限文件（xml）内容签给mach-o 可执行文件**（强制将原来的权限替换掉）**
     
     ```
     // testCL2.entitlements 是权限文件
     // testCL 是mach-o 可执行文件
     idid -StestCL2.entitlements testCL
     ```
-    **注意：**权限文件要紧跟在-S之后不要空格
+    **注意：**权限文件(testCL2.entitlements)要紧跟在-S之后不要空格
     
-    **问题：**<br> 我怎么只要要给 xxx mach-o 可执行文件签什么样的权限呢？
+    **问题：**<br>（1）我怎么知道要给 xxx mach-o 可执行文件签什么样的权限呢？<br>（2）找一个有足够权限的mach-o可执行程序，取出其中的权限，签名给另一个mach-o可执行程序即可。
     
+**SpringBoard Mach-o 可执行程序的地址**
+```
+/System/Library/CoreServices/SpringBoard.app/SpringBoard
+```
 
 
 
+####四、 给Xcode 添加执行脚本
+
+![](/assets/Snip20180606_3.png)
 
 
 
@@ -120,4 +127,28 @@ ldid -e testCL > testCL.entitlements
 
 
 ####三、Mach-o 识别
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
