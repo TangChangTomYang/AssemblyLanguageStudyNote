@@ -37,10 +37,20 @@ task_for_pid-allow
     //3.在将权限签回去即可
     ldid -Sdebugserver.entitlements  debugserver
 
-    //4. 将文件装回iphone 即可
+    //4. 将文件装回iphone 即可(这是 不可能的事 /Developer 文件夹是只读的)
     ```
     
-- 4、 注意直接将签名回去的debugserver 直接拖回去是不行的。是不能覆盖 **/Developer/usr/bin** 目录的。
+- 4、 注意直接将签名回去的debugserver 直接拖回去是不行的。是不能覆盖 **/Developer/usr/bin** 目录的。那怎么办呢？ 是这样的，到时我们需要在手机端启动Debugserver 这个服务，所以我们直接将 debugserver 拖到 /usr/bin目录下了，这样我们就可以在手机上通过终端来启动debugserver了。
+debugserver 常用法：
+```
+Usage:
+  debugserver host:port [program-name program-arg1 program-arg2 ...]
+  debugserver /path/file [program-name program-arg1 program-arg2 ...]
+  debugserver host:port --attach=<pid>
+  debugserver /path/file --attach=<pid>
+  debugserver host:port --attach=<process_name>
+  debugserver /path/file --attach=<process_name>
+  ```
 
 
 
