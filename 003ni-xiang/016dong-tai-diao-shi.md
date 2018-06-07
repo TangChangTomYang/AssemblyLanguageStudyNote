@@ -51,6 +51,17 @@ Usage:
   debugserver host:port --attach=<process_name>
   debugserver /path/file --attach=<process_name>
   ```
+  解释：
+  ```
+  Usage:
+  debugserver host:port [program-name program-arg1 program-arg2 ...]
+  debugserver /path/file [program-name program-arg1 program-arg2 ...]
+  debugserver *:10011 --a WeChat
+  debugserver /path/file --attach=<pid>
+  debugserver host:port --attach=<process_name>
+  debugserver /path/file --attach=<process_name>
+```
+  
 
 
 
