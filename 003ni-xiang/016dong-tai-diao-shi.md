@@ -71,7 +71,23 @@ Usage:
 ```
 <command> [<subcommand> [<subcommand> ...]] <action>  [-options  [option-value]] [argment [argment ...]]
 ```
-**说明：**<br>(1)、凡是在指令说明书里面 看到的 `[]` 表示这部分是可以省略的。 <br>(2)、一般的指令格式都是： 命令  子命令 动作(比如： 向设置东西呢、删除东西呢、还是添加东西 等)  选项(比如： -n   -d   -i)    参数
+**说明：**<br>(1)、凡是在指令说明书里面 看到的 `[]` 表示这部分是可以省略的。 <br>(2)、一般的指令格式都是： 命令、子命令、动作(比如： 向设置东西呢、删除东西呢、还是添加东西 等)、选项(比如： -n、-d、-i)、参数。 比如：<br><br>**给 test方法设置断点：**
+```
+breakpoint set -n test
+或者
+breakpoint set --name test
+```
+**breakpoint 是：**`<command>`     <br> **set是：**`<action>`        <br> **-n是：**`<options>`    <br>**test是：**`<arguments>  <br> <br> **hlep 指令的用法：** <br>直接在命令的签名加 help 来查看命令帮助说明，如：
+
+  ``` 
+  help breakpoint  // 查看breakpoint 命令的帮助信息
+
+  help breakpoint set // 查看breakpoint set  命令的帮助信息
+  依次类推，一层一层的查看帮助
+
+  ```
+
+
 
 
 
