@@ -77,7 +77,7 @@ breakpoint set -n test
 或者
 breakpoint set --name test
 ```
-**breakpoint 是：**`<command>`     <br> **set是：**`<action>`        <br> **-n是：**`<options>`    <br>**test是：**`<arguments>  <br> <br> **hlep 指令的用法：** <br>直接在命令的签名加 help 来查看命令帮助说明，如：
+**breakpoint 是：**`<command>`     <br> **set是：**`<action>`        <br> **-n是：**`<options>`    <br>**test是：**`<arguments>`  <br> <br> **hlep 指令的用法：** **help** `<command>`  <br>即: 直接在命令的前面加 help 来查看命令帮助说明，<br>如：
 
   ``` 
   help breakpoint  // 查看breakpoint 命令的帮助信息
