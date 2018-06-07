@@ -71,13 +71,17 @@ Usage:
 ```
 <command> [<subcommand> [<subcommand> ...]] <action>  [-options  [option-value]] [argment [argment ...]]
 ```
-**说明：**<br>(1)、凡是在指令说明书里面 看到的 `[]` 表示这部分是可以省略的。 <br>(2)、一般的指令格式都是： 命令、子命令、动作(比如： 向设置东西呢、删除东西呢、还是添加东西 等)、选项(比如： -n、-d、-i)、参数。 比如：<br><br>**给 test方法设置断点：**
+**说明：**<br>(1)、凡是在指令说明书里面 看到的 `[]` 表示这部分是可以省略的。 <br>(2)、一般的指令格式都是： 命令、子命令、动作(比如： 向设置东西呢、删除东西呢、还是添加东西 等)、选项(比如： -n、-d、-i)、参数。 
+
+- 2、**给 test方法设置断点：**
 ```
 breakpoint set -n test
 或者
 breakpoint set --name test
 ```
-**breakpoint 是：**`<command>`     <br> **set是：**`<action>`        <br> **-n是：**`<options>`    <br>**test是：**`<arguments>`  <br> <br> **hlep 指令的用法：** **help** `<command>`  <br>即: 直接在命令的前面加 help 来查看命令帮助说明，<br>如：
+**breakpoint 是：**`<command>`     <br> **set是：**`<action>`        <br> **-n是：**`<options>`    <br>**test是：**`<arguments>`  <br> <br> 
+
+- 3、**hlep 指令的用法：** **help** `<command>`  <br>即: 直接在命令的前面加 help 来查看命令帮助说明，<br>如：
 
   ``` 
   help breakpoint  // 查看breakpoint 命令的帮助信息
@@ -86,6 +90,12 @@ breakpoint set --name test
   依次类推，一层一层的查看帮助
 
   ```
+  
+- 4、**express 命令的使用 ** **express** `<cmd -options> - <expr>` 这个命令就 🐂 B 了，可以在调试时动态插入执行一个表达式 （调用一个方法，设置一个参数 等等） <br> `<cmp-options>`命令的选项 <br> `-- ` 命令选项结束符，表示所有的命令选项已经设置完毕，如果没有命令选项， `--` 可以省略 <br> `<expr>` 需要执行的表达式，比如：
+```
+// 一旦在LLDB 中执行了这句代码，就会在短点的下一执行命令前先执行 这个表达式
+express self.view.backgroundColor = [UIColor redColor];
+```
 
 
 
