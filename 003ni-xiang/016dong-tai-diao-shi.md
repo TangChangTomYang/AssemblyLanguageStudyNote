@@ -16,7 +16,35 @@
 ```
 /Developer/usr/bin
 ```
-**注意：**<br>1、/Developer 这个文件夹的权限是只读的。<br>2、默认情况下，/Developer/usr/bin 目录下的debugserver 权限是不够的（因为这个debugserver 是Xcode 帮着安装的，默认情况下只能调试Xcode安装的App，只有这个权限）。
+
+- 2、**debugserver 权限的问题**<br>(1)、默认情况下，/Developer/usr/bin 目录下的debugserver 权限是不够的（因为这个debugserver 是Xcode 帮着安装的，默认情况下只能调试Xcode安装的App，只有这个权限，像来自App store 的App 是调试不了的）。<br>(2)、/Developer 这个文件夹的权限是只读的，需要注意一下。<br>3、如果需要调试其他的app，需要对debugServer重新签名权限，签上2个调试相关的权限
+```
+get-task-allow
+task_for_pid-allow
+```
+
+- 3、**如何给debugserver签上全向**<br>iphone上的 **/Developer**目录是只读的，无法直接对**/Developer/usr/bin/debugserver**文件签名，需要先把debugserver复制到mac上，在通过ldid签名。
+
+    ```
+    //1.先将权限导出
+    $ ldid -e debugserver > debugserver.entitlements
+
+    //2.debugserver.entitlements文件中在添加2条权限
+        get-task-allow = YES
+    task_for_pid-allow  = YES
+
+    //3.在将权限签回去即可
+    ldid -Sdebugserver.entitlements  debugserver
+
+    //4. 将文件装回iphone 即可
+    ```
+    
+- 4、 注意直接将签名回去的debugserver 直接拖回去是不行的。是不能覆盖 **/Developer/usr/bin** 目录的。
+
+
+
+
+
 
 
 
