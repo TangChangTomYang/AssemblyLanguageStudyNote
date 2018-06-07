@@ -5,6 +5,7 @@
 * [000-汇编语言入门](000hui-bian-yu-yan-ru-men.md)
   * [001-汇编语言简介绍](000hui-bian-yu-yan-ru-men/001hui-bian-yu-yan-jian-jie-shao.md)
   * [002- 汇编语言学习--内存](000hui-bian-yu-yan-ru-men/002-hui-bian-yu-yan-xue-4e60-nei-cun.md)
+  * [003-汇编语言--寄存器](000hui-bian-yu-yan-ru-men/003hui-bian-yu-8a00-ji-cun-qi.md)
 * [001-Win32汇编 - 寄存器](001-win32hui-bian-ji-cun-qi.md)
 * [002-C语言汇编混编](002-cyu-yan-hui-bian-hun-bian.md)
 * [003-逆向](003ni-xiang.md)
