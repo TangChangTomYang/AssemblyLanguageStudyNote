@@ -51,15 +51,10 @@ Usage:
   debugserver host:port --attach=<process_name>
   debugserver /path/file --attach=<process_name>
   ```
-  解释：
+最常用的一个指令
   ```
-  Usage:
-  debugserver host:port [program-name program-arg1 program-arg2 ...]
-  debugserver /path/file [program-name program-arg1 program-arg2 ...]
-  debugserver *:10011 --a WeChat
-  debugserver /path/file --attach=<pid>
-  debugserver host:port --attach=<process_name>
-  debugserver /path/file --attach=<process_name>
+  // 表示监听10011端口，任何ip 都可以连接过来
+  debugserver *:10011 -a WeChat       // -a 是attachment 附加的意思 
 ```
   
 
@@ -71,6 +66,12 @@ Usage:
 
 
 ####四、常用的LLDB
+
+- 1、**LLDB 指令格式**
+```
+<command> [<subcommand> [<subcommand> ...]] <action>  [-options  [option-value]] [argment [argment ...]]
+```
+**说明：**<br>(1)、凡是在指令说明书里面 看到的 `[]` 表示这部分是可以省略的。 <br>(2)、一般的指令格式都是： 命令  子命令 动作(比如： 向设置东西呢、删除东西呢、还是添加东西 等)  选项(比如： -n   -d   -i)    参数
 
 
 
