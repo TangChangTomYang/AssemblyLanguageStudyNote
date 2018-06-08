@@ -91,11 +91,42 @@ breakpoint set --name test
 
   ```
   
-- 4、**express 命令的使用 ** **express** `<cmd -options> - <expr>` 这个命令就 🐂 B 了，可以在调试时动态插入执行一个表达式 （调用一个方法，设置一个参数 等等） <br> `<cmp-options>`命令的选项 <br> `-- ` 命令选项结束符，表示所有的命令选项已经设置完毕，如果没有命令选项， `--` 可以省略 <br> `<expr>` 需要执行的表达式，比如：
+- 4、**express 命令的使用： ** **express** `<cmd -options> - <expr>` <br>这个命令就 🐂 B 了，可以在调试时动态插入执行一个表达式 （调用一个方法，设置一个参数 等等） <br><br> `<cmp-options>`命令的选项 <br> `-- ` 命令选项结束符，表示所有的命令选项已经设置完毕，如果没有命令选项， `--` 可以省略 <br> `<expr>` 就是需要执行的表达式，比如：
 ```
 // 一旦在LLDB 中执行了这句代码，就会在短点的下一执行命令前先执行 这个表达式
 express self.view.backgroundColor = [UIColor redColor];
 ```
+**express -o -- ** 和 指令**po**的效果是一样的。
+
+- 5、**thread backtrace** <br> 打印线程的堆栈信息。<br> 可以用简写：**bt** 代替，效果一样的，都是打印堆栈信息。
+
+- 6、**thread return [<expr>]**<br> 让函数直接返回某个值，断点后面的代码不会执行执行，直接跳过
+```
+thread return 10;
+```
+
+- 7、**thread variable [<variable-name>]**<br>打印当前栈帧的变量
+```
+thread variable // 将会打印出当前的所有的局部变量的值
+又或者
+thread variable a // 打印出变量a 的值
+```
+
+- 8、**thread continue** <br> 让当前断点断住的程序继续执行<br> 简写 **continue** 或者 **c**
+
+- 9、**thread step-over**<br>单步运行（一次运行一行代码，把子函数当成整体一步执行）<br> 简写 **next**或者**n**
+
+
+- 10、**thread step-in**<br>单步运行（一次运行一行代码，遇到子函数会进入子函数）<br>简写 **step** 或者**s**
+
+
+- 11、**thread step-out**<br> 执行完当前函数的所有代码，返回到调用该代码处<br>简写**finish**
+
+- 12、**thread step-inst-over** 指令级别单步执行（汇编函数调用当成一步执行）<br>简称 **nexti** 或者**ni**
+
+- 13、**thread step-inst** 指令级别单步运行（遇到汇编函数调用会跳进汇编函数）<br>简称**stepi** 或者**si**
+
+- 14、 **ni**、**si** 和 **n**、**s** 类似<br> **ni**、**si** 是汇编指令级别的<br> **n**、**s** 是源码级别的。
 
 
 
