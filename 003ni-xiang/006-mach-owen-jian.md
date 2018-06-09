@@ -38,7 +38,7 @@ mach-o 是iOS中的可执行文件
 /*  sections */
 #define	MH_KEXT_BUNDLE	0xb		/* x86_64 kexts */
 ```
-- 可以在[xnu源码](https://opensource.apple.com/tarballs/xnu/)中，查看到Mach-o 格式的详细定义, xnu 是mac 系统的内核， 可以在下载文件中查看这2个文件：
+- 可以在[xnu源码](https://opensource.apple.com/tarballs/xnu/)（xnu 是mac 系统的内核）中，查看到Mach-o 格式的详细定义， 可以在下载文件中查看这2个文件：
 ```
 EXTERNAL_HEADERS/mach-o/fat.h
 EXTERNAL_HEADERS/MACH-O/loader.h
