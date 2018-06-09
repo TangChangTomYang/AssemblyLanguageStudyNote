@@ -79,14 +79,19 @@ EXTERNAL_HEADERS/MACH-O/loader.h
     
     
 ####五、窥探Mach-o文件的结构
-- 命令行工具， file ：查看 Mach-o 的文件结构
+- **命令行工具， file ：**查看 Mach-o 的文件结构
 ```
 file 文件路劲 
 ```
 
-- otool，查看Mach-o 特定部分和段的内容
+- **otool**，查看Mach-o 特定部分和段的内容
+```
+cd xxx  // 切换到mach-o 文件路劲
+otool   // 查看otool的具体用法
+otool -l grep crypt //查看是够加壳
+```
 
-- lipo 常用于多架构Mach-o 文件的处理
+- **lipo 常用于多架构Mach-o 文件的处理**
     - 查看架构信息：lipo -info 文件路劲
     - 导出某种特定的架构：lipo 文件路径 -thin 架构类型 -output 输出文件路劲
     - 合并多种架构： lipo 文件路劲1 文件路劲2 -output 输出文件路劲
