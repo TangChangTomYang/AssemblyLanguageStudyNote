@@ -97,7 +97,10 @@ otool -l grep crypt //查看是够加壳
     - 合并多种架构： lipo 文件路劲1 文件路劲2 -output 输出文件路劲
 
 - GUI工具
-    - MachOView (https://github.com/gdbinit/MachOView)
+    - [MachOView 源码](https://github.com/gdbinit/MachOView) 下载运行安装即可,安装问题，及解决方案：
+    ![](/assets/Snip20180609_1.png)<br>
+    ![](/assets/Snip20180609_2.png)
+    ![](/assets/Snip20180609_3.png)
     
     
 ####六、dyld 和 Mach-o
