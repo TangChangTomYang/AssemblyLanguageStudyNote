@@ -107,12 +107,19 @@ otool -l grep crypt //查看是够加壳
     
     
 ####六、dyld 和 Mach-o
-- dyld 用于加载以下类型的mach-o 文件
+**当我们开发完一个App，所有的文件、代码都被打包在一个.app的包(一种文件夹)里面，而所有的代码都编译成一个可执行文件，而这个可执行文件其实就是一个 Mach-o文件，当我们的用户点击app 的时候这个可执行文件（mach-o）会被载进内存，那么是由什么东西将我们的这个可执行文件（mach-o）载入内存的呢？ 其实就是 dyld文件（也是一种mach-o文件）。**
+
+- dyld 只能用于加载以下3种类型的mach-o 文件（在dyld 源码中有说明）
     - MH_EXECUTE 可执行文件
     - MH_DYLIB   动态库
     - MH_BUNDLE  
 - app 的可执行文件、动态库都是由dyld负责加载的。
+```
+在手机中的位置
+/usr/lib/dyld
+```
 
+dyld 源码截图如下：
 ![](/assets/Snip20180527_9.png)
 
 
