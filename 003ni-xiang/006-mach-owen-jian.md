@@ -102,6 +102,9 @@ otool -l grep crypt //查看是够加壳
     ![](/assets/Snip20180609_2.png)
     ![](/assets/Snip20180609_3.png)
     
+- **归根结底，像class-dump，Hopper-disassembler 这些工具其实都是把Mach-o的 对应段的数据信息导出来而已。**
+![](/assets/Snip20180609_5.png)
+    
     
 ####六、dyld 和 Mach-o
 - dyld 用于加载以下类型的mach-o 文件
