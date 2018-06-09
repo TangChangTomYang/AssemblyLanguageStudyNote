@@ -129,6 +129,47 @@ thread variable a // 打印出变量a 的值
 - 14、 **ni**、**si** 和 **n**、**s** 类似<br> **ni**、**si** 是汇编指令级别的<br> **n**、**s** 是源码级别的。
 
 
+- 15、**breakpoint set -a 函数地址**
+- 16、**breakpoint set -n 函数名**
+
+```
+breakpoint set -n test  //给所有的test 设置断点，有很多个（这个是C语言的方法）
+
+breakpoint set -n touchesBegan：withEvent：  // 给很多个touchesBegan：withEvent： 设置断点（这个是oc 的方法）
+
+breakpoint set -n “ViewController touchesBegan：withEvent：” 给当前控制器的 touchesBegan：withEvent： 设置断点
+```
+
+- 16.1、 **breakpoint set -r 正则表达式**，给匹配正则的所有方法加断点
+```
+breakpoint set -r "abc" //给所有包含abc 的方法设置断点
+```
+
+- 16.2、**breakpoint set -s 动态库 -n 函数名**
+```
+breakpoint set -s lib.dylib -n abc  //-s是shlib 的意思， lib.dylib 是动态库的名称
+```
+
+- 17、**breakpoint list**<br> 列出所有的断点（每个断点都有自己的编号）
+
+- 18、**breakpoint disable 断点号**，禁用某个断点
+
+- 19、**breakpoint enable 断点号**， 启用某个断点
+
+- 20、**breakpoint delete 断点号**，删除某个断点
+
+- 21、**breakpoint command add 断点编号**， 给某个断点添加一些执行命令（执行语句、方法）相当于是，执行到这个断电后多执行几条语句
+```
+breakpoint set -n "-[ViewConreoller test]"  // 给控制器的test 方法增加断点， 加入返回的断点号是 12
+
+breakpoint command add 12 // 给 断点号是12 的断点增加几条命令（语句）,以下三句是新增的断点命令，DONE 是结束指令
+self.age = 32;
+self.view.backgroundcolor = [UIColor redColor];
+DONE  
+
+```
+
+
 
 
 
