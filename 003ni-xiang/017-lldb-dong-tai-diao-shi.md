@@ -52,6 +52,7 @@ task_for_pid-allow
     //4. 将文件装回iphone 即可(这是 不可能的事 /Developer 文件夹是只读的)
     //5.将修改过权限的debugserver 放在 /usr/bin 路劲下，我们以后会通过终端来使用它。
     ```
+    ![](/assets/Snip20180610_18.png)
     
 - 4、 **注意：**<br>直接将签名回去的debugserver 直接拖回去是不行的。是不能覆盖 **/Developer/usr/bin** 目录的。那怎么办呢？<br> 是这样的，到时我们需要在手机端启动Debugserver 这个服务，所以我们直接将 debugserver 拖到 /usr/bin目录下了，这样我们就可以在手机上通过终端来启动debugserver了。<br>
 **debugserver 常用法：**
