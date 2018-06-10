@@ -112,8 +112,15 @@ $ lldb
 process connect connect://手机ip地址：debug端口号
 
 方式2：
-python tcppython -t 10011：100122
-// 
+python tcppython -t 10011：10012
+// 使用mac端的10012端口绑定iPhone端的10011端口
+process connect connect:localhost:10012
+```
+- 3、使用LLDB命令让程序继续运行
+```
+(lldb)continue
+```
+
 
 
 
