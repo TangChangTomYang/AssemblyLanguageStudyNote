@@ -89,23 +89,23 @@ Usage:
   
 
 ####四、动态调试任意App 的主要步骤如下：
-**iPhone 端：**
-- 1、获取要调试的App 的进程号或者ID
+
+- 1、(iPhone 端：)获取要调试的App 的进程号或者ID
 ```
 ps -A  // 查看所有的进程信息,比如：我们获取的是WeChat
 ```
-- 2、让debugserver 附加到某个App （要动态调试哪个App）
+- 2、(iPhone 端：)让debugserver 附加到某个App （要动态调试哪个App）
 ```
 debugserver *:10011 -a Wechat
 // 我们这里使用10011端口(其他非保留都可以)来监控 Wechat这个 程序
 ```
-**mac端：**
-- 1、启动LLDB
+
+- 1、(mac端：)启动LLDB
 ```
 $ lldb
 (lldb)
 ```
-- 2、连接debugserver服务
+- 2、(mac端：)连接debugserver服务
 
   ```
   //方式1：
@@ -121,6 +121,13 @@ $ lldb
 ```
 (lldb)continue
 ```
+
+**通过debugserver启动App**
+```
+$debugserver -x auto *:端口号  App 可执行文件路径
+```
+<br>
+<br>
 
 
 
@@ -169,6 +176,7 @@ breakpoint set --name test
 // 一旦在LLDB 中执行了这句代码，就会在短点的下一执行命令前先执行 这个表达式
 express self.view.backgroundColor = [UIColor redColor];
 ```
+**expression、express -- 和指令print、p call 的效果一样**
 **express -o -- ** 和 指令**po**的效果是一样的。
 
 - 5、**thread backtrace** <br> 打印线程的堆栈信息。<br> 可以用简写：**bt** 代替，效果一样的，都是打印堆栈信息。
@@ -210,7 +218,7 @@ breakpoint set -n test  //给所有的test 设置断点，有很多个（这个�
 
 breakpoint set -n touchesBegan：withEvent：  // 给很多个touchesBegan：withEvent： 设置断点（这个是oc 的方法）
 
-breakpoint set -n “ViewController touchesBegan：withEvent：” 给当前控制器的 touchesBegan：withEvent： 设置断点
+breakpoint set -n “-[ViewController touchesBegan：withEvent：]” 给当前控制器的 touchesBegan：withEvent： 设置断点
 ```
 
 - 16.1、 **breakpoint set -r 正则表达式**，给匹配正则的所有方法加断点
@@ -241,6 +249,40 @@ self.view.backgroundcolor = [UIColor redColor];
 DONE  
 
 ```
+
+
+- 22、**内存断点** 这个很重要，有点像KVO 的感觉
+  - **在内存数据发生改变的时候触发**
+  - **watchpoint set variable 变量**
+  ```
+  watchpoint set variable self->age
+  //监听 _age 变量的改变
+  ```
+  - **watchpoint set express 地址**
+  ```
+  watchpoint set express &(self->age)
+  ```
+  - **watchpoint list**
+  - **watchpoint disable 编号**
+  - **watchpoint enable 断点编号**
+  - **watchpoint delete 断点编号**
+  - **watchpoint commnad add 断点编号**
+  - **watchpoint cammand list 断点编号**
+  - **watchpoint cammond delete 断点编号**
+  
+- 23、**image lookup**
+  - **image lookup -t 类型： 查找某个类型的信息**
+  - **image lookup -a 地址： 根据内存地址查找在模块中的位置**
+  - **image lookup -n 符号或者函数名：查找某个函数或者符号的位置**
+  
+- 24、**image list** 列出所加载的模块信息
+  - **image list -o -f** 打印出模块的偏移地址，全路劲
+  
+  
+  
+**小技巧：**<br> 敲enter键，会自定执行上次的命令。<br> 绝大部分命令可以使用缩写。
+  
+
 
 
 
