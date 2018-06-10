@@ -36,7 +36,7 @@ get-task-allow
 task_for_pid-allow
 ```
 <br>
-- 3、**如何给debugserver签上权限？**<br><br>(1)、iphone上的 **/Developer**目录是只读的，无法直接对**/Developer/usr/bin/debugserver**文件签名，需要先把debugserver复制到mac上，再通过ldid签名。
+- 3、**如何给debugserver签上权限？**<br><br>(1)、iphone上的 **/Developer**目录是只读的，无法直接对**/Developer/usr/bin/debugserver**文件签名，需要先把debugserver复制到mac上，再通过ldid签名（也可以使用Codesign签名）。
 
     ```
     //1.先将权限导出
@@ -52,10 +52,22 @@ task_for_pid-allow
     //4. 将文件装回iphone 即可(这是 不可能的事 /Developer 文件夹是只读的)
     //5.将修改过权限的debugserver 放在 /usr/bin 路劲下，我们以后会通过终端来使用它。
     ```
-    ![](/assets/Snip20180610_18.png)
+    ![](/assets/Snip20180610_18.png)(2)、使用codesign签名
+   
+ 
+   ```
+  //查看权限信息
+  $ codesign -d --entitlements - debugserver
+
+  //签名权限
+  $ codesign -f -s - --entitlements debugserver
+
+  //或者简写
+  $ codesign -fs- --entitlements debugserver
+  ```    
     
 - 4、 **注意：**<br>直接将签名回去的debugserver 直接拖回去是不行的。是不能覆盖 **/Developer/usr/bin** 目录的。那怎么办呢？<br> 是这样的，到时我们需要在手机端启动Debugserver 这个服务，所以我们直接将 debugserver 拖到 /usr/bin目录下了，这样我们就可以在手机上通过终端来启动debugserver了。<br>
-**debugserver 常用法：**
+<br>**debugserver 常用法：**
 ```
 Usage:
   debugserver host:port [program-name program-arg1 program-arg2 ...]
@@ -65,13 +77,43 @@ Usage:
   debugserver host:port --attach=<process_name>
   debugserver /path/file --attach=<process_name>
   ```
-**最常用的一个指令:**
+**(iPhone端)最常用的一个指令:**
+
   ```
   // 表示任何客户端（mac 终端）ip 都可监听10011端口， 都可以连接过来
   debugserver *:10011 -a WeChat       
-  // -a 是attachment 附加的意思 ， 表示我们要调试WeChat
-```
+  // -a 是attachment 附加的意思 ， 表示我们要调试WeChat（进程ID和名字都可以）
+  // 端口号，使用iPhone的某个端口启动debugserver（只要不是保留的即可）  
+                
+  ```
   
+
+####四、动态调试任意App 的主要步骤如下：
+**iPhone 端：**
+- 1、获取要调试的App 的进程号或者ID
+```
+ps -A  // 查看所有的进程信息,比如：我们获取的是WeChat
+```
+- 2、让debugserver 附加到某个App （要动态调试哪个App）
+```
+debugserver *:10011 -a Wechat
+// 我们这里使用10011端口(其他非保留都可以)来监控 Wechat这个 程序
+```
+**mac端：**
+- 1、启动LLDB
+```
+$ lldb
+(lldb)
+```
+- 2、连接debugserver服务
+```
+//方式1：
+(lldb)
+process connect connect://手机ip地址：debug端口号
+
+方式2：
+python tcppython -t 10011：100122
+// 
 
 
 
