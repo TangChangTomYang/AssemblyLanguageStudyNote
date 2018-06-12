@@ -195,6 +195,7 @@ ret
     ldur w8, [x29,#-0x8]    //  可以看出右边的offset（#-0x8）是个负数时使用ldur，offset 是正数时，使用 ldr
     ldur x9, [x29,#-0x10]
     ```
+    **ldp 示例：**
 
 
 
