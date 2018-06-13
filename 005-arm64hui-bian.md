@@ -326,6 +326,26 @@ wzr、xzr 的主要作用是 置0 、清零 操作。
     具体汇编调用如下：
     ![](/assets/Snip20180613_6.png)
     结论： 非叶子函数调用时要多提升堆栈空间用户保护 fp 与 lr（保护现场）
+    
+    
+    
+    
+    
+    
+##我们oc方法一般转换成这样
+
+
+```
+UIViewController *vc；
+UIView *redView;
+[vc.view insertSubView:redView atIndex:2];
+最终转换成C语言的运行时方法如下：
+// 这个是runtime 的具体实现，当我们把断点打在OC上 实际本质他是打在了oc 的运行是方法上的
+objc_msgSend(vc.view,@selector(insertSubView:atIndex:),redView, 2);
+```
+
+
+
 
     
     
