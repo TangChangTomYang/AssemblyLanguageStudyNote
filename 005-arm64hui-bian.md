@@ -93,7 +93,7 @@ b {条件} 目标地址
     ```
   b label        // 程序无条件跳转到标号label 处继续执行
   cmp r1,#12     // 当 cpsr 寄存器中的z条件码=1时，程序跳转到标号label2处执行
-  b label2
+  beq label2
     ```
 
 
@@ -110,28 +110,29 @@ bl {条件} 目标地址
 <br>
 **常用示例：**
 
-```
-.text
-.global _text
+    ```
+    .text
+    .global _text
 
-//内部私有函数
-mycode：
-mov x0， #0x01
-mov x1, #0x02
-add x2, x0,x1
-ret
+    //内部私有函数
+    mycode：
+    mov x0， #0x01
+    mov x1, #0x02
+    add x2, x0,x1
+    ret
+    //
+    //
+    //
+    //test 函数实现    
+    _test:
+    ;bl 指令（函数调用）
+    bl mycode        // bl 指令跳转完成后会继续往后面执行
+    mov x3, #0x03
+    mov x4, #0x04
+    ret
 
-
-
-//test 函数实现
-_test:
-;bl 指令（函数调用）
-bl mycode        // bl 指令跳转完成后会继续往后面执行
-mov x3, #0x03
-mov x4, #0x04
-ret
-
-```
+    ```
+    **bl 指令的本质：**<br>当执行bl指令时，其实其内部做了两件事：<br>（1）将bl 的下一条指令的地址存入lr寄存器。<br>（2）执行bl 指令的跳转。
 
 
 
@@ -211,8 +212,8 @@ ret
     ```
     //
     //
-    ldur w8, [x29,#0x8]    
-    ldur x9, [x29,#0x10]
+    ldr w8, [x29,#0x8]    
+    ldr x9, [x29,#0x10]
     //
     //
     ldur w8, [x29,#-0x8]    //  可以看出右边的offset（#-0x8）是个负数时使用ldur，offset 是正数时，使用 ldr
@@ -246,131 +247,6 @@ ret
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##一、寄存器
 - 1、**通用寄存器**
     - x0~x28 : 64位
@@ -391,7 +267,7 @@ ret
     
 
 
-- 4、**链接寄存器**
+- 4、**链接寄存器**(就是x30寄存器，存储的是函数返回的地址)
     - lr（Link Register），也就是x30 寄存器，存储着当前正在执行函数返回后将要执行的下一条指令的地址
     
     
@@ -401,6 +277,18 @@ ret
 - 5、**程序状态寄存器**
     - cpsr （current Program Status Register），我们 cmp （比较指令的结果就存在cspr 中的）
     - spsr （Saved Program Status Register）异常状态下使用。
+    
+    
+    
+- 6、**wzr、xzr零寄存器**，wzr（word zero register） 是32位的，xzr是64位的。<br>**注意：**<br> （1）、我们在lldb 中是 读不出zer 和 xzr 的，但是在代码里是经常能看到的。
+```
+stur wzr,[x29, #-0x14]     // 往内存中写0
+stur xzr,[x29, #-0x20]     // 往内存中写0
+```
+wzr、xzr 的主要作用是 置0 、清零 操作。
+
+
+
     
     
     
