@@ -37,6 +37,11 @@ xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
 ![](/assets/objMinSize.png)
 <br><br>**结论:**<br>(1).系统分配了16个字节给NSObject 对象(通过 <malloc/malloc.h> 下的 malloc_size函数获取)<br>(2).但是NSObject对象内部只使用了8个字节的空间(64位环境,可以通过claa_getInstanceSize 函数获取)
 
+<br>
+- 5、**一个自定义对象占用多少个字节**
+![](/assets/Snip20180619_1.png)
+如图所示,一个自定义的student 对象占用16个字节,具体细节如下图:<br><br>
+![](/assets/Snip20180619_2.png)
 
 
 
@@ -54,12 +59,8 @@ po :打印对象,print object
 
 
 
-
-
 **eg:**<br> x/3xw 0x10000<br>表示的是从内存地址xxx开始,以某种数据格式,读取几块大小yyy的内存数据<br> 
 ![](/assets/readeg.png)
-
-
 
 
 
