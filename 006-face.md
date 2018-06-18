@@ -30,12 +30,39 @@ xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
 
 
 <br>
-- 4、**一个NSObject 对象占用多少内存空间呢？**
+- 4、**一个NSObject 对象占用多少内存空间呢？**<br><br>
 ![](/assets/objSize.png)
 <br><br>
 **其实呢,在创建对象时其实对象应该占用8个字节,但是因为框架设计的因素,一个NSObject 对象至少占用16个字节**
 ![](/assets/objMinSize.png)
-<br>**结论:**<br>(1).系统分配了16个字节给NSObject 对象(通过 <malloc/malloc.h> 下的 malloc_size函数获取)<br>(2).但是NSObject对象内部只使用了8个字节的空间(64位环境,可以通过claa_getInstanceSize 函数获取)
+<br><br>**结论:**<br>(1).系统分配了16个字节给NSObject 对象(通过 <malloc/malloc.h> 下的 malloc_size函数获取)<br>(2).但是NSObject对象内部只使用了8个字节的空间(64位环境,可以通过claa_getInstanceSize 函数获取)
+
+
+
+
+
+
+
+
+
+####二、常用LLDB指令
+
+print\ p :打印
+po :打印对象,print object
+
+**读取内存:**<br> memory read/(数量格式块大小) 内存地址<br>**可以简写**<br> x/(数量格式字节数) 内存地址<br><br>**格式说明:**<br>x 是16进制\f是浮点\d是10进制<br> b byte1字节\h half word 2字节\w word 4字节\g giant word 8 字节
+
+
+
+
+
+**eg:**<br> x/3xw 0x10000<br>表示的是从内存地址xxx开始,以某种数据格式,读取几块大小yyy的内存数据,<br> 
+
+
+
+<br>**修改内存中的值**<br> memory write 内存地址 数值<br> eg: <br> memory write 0x10000 10
+
+
 
 
 
