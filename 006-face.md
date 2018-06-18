@@ -3,11 +3,12 @@
 
 ####一、Objective-C的本质
 
-- 1、我们平时编写的Objective-C代码，底层实现其实都是C\C++代码<br>**Objective-C --> C\C++ --> 汇编语言 --> 机器语言**<br><br>所以，Objective-C 的面向对象的实现都是基于C\C++ 的数据结构实现的.<br><br>**其实Objective-C的 对象、类 主要基于C\C++ 的结构体实现**
+- 1、**我们平时编写的Objective-C代码，底层实现其实都是C\C++代码**<br><br>**Objective-C --> C\C++ --> 汇编语言 --> 机器语言**<br><br>所以，Objective-C 的面向对象的实现都是基于C\C++ 的数据结构实现的.<br><br>**其实Objective-C的 对象、类 主要基于C\C++ 的结构体实现**
 
 
 <br>
-- 2、将Objective-C代码转换为C\C++代码
+- 2、**将Objective-C代码转换为C\C++代码**
+
 ```
 clang -rewrite-objc main.m -o main.cpp
 // 将oc 代码转换成C++代码,虽然这样可以直接转成C++，
@@ -16,4 +17,21 @@ clang -rewrite-objc main.m -o main.cpp
 //
 // 建议使用下面的指令：
 xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
+// xcrun -sdk iphoneos 表示使用Xcode的工具
+// -arch arm64 表示指定架构
+
 ```
+
+- 3、**NSObject 的底层实现**
+![](/assets/objc.png)
+**其实 Class 就是一个指向结构体的指针**
+![](/assets/class.png)
+
+
+
+
+
+
+
+
+
