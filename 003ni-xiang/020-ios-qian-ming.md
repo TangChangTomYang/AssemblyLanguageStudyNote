@@ -227,3 +227,5 @@ md5 abc.txt
 
 
 ##六、iOS 签名机制
+
+![](/assets/Snip20180618_10.png)
