@@ -228,4 +228,19 @@ md5 abc.txt
 
 ##六、iOS 签名机制
 
+####1、iOS 打包流程
 ![](/assets/Snip20180618_10.png)
+
+####2、关于平时用到的打包文件的说明
+- 1、**xxx.cerSigningRequest文件，其实就是Mac的公钥**。<br>当我们使用钥匙串向证书机构请求证书时，其实就是我们在当前电脑上生成一对公私钥，把公钥发给CA注册公钥的过程。(从证书机构请求证书这一环节)
+
+
+- 2、**xxx.cer 文件，其实利用Apple的私钥，对mac公钥生成数字签名**，这一环节主要保证以后Mac的公钥不被篡改。
+
+
+- 3、**xxx.mobileprovision文件，其实是利用Apple的私钥对[xxx.cer+devices+AppID+entitlements ], 进行签名**
+
+- 4、**xxx.p12 文件，其实就是导出 Apple 私钥对本电脑的公钥的签名，其实就是导出本机的公钥**
+
+
+
