@@ -175,7 +175,7 @@ md5 abc.txt
 
 
 
-#四、证书（Certification）
+#四、证书（Certification）（公钥+描述信息-->签名）
 
 ####证书的介绍
 - 1、证书，都是由权威机构认证的。
