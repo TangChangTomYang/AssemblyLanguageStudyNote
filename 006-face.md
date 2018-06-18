@@ -63,7 +63,7 @@ po :打印对象,print object
 
 
 
-<br>**修改内存中的值**<br> memory write 内存地址 数值<br> eg: <br> memory write 0x10000 10
+<br>**修改内存中的值**<br> memory write 内存地址 数值<br> **eg: **<br> memory write 0x10000 10
 
 
 
