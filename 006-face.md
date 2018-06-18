@@ -26,6 +26,7 @@ xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
 ![](/assets/objc.png)
 **其实 Class 就是一个指向结构体的指针**
 ![](/assets/class.png)
+**既然Class 是一个指向结构体的指针，而一个NSObject 对象内部只有一个isa 的指针，**
 
 
 
