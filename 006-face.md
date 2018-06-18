@@ -56,7 +56,10 @@ po :打印对象,print object
 
 
 
-**eg:**<br> x/3xw 0x10000<br>表示的是从内存地址xxx开始,以某种数据格式,读取几块大小yyy的内存数据,<br> 
+**eg:**<br> x/3xw 0x10000<br>表示的是从内存地址xxx开始,以某种数据格式,读取几块大小yyy的内存数据<br> 
+![](/assets/readeg.png)
+
+
 
 
 
