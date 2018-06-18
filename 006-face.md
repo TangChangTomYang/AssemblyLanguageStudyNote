@@ -21,12 +21,23 @@ xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
 // -arch arm64 表示指定架构
 
 ```
-
+<br>
 - 3、**NSObject 的底层实现**
 ![](/assets/objc.png)
 **其实 Class 就是一个指向结构体的指针**
 ![](/assets/class.png)
 **既然Class 是一个指向结构体的指针，而一个NSObject 对象内部只有一个isa 的指针，**
+
+
+<br>
+- 4、**一个NSObject 对象占用多少内存空间呢？**
+![](/assets/objSize.png)
+<br><br>
+**其实呢,在创建对象时其实对象应该占用8个字节,但是因为框架设计的因素,一个NSObject 对象至少占用16个字节**
+![](/assets/objMinSize.png)
+
+
+
 
 
 
