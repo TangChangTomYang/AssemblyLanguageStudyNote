@@ -130,6 +130,7 @@ md5 abc.txt
 - 1、防止数据被篡改
 - 2、正版软件的标识 （比如： https://www.realvnc.com/en/connect/download/vnc/）
 ![](/assets/Snip20180618_4.png)
+- 3、口令加密（登录密码加密 ）
 
 
 
