@@ -46,4 +46,5 @@
   * [001-OC 对象的本质](001-oc-dui-xiang-de-ben-zhi.md)
   * 002-常用LLDB 指令
 * [006-face](006-face.md)
+  * [001- OC 对象的本质](006-face/001-oc-dui-xiang-de-ben-zhi.md)
 
