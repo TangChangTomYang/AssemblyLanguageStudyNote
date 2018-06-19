@@ -84,19 +84,19 @@ po :打印对象,print object
 ####三、2个容易混淆的函数
 
 - 1、**创建一个实例对象,至少需要多少内存?**
-```
+
+        ```
 # import <objc/runtime.h>
 class_getInstanceSize([NSObject class]);
-```
+        ```
 
 - 2、**创建一个实例对象,实际分配多少内存空间?**
-```
+
+        ```
 # import <mallac/malloc.h>
 malloc_size((__bridge const void * )obj);
-```
-
+        ```
 **注意:**<br> **在对象实际分配内存时,实际内存的大小是16的倍数,这就是我们所谓的内存对齐**,常用内存大小如下:<br>Buckeets sized {16, 32, 48, 64, 80,96, 112, 128, 256}.
-
 <br>
 **注意:**<br>结构体内存对齐是最大成员变量占用内存的倍数.
 
@@ -108,11 +108,42 @@ malloc_size((__bridge const void * )obj);
 
 
 ##### Objective-C中的对象,简称OC对象,主要可以分为3种
+<br><br>
 - 1、**instance对象(实例对象)**<br><br>(1)、 instance 对象就是通过alloc 出来的对象,每次调用alloc 都会产生一个新的instance 对象
 ![](/assets/Snip20180619_4.png)
-(2)、object1、object2 是NSObject的instance对象(实例对象),他们是不同的2个对象,分别占用不同的内存空间.<br>(3)、instance 对象在内存中存储的信息包括:<br> **isa 指针**、**其它成员变量**
+<br>(2)、object1、object2 是NSObject的instance对象(实例对象),他们是不同的2个对象,分别占用不同的内存空间.<br><br>(3)、instance 对象在内存中存储的信息包括:<br>**isa 指针**<br>**其它成员变量**
+![](/assets/Snip20180620_3.png)
 
+
+<br><br><br>
 - 2、**class 对象(类对象)**
+
+```
+#import <Foundation/Foundation.h>
+#import <objc/runtime.h>
+int main(int argc, const char * argv[]) {
+
+NSObject *obj1 = [[NSObject alloc]init];
+NSObject *obj2 = [[NSObject alloc]init];
+// 以下都是类对象,一个类的类对象在内存中是唯一的
+Class cls1 = [obj1 class];
+Class cls2 = [obj2 class];
+Class cls3 = object_getClass(obj1);
+Class cls4 = object_getClass(obj2);
+Class cls5 = [NSObject class];
+NSLog(@"cls1:%p, cls2:%p, cls3:%p, cls4:%p, cls5:%p ",cls1,cls2,cls3,cls4,cls5);
+// 打印结果:
+// cls1:0x7fffa4c5c140, cls2:0x7fffa4c5c140, cls3:0x7fffa4c5c140, cls4:0x7fffa4c5c140, cls5:0x7fffa4c5c140
+
+return 0;
+}
+```
+(1)、cls1、cls2、cls3、cls4、cls5 都是NSObject 的class 对象(类对象).<br>(2)、他们是同一个对象,每个类在内存找那个有且只有一个class 对象.<br>(3)、class 对象在内存中存储的信息主要有:
+<br> **isa 指针**<br> **superclass指针**<br>**类的属性信息(@property)**<br>**类的对象方法信息(instance method)**<br>**类的协议信息(protocal)**<br>**类的成员变量(变量类型,变量名等描述信息)**<br><br>
+
+
+
+
 
 - 3、**meta-class对象(元类对象)**
 
