@@ -49,7 +49,7 @@ xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
 - 6、** 一个Person对象,一个student 对象占用多少内存空间?**
 ![](/assets/Snip20180619_3.png)
 如上图所示:<br>(1)、一个Person 对象占用16个字节,其中isa 占用8个字节,_age 占用4个字节,因为n内存对齐的关系,一个Person对象最终占用16个字节.<br>(2)、 一个student 对象占用的内存大小其实就是 里面的成员变量的大小的总和,因为Person对象占用的是16字节,且其中有4个字节正好和_no的大小一样,且没有用,因此_no 使用的是Person 内没有使用的内存空间,因此student对象也是占用16个字节.<br><br>
-**注意点:**<br>**内存对齐: 结构体的大小必须是最大成员变量的倍数,ios 中一般是8字节的倍数(isa 大小8个字节)**<br><br>
+**注意点:**<br>**结构体内存对齐: 结构体的大小必须是最大成员变量的倍数,ios 中一般是8字节的倍数(isa 大小8个字节)**<br><br>
 ![](/assets/Snip20180619_5.png)<br><br>
 **注意2:**<br> 我们通过alloc init 方法创建出来的实例对象中是不包含方法的.因为同一种类的实例对象可能有多个,但方法只有一个.
 
@@ -76,6 +76,32 @@ po :打印对象,print object
 
 
 <br>**修改内存中的值**<br> memory write 内存地址 数值<br> **eg: **<br> memory write 0x10000 10
+
+
+
+####三、2个容易混淆的函数
+
+- 1、**创建一个实例对象,至少需要多少内存?**
+```
+# import <objc/runtime.h>
+class_getInstanceSize([NSObject class]);
+```
+
+- 2、**创建一个实例对象,实际分配多少内存空间?**
+```
+# import <mallac/malloc.h>
+malloc_size((__bridge const void * )obj);
+```
+
+**注意:**<br> **在对象实际分配内存时,实际内存的大小是16的倍数,这就是我们所谓的内存对齐**,常用内存大小如下:<br>Buckeets sized {16, 32, 48, 64, 80,96, 112, 128, 256}.
+
+<br>
+**注意:**<br>结构体内存对齐是最大成员变量占用内存的倍数.
+
+
+
+
+
 
 
 
