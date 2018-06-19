@@ -100,7 +100,21 @@ malloc_size((__bridge const void * )obj);
 <br>
 **注意:**<br>结构体内存对齐是最大成员变量占用内存的倍数.
 
+<br><br><br>
 
+
+
+####四、OC对象的分类
+
+
+##### Objective-C中的对象,简称OC对象,主要可以分为3种
+- 1、**instance对象(实例对象)**<br><br>(1)、 instance 对象就是通过alloc 出来的对象,每次调用alloc 都会产生一个新的instance 对象
+![](/assets/Snip20180619_4.png)
+(2)、object1、object2 是NSObject的instance对象(实例对象),他们是不同的2个对象,分别占用不同的内存空间.<br>(3)、instance 对象在内存中存储的信息包括:<br> **isa 指针**、**其它成员变量**
+
+- 2、**class 对象(类对象)**
+
+- 3、**meta-class对象(元类对象)**
 
 
 
