@@ -107,7 +107,7 @@ malloc_size((__bridge const void * )obj);
 ####四、OC对象的分类
 
 
-##### Objective-C中的对象,简称OC对象,主要可以分为3种
+##### Objective-C中的对象,简称OC对象,主要可以分为3种:<br><br>实例对象(instance对象)、class 对象、metaclass 对象
 <br><br>
 - 1、**instance对象(实例对象)**<br><br>(1)、 instance 对象就是通过alloc 出来的对象,每次调用alloc 都会产生一个新的instance 对象
 ![](/assets/Snip20180619_4.png)
@@ -186,6 +186,14 @@ BOOL isM
 
 **注意:**<br>以下代码只能获取到class 对象,并不能获取meta-class
 ![](/assets/Snip20180620_5.png)
+
+
+
+
+####四、isa 指针
+
+
+
 
 
 
