@@ -203,7 +203,11 @@ BOOL isM
 
 
 
-####四、isa 指针
+####四、OC 对象中的重要的2个指针:isa 指针、superclass 指针
+
+
+<br>
+#####一、isa 指针
 
 ![](/assets/Snip20180621_3.png)
 
@@ -212,6 +216,25 @@ BOOL isM
 - 2、**当我们调用 对象的方(- 号方法)法时,其实是通过实例对象(instance 对象)的isa 找到 类对象(class 对象),最后在类对象(class)对象中找到对应的方法并执行的.**
 
 - 3、**当我们调用 类方法(+ 号方法),其实是通过 类对象(class 对象) 的isa 指针 找到元类对象(metaclass 对象),在metaclass中找到对应的方法并执行的.**
+
+
+
+
+
+
+<br>
+#####二、class 对象的 superclass 指针
+
+![](/assets/Snip20180621_4.png)
+
+- 1、**从上图可以看出, Student 类继承自Person,Person 类继承自 NSObject.**
+
+- 2、 **当Student 的 实例对象(instance 对象) 要调用Person的对象方法时,会先通过 Student 的实例对象(instance 对象)的isa 指针找到 Student 的类对象(class 对象),然后通过Student 的类对象(class 对象)的superclass 指针找到,Person 的类对象(class 对象),然后在Person 的类对象(class 对象)中找到对应的方法并执行.**
+
+
+
+
+
 
 
 
