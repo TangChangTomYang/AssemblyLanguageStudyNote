@@ -108,6 +108,7 @@ malloc_size((__bridge const void * )obj);
 
 
 ##### Objective-C中的对象,简称OC对象,主要可以分为3种:<br><br>实例对象(instance对象)、class 对象、metaclass 对象
+
 <br><br>
 - 1、**instance对象(实例对象)**<br><br>(1)、 instance 对象就是通过alloc 出来的对象,每次调用alloc 都会产生一个新的instance 对象
 ![](/assets/Snip20180619_4.png)
@@ -203,6 +204,16 @@ BOOL isM
 
 
 ####四、isa 指针
+
+![](/assets/Snip20180621_3.png)
+
+- 1、**从上图我们可以看出:<br><br>(1)、实例对象(instance 对象) 的isa 指针指向, 类对象(class 对象),类对象(class 对象)的isa 指针,指向元类对象(metaclass).<br><br>(2)、实例对象(instance 对象) 存储的是isa 指针和其他成员变量的信息,类对象(class 对象)中存储的是isa指针、superclass、属性、对象方法(- 号方法)、协议等,而元类对象(metaclass) 中存储的是isa 、superclass、类方法等.**
+
+- 2、**当我们调用 对象的方(- 号方法)法时,其实是通过实例对象(instance 对象)的isa 找到 类对象(class 对象),最后在类对象(class)对象中找到对应的方法并执行的.**
+
+- 3、**当我们调用 类方法(+ 号方法),其实是通过 类对象(class 对象) 的isa 指针 找到元类对象(metaclass 对象),在metaclass中找到对应的方法并执行的.**
+
+
 
 
 
