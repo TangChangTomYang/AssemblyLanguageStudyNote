@@ -147,7 +147,46 @@ return 0;
 
 
 
-- 3、**meta-class对象(元类对象)**
+- 3、**meta-class对象(元类对象)**  
+
+```
+NSObject *obj1 = [[NSObject alloc]init];
+NSObject *obj2 = [[NSObject alloc]init];
+
+// 以下都是类对象(Class 对象),一个类的类对象在内存中是唯一的
+Class cls1 = [obj1 class];
+Class cls2 = [obj2 class];
+Class cls3 = object_getClass(obj1);
+Class cls4 = object_getClass(obj2);
+Class cls5 = [NSObject class];
+
+
+NSLog(@"cls1:%p, cls2:%p, cls3:%p, cls4:%p, cls5:%p ",cls1,cls2,cls3,cls4,cls5);
+// 打印结果:
+// cls1:0x7fffa4c5c140, cls2:0x7fffa4c5c140, cls3:0x7fffa4c5c140, cls4:0x7fffa4c5c140, cls5:0x7fffa4c5c140
+
+// 将Class 对象传入获取 metaClass 对象
+Class metaClass =  object_getClass(cls5);
+NSLog(@"metaClass: %p",metaClass);
+
+// 注意不论 class 调用多少次,获取的都是Class 对象![](/assets/Snip20180620_4.png)
+Class cls6 = [[NSObject class] class];
+NSLog(@"cls6: %p",cls6);
+
+// 判断一个类是否是一个metaclass
+BOOL isM
+```
+![](/assets/Snip20180620_2.png)
+
+- 1、objectMetaClass 是NSObject 的**meta-class** 对象(元类对象)
+- 2、每个类在内存中有且只有一个**meta-class** 对象
+- 3、meta-class 对象和Class 对象的内存结构是一样的,但是用途是不一样的,在内存中存储的信息主要包括:<br><br> **isa 指针**<br>**superclass指针** <br>**类的 类方法 信息(Class method)**
+
+![](/assets/Snip20180620_4.png)
+
+**注意:**<br>以下代码只能获取到class 对象,并不能获取meta-class
+![](/assets/Snip20180620_5.png)
+
 
 
 
