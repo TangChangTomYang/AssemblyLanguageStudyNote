@@ -229,7 +229,7 @@ BOOL isM
 
 - 1、**从上图可以看出, Student 类继承自Person,Person 类继承自 NSObject.**
 
-- 2、 **当Student 的 实例对象(instance 对象) 要调用Person的对象方法时,会先通过 Student 的实例对象(instance 对象)的isa 指针找到 Student 的类对象(class 对象),然后通过Student 的类对象(class 对象)的superclass 指针找到,Person 的类对象(class 对象),然后在Person 的类对象(class 对象)中找到对应的方法并执行.**
+- 2、 **当Student 的 实例对象(instance 对象) 要调用Person的对象方法时,会先通过 Student 的实例对象(instance 对象)的isa 指针找到 Student 的类对象(class 对象),然后通过Student 的类对象(class 对象)的superclass 指针找到Person 的类对象(class 对象),然后在Person 的类对象(class 对象)中找到对应的instance方法并执行.**
 
 
 
