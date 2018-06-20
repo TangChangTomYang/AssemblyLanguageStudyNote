@@ -139,7 +139,9 @@ return 0;
 }
 ```
 (1)、cls1、cls2、cls3、cls4、cls5 都是NSObject 的class 对象(类对象).<br>(2)、他们是同一个对象,每个类在内存找那个有且只有一个class 对象.<br>(3)、class 对象在内存中存储的信息主要有:
-<br> **isa 指针**<br> **superclass指针**<br>**类的属性信息(@property)**<br>**类的对象方法信息(instance method)**<br>**类的协议信息(protocal)**<br>**类的成员变量(变量类型,变量名等描述信息)**<br><br>
+<br> **isa 指针**<br> **superclass指针**<br>**类的属性信息(@property)**<br>**类的对象方法信息(instance method,带减号的方法)**<br>**类的协议信息(protocal)**<br>**类的成员变量(变量类型,变量名等描述信息) **
+![](/assets/Snip20180620_1.png)
+<br><br>
 
 
 
