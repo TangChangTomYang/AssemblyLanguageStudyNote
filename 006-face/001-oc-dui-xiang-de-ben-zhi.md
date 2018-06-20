@@ -113,6 +113,7 @@ malloc_size((__bridge const void * )obj);
 ![](/assets/Snip20180619_4.png)
 <br>(2)、object1、object2 是NSObject的instance对象(实例对象),他们是不同的2个对象,分别占用不同的内存空间.<br><br>(3)、instance 对象在内存中存储的信息包括:<br>**isa 指针**<br>**其它成员变量**
 ![](/assets/Snip20180620_3.png)
+![](/assets/Snip20180621_1.png)
 
 
 <br><br><br>
@@ -140,7 +141,10 @@ return 0;
 ```
 (1)、cls1、cls2、cls3、cls4、cls5 都是NSObject 的class 对象(类对象).<br>(2)、他们是同一个对象,每个类在内存找那个有且只有一个class 对象.<br>(3)、class 对象在内存中存储的信息主要有:
 <br> **isa 指针**<br> **superclass指针**<br>**类的属性信息(@property)**<br>**类的对象方法信息(instance method,带减号的方法)**<br>**类的协议信息(protocal)**<br>**类的成员变量(变量类型,变量名等描述信息) **
+
 ![](/assets/Snip20180620_1.png)
+
+
 <br><br>
 
 
@@ -169,13 +173,16 @@ NSLog(@"cls1:%p, cls2:%p, cls3:%p, cls4:%p, cls5:%p ",cls1,cls2,cls3,cls4,cls5);
 Class metaClass =  object_getClass(cls5);
 NSLog(@"metaClass: %p",metaClass);
 
-// 注意不论 class 调用多少次,获取的都是Class 对象![](/assets/Snip20180620_4.png)
+// 注意不论 class 调用多少次,获取的都是Class 对象
+
 Class cls6 = [[NSObject class] class];
 NSLog(@"cls6: %p",cls6);
 
 // 判断一个类是否是一个metaclass
 BOOL isM
+
 ```
+
 ![](/assets/Snip20180620_2.png)
 
 - 1、objectMetaClass 是NSObject 的**meta-class** 对象(元类对象)
@@ -183,9 +190,14 @@ BOOL isM
 - 3、meta-class 对象和Class 对象的内存结构是一样的,但是用途是不一样的,在内存中存储的信息主要包括:<br><br> **isa 指针**<br>**superclass指针** <br>**类的 类方法 信息(Class method)**
 
 ![](/assets/Snip20180620_4.png)
-
+<br>
 **注意:**<br>以下代码只能获取到class 对象,并不能获取meta-class
+
+
 ![](/assets/Snip20180620_5.png)
+
+
+
 
 
 
