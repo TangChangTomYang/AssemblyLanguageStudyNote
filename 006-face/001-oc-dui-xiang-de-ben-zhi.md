@@ -263,7 +263,9 @@ BOOL isM
 ![](/assets/Snip20180623_2.png)
 
 - 4、 **实例方法(instance方法)调用轨迹**
+
 ![](/assets/Snip20180623_4.png)
+
 
 - 5、 **类方法(class 方法)调用轨迹**
 ![](/assets/Snip20180623_5.png)
