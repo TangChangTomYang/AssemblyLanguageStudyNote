@@ -263,13 +263,27 @@ BOOL isM
 ![](/assets/Snip20180623_2.png)
 
 - 4、 **实例方法(instance方法)调用轨迹**
-
 ![](/assets/Snip20180623_4.png)
 
 
 - 5、 **类方法(class 方法)调用轨迹**
 ![](/assets/Snip20180623_5.png)
+
+
+
 <br>**注意:**<br><br>**(1)、在OC中方法的调用,其实没有绝对的类方法和对象方法的区分,都是通过id `objc_msgSend(id self, SEL op, ...) ` 这个方法给指定的对象发消息**<br><br>(2)、 **并不是调用的所有` + 方法`都是在metaclass 中查找到并调用, 有可能表面上调用的是` + 方法` 但实际执行的是` - 方法`,比如 xxx 方法在基类的metaclass对象中 没有但在 基类的class 对象中有**
+
+
+<br>
+#####五、isa 指针 与对象之间的关系的证明
+
+![](/assets/Snip20180623_6.png)
+<br>
+- 1、**isa 指针与对象之间的关系证明:**
+![](/assets/Snip20180623_7.png)
+- 2、**superclass指针之间的关系证明:**
+![](/assets/Snip20180623_8.png)
+
 
 
 
