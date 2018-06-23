@@ -257,18 +257,30 @@ BOOL isM
 
 - 1、**instance对象的isa指向class对象,class对象的isa执行metaclass,metaclass 的isa 都指向 基类的meta class** 
 
-- 2、**class 对象的superclass 指针指向class 对象的superclass对象.** 
+- 2、**class 对象的superclass 指针指向class 对象的父类的class对象,如果class 没有父类,则superclass 指向nil** 
 
-- 3、**metaclass 对象de superclass 指针指向metaclass 的supermetaclass对象.**<br><br>
-即:
+- 3、**metaclass 对象de superclass 指针指向metaclass 的父类的metaclass对象,如果没有父类则指向基类的Class 对象.**<br><br>
 
-        ```
-        // isa 指针:
-        instance->isa ==> class->isa ==> metaclass->isa ==> 基类的metaclass
-        //class superclass 指针:
-        class->superclass ==> superclass->isa
-        //metaclass superclass指针:
-        metaclass->superclass ==> superMetaclass->isa
-        ```
+
+
 ![](/assets/Snip20180623_2.png)
+
+- 4、 **实例方法(instance方法)调用轨迹**
+
+- 5、 **类方法(class 方法)调用轨迹**
+
+![](/assets/Snip20180623_4.png)
+
+![](/assets/Snip20180623_5.png)
+
+
+
+
+
+
+
+
+
+
+
 
