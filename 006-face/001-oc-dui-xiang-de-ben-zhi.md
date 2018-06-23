@@ -281,8 +281,24 @@ BOOL isM
 <br>
 - 1、**isa 指针与对象之间的关系证明:**
 ![](/assets/Snip20180623_7.png)
-- 2、**superclass指针之间的关系证明:**
+
+
+<br>
+#####六、superclass指针之间的关系
+- 1、**superclass指针之间的关系证明:**
 ![](/assets/Snip20180623_8.png)
+
+
+
+<br>
+#####七、class 对象、metaclass 对象的本质
+- 1、**对象 与 方法的 结构图**
+![](/assets/Snip20180623_9.png)
+
+- 2、**窥探struct objc_class的结构**
+![](/assets/Snip20180623_10.png)
+
+
 
 
 
