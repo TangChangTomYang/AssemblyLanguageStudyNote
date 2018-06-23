@@ -259,18 +259,13 @@ BOOL isM
 
 - 2、**class 对象的superclass 指针指向class 对象的父类的class对象,如果class 没有父类,则superclass 指向nil** 
 
-- 3、**metaclass 对象de superclass 指针指向metaclass 的父类的metaclass对象,如果没有父类则指向基类的Class 对象.**<br><br>
-
-
-
+- 3、**metaclass 对象de superclass 指针指向metaclass 的父类的metaclass对象,如果没有父类则指向基类的Class 对象.**
 ![](/assets/Snip20180623_2.png)
 
 - 4、 **实例方法(instance方法)调用轨迹**
-
-- 5、 **类方法(class 方法)调用轨迹**
-
 ![](/assets/Snip20180623_4.png)
 
+- 5、 **类方法(class 方法)调用轨迹**
 ![](/assets/Snip20180623_5.png)
 
 
