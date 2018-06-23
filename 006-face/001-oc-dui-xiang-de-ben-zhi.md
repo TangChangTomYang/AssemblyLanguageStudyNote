@@ -110,8 +110,8 @@ malloc_size((__bridge const void * )obj);
 ##### Objective-C中的对象,简称OC对象,主要可以分为3种:<br><br>实例对象(instance对象)、class 对象、metaclass 对象
 
 <br><br>
-- 1、**instance对象(实例对象)**<br><br>(1)、 instance 对象就是通过alloc 出来的对象,每次调用alloc 都会产生一个新的instance 对象
-![](/assets/Snip20180619_4.png)
+- 1、**instance对象(实例对象)**<br>(0)、获取instance的方式:[[NSObject alloc]init]; <br><br>(1)、 instance 对象就是通过alloc 出来的对象,每次调用alloc 都会产生一个新的instance 对象
+![](/assets/Snip20180619_4.png)<br>
 <br>(2)、object1、object2 是NSObject的instance对象(实例对象),他们是不同的2个对象,分别占用不同的内存空间.<br><br>(3)、instance 对象在内存中存储的信息包括:<br>**isa 指针**<br>**其它成员变量**
 ![](/assets/Snip20180620_3.png)
 ![](/assets/Snip20180621_1.png)
@@ -140,7 +140,8 @@ NSLog(@"cls1:%p, cls2:%p, cls3:%p, cls4:%p, cls5:%p ",cls1,cls2,cls3,cls4,cls5);
 return 0;
 }
 ```
-(1)、cls1、cls2、cls3、cls4、cls5 都是NSObject 的class 对象(类对象).<br>(2)、他们是同一个对象,每个类在内存找那个有且只有一个class 对象.<br>(3)、class 对象在内存中存储的信息主要有:
+(0)、获取class 对象的方式 [obj class]、[NSObject class]、object_getClass(obj)<br>
+(1)、cls1、cls2、cls3、cls4、cls5 都是NSObject 的class 对象(类对象).<br><br>(2)、他们是同一个对象,每个类在内存找那个有且只有一个class 对象.<br><br>(3)、class 对象在内存中存储的信息主要有:
 <br> **isa 指针**<br> **superclass指针**<br>**类的属性信息(@property)**<br>**类的对象方法信息(instance method,带减号的方法)**<br>**类的协议信息(protocal)**<br>**类的成员变量(变量类型,变量名等描述信息) **
 
 ![](/assets/Snip20180620_1.png)
@@ -185,10 +186,10 @@ BOOL isM
 ```
 
 ![](/assets/Snip20180620_2.png)
-
-- 1、objectMetaClass 是NSObject 的**meta-class** 对象(元类对象)
-- 2、每个类在内存中有且只有一个**meta-class** 对象
-- 3、meta-class 对象和Class 对象的内存结构是一样的,但是用途是不一样的,在内存中存储的信息主要包括:<br><br> **isa 指针**<br>**superclass指针** <br>**类的 类方法 信息(Class method)**
+(0)、获取metaclass 对象的方法: objct_getClass(class)<br>
+(1)、objectMetaClass 是NSObject 的**meta-class** 对象(元类对象)<br>
+(2)、每个类在内存中有且只有一个**meta-class** 对象<br>
+(3)、meta-class 对象和Class 对象的内存结构是一样的,但是用途是不一样的,在内存中存储的信息主要包括:<br><br> **isa 指针**<br>**superclass指针** <br>**类的 类方法 信息(Class method)**
 
 ![](/assets/Snip20180620_4.png)
 <br>
@@ -211,7 +212,7 @@ BOOL isM
 
 ![](/assets/Snip20180621_3.png)
 
-- 1、**从上图我们可以看出:<br><br>(1)、实例对象(instance 对象) 的isa 指针指向, 类对象(class 对象),类对象(class 对象)的isa 指针,指向元类对象(metaclass).<br><br>(2)、实例对象(instance 对象) 存储的是isa 指针和其他成员变量的信息,类对象(class 对象)中存储的是isa指针、superclass、属性、对象方法(- 号方法)、协议等,而元类对象(metaclass) 中存储的是isa 、superclass、类方法等.**
+- 1、**从上图我们可以看出:<br><br>(1)、实例对象(instance 对象) 的 isa 指针指向类对象(class 对象),类对象(class 对象)的   isa 指针指向元类对象(metaclass).<br><br>(2)、实例对象(instance 对象) 存储的是isa 指针和其他成员变量的信息,类对象(class 对象)中存储的是isa指针、superclass、属性、对象方法(- 号方法)、协议等,而元类对象(metaclass) 中存储的是isa 、superclass、类方法等.**
 
 - 2、**当我们调用 对象的方(- 号方法)法时,其实是通过实例对象(instance 对象)的isa 找到 类对象(class 对象),最后在类对象(class)对象中找到对应的方法并执行的.**
 
@@ -230,4 +231,44 @@ BOOL isM
 - 1、**从上图可以看出, Student 类继承自Person,Person 类继承自 NSObject.**
 
 - 2、 **当Student 的 实例对象(instance 对象) 要调用Person的对象方法时,会先通过 Student 的实例对象(instance 对象)的isa 指针找到 Student 的类对象(class 对象),然后通过Student 的类对象(class 对象)的superclass 指针找到Person 的类对象(class 对象),然后在Person 的类对象(class 对象)中找到对应的instance方法并执行.**
+
+- 3、**类对象(class对象)的 superclass 指针指向的是父类的类对象(class对象).**
+
+
+
+
+<br>
+#####三、metaclass 对象的 superclass 指针
+
+![](/assets/Snip20180623_1.png)
+
+- 1、**从上图可以看出, Student 类继承自Person,Person 类继承自 NSObject.**
+
+- 2、 **当Student 的 Class 调用 Person 类象方法时,会先通过 Student的类对象(class 对象)的isa 指针找到 Student 的元类对象(metaclass 对象),然后通过Student 的元类对象(metaclass 对象)的superclass 指针找到 Person 的元类对象(metaclass 对象),然后在Person 的元类对象(metaclass 对象)中找到对应的类方法并执行.**
+
+- 3、**元类对象(meteclass对象)的 superclass 指针指向的是父类的元类对象(metaclass对象).**
+
+
+
+
+
+<br>
+#####四、isa 和 superclass 指针 总结
+
+- 1、**instance对象的isa指向class对象,class对象的isa执行metaclass,metaclass 的isa 都指向 基类的meta class** 
+
+- 2、**class 对象的superclass 指针指向class 对象的superclass对象.** 
+
+- 3、**metaclass 对象de superclass 指针指向metaclass 的supermetaclass对象.**<br><br>
+即:
+
+        ```
+        // isa 指针:
+        instance->isa ==> class->isa ==> metaclass->isa ==> 基类的metaclass
+        //class superclass 指针:
+        class->superclass ==> superclass->isa
+        //metaclass superclass指针:
+        metaclass->superclass ==> superMetaclass->isa
+        ```
+![](/assets/Snip20180623_2.png)
 
