@@ -23,9 +23,13 @@
  ![](/assets/Snip20180624_2.png)
  
  
- - 3 **使用KVO 后,实例对象(instance对象)的isa指针 指向的 class 对象结构(发生了变化,指向了另一个class 对象(原来类的子类))**
+ - 3、**使用KVO 后,实例对象(instance对象)的isa指针 指向的 class 对象结构(发生了变化,指向了另一个class 对象(原来类的子类))**
  ![](/assets/Snip20180624_5.png)
  
+ 
+ 
+ - 4、**_NSSetxxxValueAndNotify 内部实现**
+ ![](/assets/Snip20180624_6.png)
  
  
 
