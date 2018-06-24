@@ -22,6 +22,17 @@
 
     // 只有forKeyPath: 才能使用属性 . 下去,代表的是一个路径
     ```
+    
+- 3、**setValue: forKey: 的原理**<br>
+![](/assets/Snip20180624_8.png)
+**注意:**<br>**accessInstanceVariablesDirectly方法的默认返回值是YES,也就是默认情况下是允许直接将访问成员变量的**
+
+- 4 、**valueForKey: 的原理**<br>
+![](/assets/Snip20180624_9.png)
+
+
+
+
 
 
 
