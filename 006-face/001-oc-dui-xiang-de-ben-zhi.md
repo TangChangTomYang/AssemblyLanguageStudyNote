@@ -204,11 +204,11 @@ BOOL isM
 
 
 
-####四、OC 对象中的重要的2个指针:isa 指针、superclass 指针
+####五、OC 对象中的重要的2个指针:isa 指针、superclass 指针
 
 
 <br>
-#####一、isa 指针
+#####(一)、isa 指针
 
 ![](/assets/Snip20180621_3.png)
 
@@ -224,7 +224,7 @@ BOOL isM
 
 
 <br>
-#####二、class 对象的 superclass 指针
+#####(二)、class 对象的 superclass 指针
 
 ![](/assets/Snip20180621_4.png)
 
@@ -238,7 +238,7 @@ BOOL isM
 
 
 <br>
-#####三、metaclass 对象的 superclass 指针
+#####(三)、metaclass 对象的 superclass 指针
 
 ![](/assets/Snip20180623_1.png)
 
@@ -253,7 +253,7 @@ BOOL isM
 
 
 <br>
-#####四、isa 和 superclass 指针 总结
+#####(四)、isa 和 superclass 指针 总结
 
 - 1、**instance对象的isa指向class对象,class对象的isa执行metaclass,metaclass 的isa 都指向 基类的meta class** 
 
@@ -275,7 +275,7 @@ BOOL isM
 
 
 <br>
-#####五、isa 指针 与对象之间的关系的证明
+#####(五)、isa 指针 与对象之间的关系的证明
 
 ![](/assets/Snip20180623_6.png)
 <br>
@@ -284,19 +284,25 @@ BOOL isM
 
 
 <br>
-#####六、superclass指针之间的关系
+#####(六)、superclass指针之间的关系
 - 1、**superclass指针之间的关系证明:**
 ![](/assets/Snip20180623_8.png)
 
 
 
 <br>
-#####七、class 对象、metaclass 对象的本质
+#####(七)、class 对象、metaclass 对象的本质
 - 1、**对象 与 方法的 结构图**
 ![](/assets/Snip20180623_9.png)
 
 - 2、**窥探struct objc_class的结构**
 ![](/assets/Snip20180623_10.png)
+
+
+
+####六、 获取类方法的注意点
+
+- **object_getClass(id) 此方法获取的是地对象isa指针当前指向的Class 对象**
 
 
 
