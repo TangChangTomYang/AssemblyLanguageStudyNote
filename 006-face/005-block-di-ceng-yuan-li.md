@@ -9,3 +9,5 @@ xcrun sdk iphoneos clang -arch arm64 -rewrite-objc main.m -o main.cpp
 
 
 ![](/assets/Snip20180628_2.png)
+___
+![](/assets/Snip20180628_1.png)
