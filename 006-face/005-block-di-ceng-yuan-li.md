@@ -66,7 +66,8 @@ ___
 
 - **__block 可以用于解决 block 内部无法修改 auto 变量的问题 ** <br><br>**注意:**<br> block 不能修饰全局变量 和 静态变量(static) 
 
-- **__block 为什么能解决 block 内部无法修改 auto 变量的问题? **<br><br>**答:**<br> **编译器会将 __block 修饰的 auto 变量 包装成一个对象,在block 销毁前 block 内部包装的对应会一直引用这这个auto 变量,因此 被__block 修饰的 auto 变量在block 内部可以修改**
+- **__block 为什么能解决 block 内部无法修改 auto 变量的问题? **<br><br>**答:**
+<br> **(1)编译器会对 __block 修饰的 auto 变量(基本变量,对象变量) 进行对象包装, 即block 内部会自动生成一个对象来持有 __block 修饰的auto变量, 在block 销毁前, block 内部会强引用着这个自动生成的包装对象,直到block 销毁,因此 被__block 修饰的 auto 变量在block 内部可以修改**.<br>(2)**block 内部自动生成的对象(持有对象) 具体对 __block 修饰的 auto变量, 是强引用还是弱引用,的看外面__block 修饰的对象前有无 __weak 修饰符,即 和外面引用类型一样(外面强引用,里面就是强引用.外面弱引用,里面就是弱引用)**<br>(3)**如果 __block 修饰的是基本变量 就不存在强弱引用之说了**
 
 <br>
 - **__block 修饰 auto 基本变量的 Block 具体实现**
