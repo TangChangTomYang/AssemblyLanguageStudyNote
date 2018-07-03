@@ -57,6 +57,9 @@ ___
 - **如果block 从堆上移除**<br>(1)会调用block 内部的dispose 函数<br>(2)dispose 函数内部会调用_Block_object_dispose 函数<br>(3) _block_object_dispose 函数会释放应用的auto 变量(release)
 ![](/assets/Snip20180703_6.png)
 
+![](/assets/Snip20180703_17.png)
+
+
 
 
 
