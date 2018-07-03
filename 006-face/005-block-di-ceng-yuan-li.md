@@ -62,7 +62,7 @@ ___
 
 
 
-####六 __block  修饰符
+####六 __block  修饰符auto 变量(基本变量,对象变量)
 
 - **__block 可以用于解决 block 内部无法修改 auto 变量的问题 ** <br><br>**注意:**<br> block 不能修饰全局变量 和 静态变量(static) 
 
@@ -73,8 +73,9 @@ ___
 ![](/assets/Snip20180703_22.png)
 
 <br>
-- **__block 修饰的 auto 对象的block 具体实现**
+- **__block 修饰的 auto 对象的block 具体实现**<br><br>**注意:** **self 也是(一种) auto 对象,因为 oc 的方法调用内部采用的是消息机制 ,即:<br> objc_msgSend(xxx对象,xxx方法,xxx参数...) **
 ![](/assets/Snip20180703_28.png)
+
 
 
 
