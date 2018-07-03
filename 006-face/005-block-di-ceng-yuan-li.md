@@ -66,7 +66,7 @@ ___
 
 - **__block 可以用于解决 block 内部无法修改 auto 变量的问题 ** <br><br>**注意:**<br> block 不能修饰全局变量 和 静态变量(static) 
 
-- **__block 为什么能解决 block 内部无法修改 auto 变量的问题? **<br><br>**答:**<br> 编译器会将 __block 修饰的 auto 变量 包装成一个对象,在block 销毁前 block 内部包装的对应会一直引用这这个auto 变量,因此 被__block 修饰的 auto 变量在block 内部可以修改
+- **__block 为什么能解决 block 内部无法修改 auto 变量的问题? **<br><br>**答:**<br> **编译器会将 __block 修饰的 auto 变量 包装成一个对象,在block 销毁前 block 内部包装的对应会一直引用这这个auto 变量,因此 被__block 修饰的 auto 变量在block 内部可以修改**
 
 
 ![](/assets/Snip20180703_22.png)
