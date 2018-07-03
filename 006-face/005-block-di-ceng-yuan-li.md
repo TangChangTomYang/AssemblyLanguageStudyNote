@@ -39,7 +39,7 @@ C/C++ 底层具体对应实现(解释了为什么要捕获)
 
 
 
-
+<br><br>
 ####三 block 的类型
 
 - **block 有3种类型,可以通过调用 class 方法,或者isa指针查看具体的类型,最终都是继承自NSBlock 类型**<br>(1)__NSGlobalBlock__ (_NSConcreteGlobalBlock)<br>(2)__NSStackBlock__ (_NSConcreteStackBlock)<br>(3)__NSMallocBlock__ (_NSConcreteMallocBlock)
