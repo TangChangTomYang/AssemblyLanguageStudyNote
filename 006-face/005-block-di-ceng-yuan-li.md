@@ -86,7 +86,8 @@ ___
 - **当block 被拷贝到堆上时**<br>(1)会调用block 内部的copy函数<br>(2)copy 函数内部会调用 _Block_object_assign 函数<br>(3) _Block_object_assign 函数会对__block 修饰的变量(强引用变量)形成强引用
 ![](/assets/Snip20180703_29.png)
 
-
+- **当block 从堆中移除时**<br>(1) 会调用block 内部的dispose 函数<br>(2)dispose 函数内部会调用 _Block_object_dispose 函数<br> _Block_object_dispose 函数会自动释放引用的__block 变量.
+![](/assets/Snip20180703_30.png)
 
 
 
