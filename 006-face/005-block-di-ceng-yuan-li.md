@@ -54,6 +54,20 @@ C/C++ 底层具体对应实现(解释了为什么要捕获)
 ####四 block 的copy
 - **在ARC 环境下,编译器会根据情况自动将栈上的block 复制到堆上,比如以下情况:**<br>(1)block 作为函数返回值<br>(2)将block 赋值给 strong 指针时<br>(3)block 作为Cocoa API 中方法名含有usingBlock 的方法参数时.<br>(4)block 作为GCD API 的方法参数时.
 
+```
+block 作为返回值
+void(^block)(void)test(){
+    return ^{
+        NSLog(@"--------");
+    };
+}
+
+将block 赋值给一个强指针(__strong 指针)
+void(^block)(void) = ^{
+    NSlog("--------");
+};
+```
+
 
 - **MRC 下block 属性的建议写法:**<br>@property(copy,nonatomic)void (^block)(void);
 
