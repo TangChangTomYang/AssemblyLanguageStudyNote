@@ -51,4 +51,5 @@
   * [003-KVC 底层实现](006-face/003-kvc-di-ceng-shi-xian.md)
   * [004-category底层原理](006-face/004-categorydi-ceng-yuan-li.md)
   * [005-Block 底层原理](006-face/005-block-di-ceng-yuan-li.md)
+  * [006-runtime](006-face/006-runtime.md)
 
