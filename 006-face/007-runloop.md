@@ -103,9 +103,13 @@ CFRunLoopGetmain();
     ```
     
 
-**一句话概括RunLoop运行逻辑:**
+- **一句话概括RunLoop运行逻辑:**
 一个runLoop 里面有很多的 Modes,但是在一时刻只有一个currentMode(即正在处理的mode),每个Mode里面呢有 source0\ source1\timer\ Observers ,source0\ source1\timer\ Observers 里面都有对应需要处理的各种事件,runloop在运行期间就在不停的处理CurrentMode 里对应的各种事件.
 <br><br>
+
+
+
+#### RunLoop 的各种状态
 - **RunLoop 处理事件大致流程:**
 ```
 01- 通知Observers: 进入Loop
@@ -126,6 +130,8 @@ CFRunLoopGetmain();
 11- 通知Observers: 退出Loop
 ```
 
+
+
 - runLoop 主要有以下几种状态
 ```
 /* Run Loop Observer Activities */
@@ -145,6 +151,40 @@ typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) {
     kCFRunLoopAllActivities = 0x0FFFFFFFU
 };
 ```
+
+- 监听RunLoop 的各种状态
+
+```
+  //监听 RunLoop 的各种状态
+  //step1 设置要监听runloop的那些状态
+  CFRunLoopActivity activityOption =  kCFRunLoopEntry | kCFRunLoopBeforeTimers | kCFRunLoopBeforeSources | kCFRunLoopBeforeWaiting |kCFRunLoopAfterWaiting |kCFRunLoopExit ;
+  //或者 CFRunLoopActivity option =  kCFRunLoopAllActivities; 是一样的
+        
+  //step2 创建一个runloop observer 观察 runloop 的状态变化
+  CFRunLoopObserverRef observer = CFRunLoopObserverCreate(kCFAllocatorDefault,
+                                activityOption, // 选择要监听那些runloop的状态
+                                YES, // 是否重复监听
+                                0,  // 状态是否要顺序
+                                runLoopObserverCallBack, //runLoop 状态变化回调函数
+                                NULL); // 上下文
+        
+  //step3 将observer 添加到runloop中 开始监听
+        CFRunLoopAddObserver(CFRunLoopGetMain(), observer, kCFRunLoopCommonModes);
+        
+  // 释放内存
+        CFRelease(observer);
+        
+        
+   /** runLoop 的状态发生变化就会调用这个函数*/
+  void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
+    
+    NSLog(@"runloop 状态变化了");
+}
+
+        
+        
+```
+
 
 
 
