@@ -67,14 +67,44 @@ CFRunLoopGetmain();
 
 ####RunLoop 的运行逻辑
 
-- Source0
-    - 触摸事件处理<br><br>
-    **细节:**<br>
+- 1、 Source0  以下这几种情况都是通过 Source0 来处理的
+    - 触摸事件处理
+    - performSelector:onThread: 
+    <br><br>
+    **可以通过函数调用栈查看具体细节:如下(看 frame #8)**<br>
     在断点模式下,在lldb 中输入 bt 就可以打印当前的函数调用栈
     ![](/assets/Snip20180717_2.png)
     
     
+- 2、Source1  
+    - 基于Port的线程间通信
+    ![](/assets/Snip20180717_3.png)
+    - 系统事件的捕捉(比如触摸事件最开始是通过source1捕捉,在包装成source0来处理的)
+    
 
+- 3、Timer 以下都属于timer范畴
+    - NSTimer
+    - performSelector:withObject:afterDelay:
+    
+    
+- 4、Observers 
+    - 主要用于监听RunLoop 的状态
+    - autoRelease 自动释放池也是通过observer来进行的.(睡觉前处理)
+    - UI刷新(BeforeWating,比如runloop监听到要睡觉了,他就会在runloop睡觉前刷新页面)
+    ```
+    比如:
+    我们在某个方法中写了这行代码
+    {
+        ... ...
+        self.view.backgroundColor = [UIColor redColor];
+        ... ...
+    }
+    并不是代码一过这一行就设置颜色,不是这样的,是先执行了代码,系统记着有这么个操作,当RunLoop 中的Observers 观察到RunLoop 将要睡觉时,在睡觉前就会修改颜色(即UI刷新)
+    ```
+    
+
+**一句话概括RunLoop运行逻辑:**
+一个runLoop 里面有很多的 Modes,但是在一时刻只有一个currentMode(即正在处理的mode),每个Mode里面呢有 source0\ source1\timer\ Observers ,source0\ source1\timer\ Observers 里面都有对应需要处理的各种事件,runloop在运行期间就在不停的处理CurrentMode 里对应的各种事件.
    
 
 
