@@ -61,7 +61,19 @@ CFRunLoopGetmain();
 - **如果Mode里面没有任何的Source0/Souce1/Timer/Observer,runloop 会立即退出**
 - 常见的2种Mode
     - kCFRunLoopDefaultMode(NSDefaultRunLoopMode),App 的默认Mode,通常主线程在这个Mode 下运行.
-    - UITrackingRunLoopMode,界面跟踪mode,用于ScrollView 跟踪触滑动,保证界面滑动时不受其他Mode的影响.
+    - UITrackingRunLoopMode,界面跟踪mode,用于ScrollView 追踪触摸滑动,保证界面滑动时不受其他Mode的影响.
+    
+    
+
+####RunLoop 的运行逻辑
+
+- Source0
+    - 触摸事件处理<br><br>
+    **细节:**<br>
+    在断点模式下,在lldb 中输入 bt 就可以打印当前的函数调用栈
+    ![](/assets/Snip20180717_2.png)
+    
+    
 
    
 
