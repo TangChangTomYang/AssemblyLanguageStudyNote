@@ -126,6 +126,26 @@ CFRunLoopGetmain();
 11- 通知Observers: 退出Loop
 ```
 
+- runLoop 主要有以下几种状态
+```
+/* Run Loop Observer Activities */
+typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) {
+    //即将进入Loop
+    kCFRunLoopEntry = (1UL << 0),   
+    //即将处理Timer 
+    kCFRunLoopBeforeTimers = (1UL << 1),
+    //即将处理Source
+    kCFRunLoopBeforeSources = (1UL << 2),
+    //即将进入休眠
+    kCFRunLoopBeforeWaiting = (1UL << 5),
+    //刚从休眠中唤醒
+    kCFRunLoopAfterWaiting = (1UL << 6),
+    //即将退出Loop
+    kCFRunLoopExit = (1UL << 7),
+    kCFRunLoopAllActivities = 0x0FFFFFFFU
+};
+```
+
 
 
 
