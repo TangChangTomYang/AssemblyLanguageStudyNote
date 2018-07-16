@@ -105,7 +105,26 @@ CFRunLoopGetmain();
 
 **一句话概括RunLoop运行逻辑:**
 一个runLoop 里面有很多的 Modes,但是在一时刻只有一个currentMode(即正在处理的mode),每个Mode里面呢有 source0\ source1\timer\ Observers ,source0\ source1\timer\ Observers 里面都有对应需要处理的各种事件,runloop在运行期间就在不停的处理CurrentMode 里对应的各种事件.
-   
+<br><br>
+- **RunLoop 处理事件大致流程:**
+```
+01- 通知Observers: 进入Loop
+02- 通知Observers: 即将处理Timers
+03- 通知Observers: 即将处理Sources
+04- 处理Blocks
+05- 处理Source0 (可能会再次处理block)
+06- 如果存在Source1,就跳到第8步
+07- 通知Observers: 开始休眠(等待消息唤醒)
+08- 通知Observers: 结束休眠(被某个消息唤醒)
+    001- 处理Timer
+    002- 处理GCD Async To Main Queue
+    003- 处理Source1
+09- 处理Blocks
+10- 根据前面的执行结果,决定如何操作
+    001- 回到第2步
+    002- 退出Loop
+11- 通知Observers: 退出Loop
+```
 
 
 
