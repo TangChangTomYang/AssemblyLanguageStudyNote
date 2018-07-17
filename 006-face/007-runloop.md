@@ -179,11 +179,53 @@ typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) {
   void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity activity, void *info){
     
     NSLog(@"runloop 状态变化了");
-}
+    }
 
         
         
 ```
+
+
+####RunLoop 在实际开发中的应用
+
+- 1 控制线程的生命周期(线程保活(AFNetworking 经典框架))
+- 2 解决NSTimer 在滑动时停止工作的问题
+- 3 监控应用卡顿
+- 4 性能优化
+
+
+
+####RunLoop 面试题
+
+- 1 讲讲RunLoop, 项目中有用到吗?
+    - 有用到
+
+
+- 2 Runloop 内部的实现逻辑?
+
+
+- 3 RunLoop 和线程的关系?
+
+
+- 4 timer 与 RunLoop 的关系?
+
+
+
+- 5 程序中添加每 3秒响应一次的NSTimer,当拖动tableView 时2,timer 可能无法响应要怎么解决?
+
+
+- 6 runLoop 是怎么响应用户操作的,具体流程是什么?
+
+
+
+- 7 说说RunLoop 的几种状态?
+
+
+
+
+- 8 runLoop 的mode 的作用是什么?
+
+
 
 
 
