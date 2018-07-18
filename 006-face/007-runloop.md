@@ -1,10 +1,13 @@
 
 
+
 ####RunLoop 的基本作用
 - 保证程序的持续运行
 - 处理API中的各种事件(触摸事件、定时事件、 等等)
 - 节省CPU资源,提高程序的性能: 该做事做事,该休息休息
 - ... ...
+---
+<br>
 
 ####RunLoop 对象
 
@@ -14,6 +17,8 @@
     - NSRunLoop 和CFRunLoopRef 都代表着RunLoop对象,NSRunLoop 是基于CFRunLoopRef 的一层OC包装,CFRunLoopRef 是开源的,地址:(https://opensource.apple/tarballs/CF/)
     
     
+---
+<br>
 
 ####RunLoop 与线程的关系
 - 每条线程都有唯一的一个与之对应的 runloop 对象.
@@ -22,6 +27,8 @@
 - runloop 会在线程结束时销毁.
 - 主线程的runloop已经自动获取,子线程的默认没有开启runloop
 
+---
+<br>
 
 ####获取RunLoop
 - 获取当前线程的runloop
@@ -37,6 +44,8 @@ CFRunLoopGetmain();
 ```
 
 
+---
+<br>
 
 ####RunLoop 相关的类
 - Core Foundation 中关于RunLoop的5个类
@@ -51,6 +60,8 @@ CFRunLoopGetmain();
    
    
    
+---
+<br>
    
 ####CFRunLoopModeRef 
 - CFRunLoopRef 代表RunLoop 的运行模式
@@ -64,6 +75,8 @@ CFRunLoopGetmain();
     - UITrackingRunLoopMode,界面跟踪mode,用于ScrollView 追踪触摸滑动,保证界面滑动时不受其他Mode的影响.
     
     
+---
+<br>
 
 ####RunLoop 的运行逻辑
 
@@ -108,6 +121,8 @@ CFRunLoopGetmain();
 <br><br>
 
 
+---
+<br>
 
 #### RunLoop 的各种状态
 - **RunLoop 处理事件大致流程:**
@@ -185,6 +200,8 @@ typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) {
         
 ```
 
+---
+<br>
 
 ####RunLoop 在实际开发中的应用
 
@@ -194,6 +211,8 @@ typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) {
 - 4 性能优化
 
 
+---
+<br>
 
 ####RunLoop 面试题
 
@@ -224,6 +243,144 @@ typedef CF_OPTIONS(CFOptionFlags, CFRunLoopActivity) {
 
 
 - 8 runLoop 的mode 的作用是什么?
+
+---
+<br>
+####Runloop 线程保活(常驻线程)
+[常驻线程demo](https://github.com/TangChangTomYang/ResidentThread)
+- **YRResidentThread.h 文件**
+
+```
+#import <Foundation/Foundation.h>
+
+typedef void (^YRResidentThreadTask)(void);
+
+// 常驻线程
+@interface YRResidentThread : NSThread
+
+/**在当前子线程执行一个任务*/
+- (void)executeTask:(YRResidentThreadTask)task;
+
+/**结束线程*/
+- (void)stop;
+@end
+```
+
+- **YRResidentThread.m 文件**
+
+```
+
+#import "YRResidentThread.h"
+/** YRThread **/
+@interface YRThread : NSThread
+@end
+@implementation YRThread
+- (void)dealloc{
+    NSLog(@"%s", __func__);
+}
+@end
+
+
+/** YRResidentThread **/
+@interface YRResidentThread()
+@property (strong, nonatomic) YRThread *innerThread;
+@property(nonatomic, assign, getter=isStoped)BOOL stoped;
+@end
+@implementation YRResidentThread
+
+#pragma mark - public methods
+/** 创建常驻线程后 常驻线程自动运行*/
+- (instancetype)init{
+    
+    if (self = [super init]) {
+        
+        self.stoped = NO;
+        __weak typeof(self) weakSelf = self;
+        self.innerThread = [[YRThread alloc] initWithBlock:^{
+            NSLog(@" runloop begin----");
+            [[NSRunLoop currentRunLoop] addPort:[[NSPort alloc] init] forMode:NSDefaultRunLoopMode];
+            
+            while (weakSelf != nil && weakSelf.isStoped == NO) {
+                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+            }
+            NSLog(@" runloop end----");
+            
+        }];
+        
+        [self.innerThread start];
+    }
+    return self;
+}
+
+
+- (void)executeTask:(YRResidentThreadTask)task{
+   
+    if (!self.innerThread || !task) return;
+    [self performSelector:@selector(__executeTask:) onThread:self.innerThread withObject:task waitUntilDone:NO];
+}
+
+- (void)stop{
+    
+    if (!self.innerThread) return;
+    self.stoped = YES;
+    [self performSelector:@selector(__stop) onThread:self.innerThread withObject:nil waitUntilDone:YES];
+}
+
+- (void)dealloc{
+    NSLog(@"%s", __func__);
+    [self stop];
+}
+
+#pragma mark - private methods
+- (void)__stop{
+    CFRunLoopStop(CFRunLoopGetCurrent());
+    self.innerThread = nil;
+}
+
+- (void)__executeTask:(YRResidentThreadTask)task{
+    task();
+}
+
+
+@end
+```
+
+- **测试控制器**
+
+```
+#import "YRResidentThread.h"
+
+@interface ViewController ()
+@property(nonatomic, strong)YRResidentThread *residentThread;
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // 创建常驻线程,线程自动运行
+    self.residentThread = [[YRResidentThread alloc] init]; 
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    // 在常驻线程中执行任务
+    [self.residentThread executeTask:^{
+        NSLog(@"---------%@@", [NSThread currentThread]);
+    }];
+}
+
+- (IBAction)stopBtnClick:(id)sender {
+    // 主动销毁线程
+    [self.residentThread stop];
+    
+    // 或者调用小面的方法
+    //self.residentThread = nil;
+}
+@end
+
+```
+
 
 
 
