@@ -41,7 +41,31 @@
 **答:**<br>
 (1) 打印结果是 1  3<br>
 (2) 因为 `- (void)performSelector:(SEL)aSelector withObject:(nullable id)anArgument afterDelay:(NSTimeInterval)delay;` 这个方法其实是往当前的runloop 中添加了一个定时器来执行对应的方法. 默认情况下子线程的runloop是没有运行了,自然添加到子线程中的timer 也是不会执行的,因此结果是 1 3<br>
-(3) 如果让runloop 跑起来,那么就可以执行,如下如:![](/assets/Snip20180720_3.png)<br>打印结果是 1 3 2 (因为定时器是要等runloop 再次被唤醒才会执行,所以先执行 1 3)
+(3) 如果让runloop 跑起来,那么就可以执行,如下如:![](/assets/Snip20180720_3.png)<br>打印结果是 1 3 2 (因为定时器是要等runloop 再次被唤醒才会执行,所以先执行 1 3)<br>
+(4)拓展: 也就是说以后凡是看见方法中带有 delay 的,如果是在子线程调用都要注意一下runloop 的问题.
+
+
+
+
+
+####多线程安全隐患解决方案
+
+- 解决方案: 使用 **线程同步**技术(同步就是协同步调,按预定的先后顺序j进行)
+
+
+
+- iOS 中的线程同步方案:<br>
+(1) OSSpinLock<br>
+(2) os_unfair_lock<br>
+(3) pthread_mutex<br>
+(4) dispatch_semaphore<br>
+(5) dispatch_queue(DISPATCH_QUEUE_SERIAL)<br>
+(6) NSLock<br>
+(7) NSRecursiveLock<br>
+(8) NSCondition<br>
+(9) NSConditionLock<br>
+(10) @synchronized<br>
+
 
 
 
