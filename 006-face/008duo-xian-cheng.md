@@ -44,8 +44,10 @@
 (3) 如果让runloop 跑起来,那么就可以执行,如下如:![](/assets/Snip20180720_3.png)<br>打印结果是 1 3 2 (因为定时器是要等runloop 再次被唤醒才会执行,所以先执行 1 3)<br>
 (4)拓展: 也就是说以后凡是看见方法中带有 delay 的,如果是在子线程调用都要注意一下runloop 的问题.
 
-
-
+####GNUStep
+- GNUStep 是GNU计划项目之一,他将Cocoa的OC库重新开源实现了一遍.
+- 源码地址: http://www.gnustep.org/resources/downloads.php
+- 虽然GNUStep 不是苹果官方源码,但还是具有一定的参考价值.
 
 
 ####多线程安全隐患解决方案

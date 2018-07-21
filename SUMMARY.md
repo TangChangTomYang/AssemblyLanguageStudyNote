@@ -54,4 +54,5 @@
   * [006-runtime](006-face/006-runtime.md)
   * [007-runloop](006-face/007-runloop.md)
   * [008-多线程](006-face/008duo-xian-cheng.md)
+  * [009-ios 中的锁](006-face/009-ios-zhong-de-suo.md)
 
