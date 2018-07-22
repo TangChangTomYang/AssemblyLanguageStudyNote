@@ -335,7 +335,66 @@ if (self.data.count == 0) {
  <br>
 ***
 ####7、 NSConditionLock
-是一种 对 NSCondition 的封装,能办到 让多个子线程按照某种顺序, 顺序的执行的.具体使用如下: 
+是一种 对 NSCondition 的封装,能办到 让多个子线程按照某种顺序(某种条件), 顺序的执行的.具体使用如下: 
+
+```
+
+#import "NSConditionLockDemo.h"
+
+@interface NSConditionLockDemo()
+@property (strong, nonatomic) NSConditionLock *conditionLock;
+@end
+
+@implementation NSConditionLockDemo
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        self.conditionLock = [[NSConditionLock alloc] initWithCondition:1];
+    }
+    return self;
+}
+
+- (void)otherTest
+{
+    [[[NSThread alloc] initWithTarget:self selector:@selector(__one) object:nil] start];
+    
+    [[[NSThread alloc] initWithTarget:self selector:@selector(__two) object:nil] start];
+    
+    [[[NSThread alloc] initWithTarget:self selector:@selector(__three) object:nil] start];
+}
+
+- (void)__one{
+    // 当锁的条件==1 时才会执行加锁,才会执行下面的代码,从而达到控制线程的执行效果
+    [self.conditionLock lockWhenCondition:1];
+    
+    NSLog(@"__one");
+    sleep(1);
+    
+    [self.conditionLock unlockWithCondition:2];
+}
+
+- (void)__two{
+    // 当锁的条件==1 时才会执行加锁,才会执行下面的代码
+    [self.conditionLock lockWhenCondition:2];
+    
+    NSLog(@"__two");
+    sleep(1);
+    
+    [self.conditionLock unlockWithCondition:3];
+}
+
+- (void)__three{
+    // 当锁的条件==1 时才会执行加锁,才会执行下面的代码
+    [self.conditionLock lockWhenCondition:3];
+    
+    NSLog(@"__three");
+    
+    [self.conditionLock unlock];
+}
+
+@end
+```
 
 
  
