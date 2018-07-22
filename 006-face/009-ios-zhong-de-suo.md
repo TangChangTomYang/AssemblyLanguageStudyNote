@@ -322,7 +322,7 @@ if (self.data.count == 0) {
 <br>
 ***
 ####6、 NSCondition
-- NSCondition 是对pthread_mutex  和 pthread_mutex condition  的封装,即包含了锁和条件锁的封装.因此 NSCondition 具备互斥锁 和 互斥条件的功能. 
+- NSCondition 是对pthread_mutex  和 pthread_mutex condition  的封装,即包含了锁和条件锁的封装.因此 NSCondition 具备互斥锁 和 互斥条件的功能. (主要功能: 加锁 解锁 等待)
  ![](/assets/Snip20180722_2.png)
  比如:wait 和 signal 的封装如下:<br><br>
  wait 是当条件不满足时,休眠 等待条件的意思
