@@ -303,7 +303,7 @@ if (self.data.count == 0) {
 ```
 如果判断到 `if (self.data.count == 0)` 条件成立,就会执行 `pthread_cond_wait(&_cond, &_mutex);` 这一句代码, 这句代码一执行,这时 自旋锁会 先解锁且让当前线程(A线程)睡眠在这里,程序暂时不往下执行.<br>
 (2) 当我们的程序(B线程)在调用方法: `- (void)__add`时, 发现当前的 互斥锁是解开的,就会往下执行,并且执行到 `pthread_cond_signal(&_cond);
-` 这句代码时 就会给互斥锁发一个信号消息
+` 这句代码时 就会给互斥锁发一个信号消息,这时 睡眠在 `pthread_cond_wait(&_cond, &_mutex);` 处的A线程就会被唤醒,并且`pthread_cond_wait(&_cond, &_mutex);` 会对当前现场
 
 
  
