@@ -478,6 +478,33 @@ if (self.data.count == 0) {
 
 
 
+
+
+<br>
+***
+####9、synchronized
+-  synchronized 其实是对 pthread_mutex 递归的一种封装.
+
+```
+- (void)__drawMoney
+{
+    @synchronized([self class]) {
+        [super __drawMoney];
+    }
+}
+
+- (void)__saveMoney
+{
+    @synchronized([self class]) { // objc_sync_enter
+        [super __saveMoney];
+    } // objc_sync_exit
+}
+```
+
+
+
+
+
  
 
 
