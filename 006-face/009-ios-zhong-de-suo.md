@@ -44,7 +44,7 @@
  
  <br>
  ***
- ####2、os_unfaire_lock
+ ####2、os_unfaire_lock (osspinlock 的改进版) 是一种互斥锁 会休眠.
  - os_unfair_lock 是用于取代 osspinlock,从ios 10 起开始支持.<br>
  从底层调用看,等待os_unfair_lock锁的线程会处于休眠状态,而非忙等状态(osspinlock 是处于忙等状态)<br><br>
  **使用:**<br>
