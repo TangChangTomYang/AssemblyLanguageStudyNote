@@ -66,6 +66,130 @@
     // 解锁
     os_unfair_lock(&_lock);
     ```
+  
+ <br>
+***  
+ ####3、pthread_mutex 
+ - mutex 叫做 `互斥所`, 等待锁的线程会处于休眠状态.<br><br>
+ **互斥锁主要有2中使用方式:**<br>
+ (1) 一般的互斥锁,不能解决像递归调用这个类的锁问题.具体使用步骤如下:<br>
+ **step1:初始化锁:(一般锁)**
+ 
+    ```
+    #import "MutexDemo.h"
+    #import <pthread.h>
+
+    @interface MutexDemo()
+    @property (assign, nonatomic) pthread_mutex_t     ticketMutex;
+    @property (assign, nonatomic) pthread_mutex_t moneyMutex;
+    @end
+
+    @implementation MutexDemo
+
+    - (void)__initMutex:(pthread_mutex_t *)mutex{
+    // 静态初始化(不推荐)
+    //pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+    // 初始化属性
+    pthread_mutexattr_t attr;
+    pthread_mutexattr_init(&attr);
+    pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_DEFAULT);
+    PTHREAD_MUTEX_RECURSIVE
+    // 初始化锁
+    pthread_mutex_init(mutex, &attr);
+
+    // 初始化锁
+    //pthread_mutex_init(mutex, NULL);
+
+    // 销毁属性
+    //pthread_mutexattr_destroy(&attr);
+}
+
+    - (instancetype)init{
+        if (self = [super init]) {
+        [self __initMutex:&_ticketMutex];
+        [self __initMutex:&_moneyMutex];
+        }
+        return self;
+    }
+
+    ```
+**step2:使用互斥锁(场景1)锁住1处代码**
+
+    ```
+    // 应用场景1: 卖票
+    - (void)__saleTicket{
+        pthread_mutex_lock(&_ticketMutex);
+    
+        // 需要锁住的代码
+        [super __saleTicket];
+    
+        pthread_mutex_unlock(&_ticketMutex);
+    }
+    ```
+**step2:使用互斥锁(场景1)锁住A处代码,解锁前其它地方也不能访问**
+
+    ```
+    // 在存钱时就不能取钱, 在取钱时就不能存钱
+    // 存钱
+    - (void)__saveMoney{
+        pthread_mutex_lock(&_moneyMutex);
+        // 需要锁住的代码    
+        [super __saveMoney];
+        pthread_mutex_unlock(&_moneyMutex);
+    }
+
+    // 取钱
+    - (void)__drawMoney{
+        pthread_mutex_lock(&_moneyMutex);
+        [super __drawMoney];
+        pthread_mutex_unlock(&_moneyMutex);
+    }
+    ```
+    **step3: 释放互斥锁**
+    ```
+    // 使用互斥锁,在对象销毁前需要释放锁
+    - (void)dealloc{
+        pthread_mutex_destroy(&_moneyMutex);
+        pthread_mutex_destroy(&_ticketMutex);
+    }
+
+    @end
+    ```
+(2)互斥锁,递归锁的使用,可以解决一个方法被递归调用时,死锁的现象<br>
+**step1: 创建互斥锁 递归所**
+
+    ```
+    - (void)__initMutex:(pthread_mutex_t *)mutex{
+        // 静态初始化(不推荐)
+        //pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+        // 初始化属性
+        pthread_mutexattr_t attr;
+        pthread_mutexattr_init(&attr);
+        // 注意,类型必须 是PTHREAD_MUTEX_RECURSIVE
+        pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+        // 初始化锁
+        pthread_mutex_init(mutex, &attr);
+
+        // 销毁属性
+        //pthread_mutexattr_destroy(&attr);
+    }
+    ```
+**step2 使用互斥锁 递归所**
+
+    ```
+    // 递归方法 使用互斥锁
+    - (void)saleTicket{
+        pthread_mutex_lock(&_ticketMutex);
+        NSLog(@"%s",__func__);
+        [self saleTicket];
+        pthread_mutex_unlock(&_ticketMutex);
+    }
+    ```
+
+
+ 
 
 
  
