@@ -317,7 +317,17 @@ if (self.data.count == 0) {
 ***
 ####5、 NSRecursiveLock 
 - NSRecursiveLock 是对 pthread_mutex的递归锁封装,API跟 NSLock 基本一致,只是他是一种递归所.
-![](/assets/Snip20180722_2.png)
+
+
+<br>
+***
+####6、 NSCondition
+- NSCondition 是对pthread_mutex condition 的封装
+ ![](/assets/Snip20180722_2.png)
+ 比如:wait 和 signal 的封装如下:
+ ![](/assets/Snip20180722_5.png)<br><br>
+ ![](/assets/Snip20180722_3.png)
+ 
 
 
 
