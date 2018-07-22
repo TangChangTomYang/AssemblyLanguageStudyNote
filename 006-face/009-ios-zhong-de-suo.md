@@ -73,7 +73,7 @@
   
  <br>
 ***  
- ####3、pthread_mutex 
+ ####3、pthread_mutex  互斥锁
  - mutex 叫做 `互斥所`, 等待锁的线程会处于休眠状态.<br><br>
  **互斥锁主要有2中使用方式:**<br>
  (1) 一般的互斥锁,不能解决像递归调用这个类的锁问题.具体使用步骤如下:<br>
@@ -304,6 +304,21 @@ if (self.data.count == 0) {
 如果判断到 `if (self.data.count == 0)` 条件成立,就会执行 `pthread_cond_wait(&_cond, &_mutex);` 这一句代码, 这句代码一执行,这时 自旋锁会 先解锁且让当前线程(A线程)睡眠在这里,程序暂时不往下执行.<br>
 (2) 当我们的程序(B线程)在调用方法: `- (void)__add`时, 发现当前的 互斥锁是解开的,就会往下执行,并且执行到 `pthread_cond_signal(&_cond);
 ` 这句代码时 就会给互斥锁发一个信号消息,这时 睡眠在 `pthread_cond_wait(&_cond, &_mutex);` 处的A线程就会被唤醒,唤醒后`pthread_cond_wait(&_cond, &_mutex);` 同时会对当前线程进行加锁,代码继续往前执行. 这样就完成了 生产者 --- 消费者模式的加锁.
+
+
+
+<br>
+***
+####4、 NSLock 
+- NSLock 是对 pthread_mutex 互斥锁的封装.
+![](/assets/Snip20180722_1.png)
+
+<br>
+***
+####5、 NSRecursiveLock 
+- NSRecursiveLock 是对 pthread_mutex的递归锁封装,API跟 NSLock 基本一致,只是他是一种递归所.
+![](/assets/Snip20180722_2.png)
+
 
 
  
