@@ -330,6 +330,15 @@ if (self.data.count == 0) {
  signal 是当条件满足通知wait 的线程唤醒,其实还有个broadcast也是唤醒的意思,signal 是唤醒一条睡眠的,broadcast是唤醒多个睡眠的. 
  ![](/assets/Snip20180722_3.png)
  
+ 
+ 
+ <br>
+***
+####7、 NSConditionLock
+是一种 对 NSCondition 的封装,能办到 让多个子线程按照某种顺序, 顺序的执行的.具体使用如下: 
+
+
+ 
 
 
 
