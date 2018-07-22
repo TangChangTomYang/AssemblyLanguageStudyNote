@@ -191,51 +191,58 @@
         pthread_mutex_unlock(&_ticketMutex);
     }
     ```
-    (3)互斥锁,生产者 -- 消费者 模式
     
-    **step1:  创建互斥锁 和 互斥锁条件**
+(3)互斥锁, 条件互斥锁 (主要应用场景: 生产者 -- 消费者 模式)
     
-    ``` 
-    #import "MutexDemo3.h"
-    #import <pthread.h>
-    @interface MutexDemo3()
-    // 互斥锁
-    @property (assign, nonatomic) pthread_mutex_t mutex;
-    // 互斥锁 条件
-    @property (assign, nonatomic) pthread_cond_t cond;
-    @property (strong, nonatomic) NSMutableArray *data;
-    @end
+**step1:  创建 互斥锁 和 互斥锁条件**
 
-    @implementation MutexDemo3
+``` 
+#import "MutexDemo3.h"
+#import <pthread.h>
+@interface MutexDemo3()
+// 互斥锁
+@property (assign, nonatomic) pthread_mutex_t mutex;
+// 互斥锁 条件
+@property (assign, nonatomic) pthread_cond_t cond;
+@property (strong, nonatomic) NSMutableArray *data;
+@end
 
-    - (instancetype)init{
-    if (self = [super init]) {
-        // 初始化属性
-        pthread_mutexattr_t attr;
-        pthread_mutexattr_init(&attr);
-        pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
-        // 初始化锁
-        pthread_mutex_init(&_mutex, &attr);
-        // 销毁属性
-        pthread_mutexattr_destroy(&attr);
+@implementation MutexDemo3
+
+- (instancetype)init{
+if (self = [super init]) {
+    // 初始化属性
+    pthread_mutexattr_t attr;
+    pthread_mutexattr_init(&attr);
+    pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+    // 初始化锁
+    pthread_mutex_init(&_mutex, &attr);
+    // 销毁属性
+    pthread_mutexattr_destroy(&attr);
         
-        // 初始化条件
-        pthread_cond_init(&_cond, NULL);
+    // 初始化条件
+    pthread_cond_init(&_cond, NULL);
         
-        self.data = [NSMutableArray array];
-    }
-    return self;
-    }
-
-```
-
-- (void)otherTest
-{
-    [[[NSThread alloc] initWithTarget:self selector:@selector(__remove) object:nil] start];
-    
-    [[[NSThread alloc] initWithTarget:self selector:@selector(__add) object:nil] start];
+    self.data = [NSMutableArray array];
+}
+return self;
 }
 
+```
+    
+**step2 测试生产者 消费者 模式**
+    
+```
+- (void)otherTest{
+   [[[NSThread alloc] initWithTarget:self selector:@selector(__remove) object:nil] start];
+    
+   [[[NSThread alloc] initWithTarget:self selector:@selector(__add) object:nil] start];
+}
+```
+
+
+**step3 条件互斥锁实现**
+```
 // 生产者-消费者模式
 
 // 线程1
@@ -258,8 +265,7 @@
 
 // 线程2
 // 往数组中添加元素
-- (void)__add
-{
+- (void)__add{
     pthread_mutex_lock(&_mutex);
     
     sleep(1);
@@ -275,6 +281,9 @@
     pthread_mutex_unlock(&_mutex);
 }
 
+```
+**step4 条件互斥锁 销毁**
+```
 - (void)dealloc
 {
     pthread_mutex_destroy(&_mutex);
@@ -283,6 +292,18 @@
 
 @end
 ```
+**怎样来理解 条件互斥锁呢?**<br>
+其实他的运行逻辑是这样的:<br>
+(1) 当我们的程序(A线程)在调用方法: `- (void)__remove`时, 如果执行到下面这行
+```
+if (self.data.count == 0) {
+    // 等待
+    pthread_cond_wait(&_cond, &_mutex);
+}
+```
+如果判断到 `if (self.data.count == 0)` 条件成立,就会执行 `pthread_cond_wait(&_cond, &_mutex);` 这一句代码, 这句代码一执行,这时 自旋锁会 先解锁且让当前线程(A线程)睡眠在这里,程序暂时不往下执行.<br>
+(2) 当我们的程序(B线程)在调用方法: `- (void)__add`时, 发现当前的 互斥锁是解开的,就会往下执行,并且执行到 `pthread_cond_signal(&_cond);
+` 这句代码时 就会给互斥锁发一个信号消息
 
 
  
