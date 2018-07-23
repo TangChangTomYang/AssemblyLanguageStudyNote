@@ -483,9 +483,11 @@ if (self.data.count == 0) {
 <br>
 ***
 ####9、synchronized
--  synchronized 其实是对 pthread_mutex 递归的一种封装.
+-  synchronized 其实是对 pthread_mutex 递归的一种封装.会更具传入的对象到hash 表中去查找对应的锁,如果传入的对象一样,那么就是同一把锁.
 
 ```
+下面两把锁 是同一把锁,因为 类对象只有一个
+
 - (void)__drawMoney
 {
     @synchronized([self class]) {
