@@ -504,8 +504,54 @@ if (self.data.count == 0) {
 ```
 
 
-####iOS 中用到的各种锁的总结:
-inlock 
+####iOS 中用到的各种锁性能的总结:
+
+OSSpinLock 自旋锁, 线程在等待解锁前会一直while(1); ,因此效率很高,缺点可能因为线程优先级造成线程死锁(因为等待解锁前一直在做 while(1);)
+
+os_unfair_lock 自旋锁的改进版, 等待解锁时,线程会睡眠
+
+pthread_mutex 互斥锁
+pthread_mutex 互斥锁 递归锁
+pthread_mutex 互斥锁 条件锁
+
+NSLock 互斥锁 对pthread_mutex  的封装
+NSLockrecursive 对 pthread_mutex 递归锁 的封装
+NSLockCondition  对 pthread_mutex 条件锁的 的封装
+NSLockConditionLock 对 NSLock 和 NSLockCondition 的封装
+
+信号量
+
+synchronized pthread_mutex 递归锁 的封装
+线程串行
+
+
+![](/assets/Snip20180723_1.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
