@@ -14,4 +14,5 @@
 - 3 **通过`添加环境变量`可以打印出App的启动时间分析**<br>
 (1) DYLD_PRINT_STATISTICS 设置1, 一般大概启动时间<br>
 (2) DYLD_PRINT_STATISTICS_DETAILS 设置1, 详细启动时间
+![](/assets/Snip20180728_3.png)
 
