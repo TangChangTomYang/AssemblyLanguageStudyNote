@@ -56,5 +56,6 @@
   * [008-多线程](006-face/008duo-xian-cheng.md)
   * [009-ios 中的锁](006-face/009-ios-zhong-de-suo.md)
   * [010-多读单写](006-face/010duo-du-dan-xie.md)
+  * [011-内存管理](006-face/011nei-cun-guan-li.md)
 * [007-内存管理](007nei-cun-guan-li.md)
 
